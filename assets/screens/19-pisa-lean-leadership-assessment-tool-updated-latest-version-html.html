@@ -1,0 +1,1676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PISA Lean Leadership Assessment™</title>
+<style>
+  :root{
+    --terracotta:#C0623A;
+    --terracotta-dark:#9E4C2C;
+    --terracotta-tint:#F1DDD1;
+    --charcoal:#2A2521;
+    --charcoal-soft:#4A423C;
+    --cream:#F7F2EC;
+    --cream-deep:#EFE6DA;
+    --teal:#3E7C77;
+    --teal-tint:#DCEBE9;
+    --line:#E2D6C8;
+    --white:#FFFDFB;
+    --r-priority:#B5563C;
+    --r-developing:#C68A3E;
+    --r-moderate:#B79A3E;
+    --r-strong:#4C8A6A;
+    --r-exceptional:#2F7A6E;
+    --serif:Calibri, Carlito, 'Segoe UI', Arial, sans-serif;
+    --sans:Calibri, Carlito, 'Segoe UI', Arial, sans-serif;
+    --mono:Calibri, Carlito, 'Segoe UI', Arial, sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{background:var(--cream); color:var(--charcoal); font-family:var(--sans); font-size:16px; line-height:1.5;}
+  body{padding-bottom:80px;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+  .wrap-narrow{max-width:880px; margin:0 auto; padding:0 32px;}
+  button{font-family:var(--sans); cursor:pointer;}
+  em{font-style:italic;}
+
+  /* ===== Masthead ===== */
+  .masthead{
+    background:
+      radial-gradient(ellipse 900px 500px at 15% -20%, rgba(192,98,58,0.16), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 100% 0%, rgba(62,124,119,0.14), transparent 55%),
+      var(--charcoal);
+    color:var(--cream);
+    padding:34px 0 30px 0;
+    border-bottom:6px solid var(--terracotta);
+  }
+  body.is-report .masthead{padding:16px 0 14px 0;}
+  body.is-report .mast-title{font-size:1.7rem; margin-top:8px;}
+  .brandrow{display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;}
+  body.is-report .brandrow{position:relative; justify-content:flex-end;}
+  body.is-report .brandrow .doctype{
+    position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+    background:transparent; border:none; padding:0;
+    font-family:var(--serif); font-weight:600; font-size:1.4rem; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--terracotta-tint); white-space:nowrap;
+  }
+  .wordmark{font-family:var(--serif); font-weight:600; font-size:1.7rem; letter-spacing:0.04em; color:var(--cream);}
+  .logo-badge{background:var(--white); border-radius:8px; padding:6px 10px; display:inline-flex; align-items:center; box-shadow:0 1px 3px rgba(0,0,0,0.25);}
+  .logo-badge img{height:52px; width:auto; display:block;}
+  body.is-report .logo-badge img{height:38px;}
+  .tm{font-size:0.55em; vertical-align:super;}
+  .doctype{font-family:var(--mono); font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--cream); background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.18); padding:7px 14px; border-radius:100px;}
+  .mast-title{font-family:var(--serif); font-weight:500; font-size:1.7rem; margin-top:14px; color:var(--white);}
+  .mast-title em{font-style:italic; color:var(--terracotta-tint);}
+
+  /* ===== Progress ===== */
+  .progress-shell{background:var(--white); border-bottom:1px solid var(--line); position:sticky; top:0; z-index:20;}
+  .progress-inner{display:flex; align-items:center; gap:18px; padding:14px 0;}
+  .progress-track{flex:1; height:6px; background:var(--cream-deep); border-radius:4px; overflow:hidden;}
+  .progress-fill{height:100%; background:linear-gradient(90deg,var(--terracotta),var(--terracotta-dark)); border-radius:4px; transition:width .25s ease; width:0%;}
+  .progress-label{font-family:var(--mono); font-size:0.72rem; color:var(--charcoal-soft); white-space:nowrap;}
+  .step-chips{display:flex; gap:6px;}
+  .step-chip{width:8px; height:8px; border-radius:50%; background:var(--cream-deep); border:1px solid var(--line);}
+  .step-chip.done{background:var(--terracotta);}
+  .step-chip.current{background:var(--charcoal); transform:scale(1.3);}
+
+  /* ===== Assessment steps ===== */
+  .step{display:none; padding:44px 0 20px 0;}
+  .step.active{display:block;}
+  .step-eyebrow{font-family:var(--mono); font-size:0.7rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--terracotta-dark); margin-bottom:10px; display:flex; align-items:center; gap:10px;}
+  .step-eyebrow::before{content:''; width:22px; height:1px; background:var(--terracotta-dark);}
+  .step-title{font-family:var(--serif); font-weight:600; font-size:1.8rem; margin-bottom:8px;}
+  .step-lede{color:var(--charcoal-soft); max-width:640px; font-size:0.96rem; margin-bottom:30px;}
+
+  /* Welcome page */
+  .welcome-copy{max-width:700px;}
+  .welcome-copy h2.wtitle{font-family:var(--serif); font-weight:600; font-size:1.5rem; white-space:nowrap; margin-bottom:22px;}
+  .welcome-copy p{font-size:0.98rem; color:var(--charcoal-soft); line-height:1.7; margin-bottom:16px;}
+  .justify{text-align:justify;}
+  .belief-block{
+    font-family:var(--serif); font-style:italic; font-size:1.09rem; line-height:1.55; color:var(--charcoal);
+    background:var(--white); border-left:3px solid var(--terracotta); padding:20px 24px; border-radius:0 10px 10px 0; margin:24px 0 28px 0;
+  }
+  .belief-block .lead{font-family:var(--mono); font-style:normal; font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--terracotta-dark); display:block; margin-bottom:10px;}
+  .pillar-list{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:14px 0 28px 0;}
+  .pillar-list-item{background:var(--white); border:1px solid var(--line); border-radius:10px; padding:16px 18px;}
+  .pillar-list-item .pl-name{font-family:var(--serif); font-weight:600; font-size:1.05rem; color:var(--terracotta-dark);}
+  .pillar-list-item .pl-sub{font-family:var(--mono); font-size:0.7rem; color:var(--charcoal-soft); margin-top:3px;}
+  .welcome-copy h3.wsub{font-family:var(--serif); font-weight:600; font-size:1.3rem; margin:8px 0 12px 0;}
+  .disclaimer-box{background:var(--cream-deep); border:1px solid var(--line); border-radius:10px; padding:16px 18px; margin-top:30px;}
+  .disclaimer-box .dtitle{font-family:var(--mono); font-size:0.6rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--terracotta-dark); margin-bottom:8px;}
+  .disclaimer-box p{font-size:0.72rem; color:var(--charcoal-soft); line-height:1.55; margin-bottom:8px;}
+  .disclaimer-box p:last-child{margin-bottom:0;}
+  .copyright-line{font-family:var(--mono); font-size:0.62rem; color:var(--charcoal-soft); margin-top:12px;}
+  .consent-box{margin-top:20px; padding:16px 18px; background:var(--white); border:1px solid var(--line); border-radius:10px;}
+  .consent-label{display:flex; align-items:flex-start; gap:12px; cursor:pointer;}
+  .consent-label input[type="checkbox"]{margin-top:3px; width:16px; height:16px; accent-color:var(--terracotta); flex-shrink:0; cursor:pointer;}
+  .consent-label span{font-size:0.82rem; color:var(--charcoal-soft); line-height:1.55;}
+  .consent-box.field-error{border-color:var(--r-priority);}
+  .privacy-note{background:var(--white); border:1px solid var(--line); border-radius:10px; padding:18px 20px;}
+  .privacy-note .dtitle{font-family:var(--mono); font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--terracotta-dark); margin-bottom:8px;}
+  .privacy-note p{font-size:0.76rem; color:var(--charcoal-soft); line-height:1.6;}
+  .info-block{margin-top:24px;}
+  .info-block .dtitle{font-family:var(--mono); font-size:0.58rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--terracotta-dark); margin-bottom:8px;}
+  .info-block p{font-size:0.9rem; margin-bottom:6px;}
+  .info-block a{color:var(--terracotta-dark); text-decoration:none; border-bottom:1px solid var(--terracotta-tint);}
+  .info-block a:hover{border-bottom-color:var(--terracotta-dark);}
+  .cta-block{margin-top:30px; padding:24px 26px; background:var(--white); border:1px solid var(--line); border-radius:12px;}
+  .cta-block h3.wsub{margin-top:0;}
+  .cta-block p{font-size:0.9rem; color:var(--charcoal-soft); line-height:1.6; margin-bottom:10px;}
+  .cta-block .cta-lead{font-family:var(--serif); font-style:italic; font-weight:600; font-size:1.15rem; color:var(--terracotta-dark); margin-top:16px;}
+  .cta-contact{margin-top:10px;}
+  .cta-contact p{font-size:0.76rem; margin-bottom:6px;}
+  .cta-contact a{color:var(--terracotta-dark); text-decoration:none; border-bottom:1px solid var(--terracotta-tint);}
+  .cta-contact a:hover{border-bottom-color:var(--terracotta-dark);}
+
+  .pfield-grid{display:grid; grid-template-columns:1fr 1fr; gap:22px; max-width:640px;}
+  .pfield{display:flex; flex-direction:column; gap:6px;}
+  .pfield label{font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--charcoal-soft);}
+  .pfield input{
+    background:var(--white); border:1px solid var(--line); border-radius:8px; color:var(--charcoal);
+    font-family:var(--sans); font-size:0.95rem; padding:11px 13px; outline:none;
+  }
+  .pfield select{
+    background:var(--white); border:1px solid var(--line); border-radius:8px; color:var(--charcoal);
+    font-family:var(--sans); font-size:0.95rem; padding:11px 13px; outline:none; cursor:pointer;
+  }
+  .pfield select:focus{border-color:var(--terracotta);}
+  .pfield select.field-error{border-color:var(--r-priority);}
+  .pfield input:focus{border-color:var(--terracotta);}
+  .pfield input.field-error{border-color:var(--r-priority);}
+  .field-error-msg{font-family:var(--mono); font-size:0.68rem; color:var(--r-priority); margin-top:6px; min-height:14px;}
+
+  .likert-legend{
+    display:flex; justify-content:flex-end; gap:0; margin-bottom:14px; padding:10px 20px;
+    font-family:var(--mono); font-size:0.6rem; text-transform:uppercase; letter-spacing:0.04em; color:var(--charcoal-soft);
+    position:sticky; top:47px; z-index:15; background:var(--cream); border-bottom:1px solid var(--line);
+  }
+  .likert-legend span{width:78px; text-align:center;}
+
+  .qcard{background:var(--white); border:1px solid var(--line); border-radius:12px; padding:18px 20px; margin-bottom:10px; display:flex; align-items:center; gap:18px;}
+  .qcard.unanswered{border-color:var(--terracotta-tint);}
+  .qnum{font-family:var(--mono); font-size:0.72rem; color:var(--charcoal-soft); min-width:26px;}
+  .qtext{flex:1; font-size:0.94rem; line-height:1.45;}
+  .likert-row{display:flex; gap:0; flex-shrink:0;}
+  .likert-opt{width:78px; display:flex; flex-direction:column; align-items:center; gap:5px; cursor:pointer; padding:4px 2px;}
+  .likert-opt input{position:absolute; opacity:0; width:0; height:0;}
+  .likert-dot{width:22px; height:22px; border-radius:50%; border:1.5px solid var(--line); background:var(--white); transition:all .15s ease;}
+  .likert-opt input:checked + .likert-dot{background:var(--terracotta); border-color:var(--terracotta-dark); box-shadow:0 0 0 3px var(--terracotta-tint);}
+  .likert-opt:hover .likert-dot{border-color:var(--terracotta);}
+  .likert-mini{font-family:var(--mono); font-size:0.55rem; color:var(--charcoal-soft); text-align:center; visibility:hidden; line-height:1.2;}
+
+  .step-nav{display:flex; justify-content:space-between; align-items:center; margin-top:30px; padding-bottom:10px;}
+  .btn{
+    font-family:var(--mono); font-size:0.75rem; letter-spacing:0.08em; text-transform:uppercase;
+    padding:13px 26px; border-radius:100px; border:1px solid var(--charcoal); background:var(--charcoal); color:var(--cream);
+    transition:all .15s ease;
+  }
+  .btn:hover{background:var(--terracotta-dark); border-color:var(--terracotta-dark);}
+  .btn.ghost{background:transparent; color:var(--charcoal); border-color:var(--line);}
+  .btn.ghost:hover{border-color:var(--charcoal); background:transparent;}
+  .btn:disabled{opacity:0.35; cursor:not-allowed; background:var(--charcoal-soft); border-color:var(--charcoal-soft);}
+  .btn.btn-secondary{background:transparent; color:var(--charcoal); border-color:var(--charcoal);}
+  .btn.btn-secondary:hover:not(:disabled){background:var(--charcoal); color:var(--cream);}
+  .toolbar-btn-group{display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
+  .nav-status{font-family:var(--mono); font-size:0.72rem; color:var(--charcoal-soft);}
+
+  .review-card{background:var(--white); border:1px solid var(--line); border-radius:14px; padding:30px; text-align:center; max-width:520px; margin:0 auto;}
+  .review-card .big{font-family:var(--serif); font-weight:600; font-size:2.4rem; margin:10px 0;}
+  .review-missing{color:var(--r-priority); font-size:0.85rem; margin-top:8px;}
+
+  /* ===== Report view ===== */
+  #reportView{display:none;}
+  .report-toolbar{background:var(--white); border-bottom:1px solid var(--line); padding:14px 0; position:sticky; top:0; z-index:20;}
+  .report-toolbar-inner{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;}
+  .report-toolbar-note{font-family:var(--mono); font-size:0.68rem; color:var(--charcoal-soft); letter-spacing:0.02em;}
+  .report-toolbar .btn{padding:9px 18px; font-size:0.68rem;}
+
+  section{padding:52px 0;}
+  .section-eyebrow{font-family:var(--mono); font-size:0.7rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--terracotta-dark); margin-bottom:10px; display:flex; align-items:center; gap:10px;}
+  .section-eyebrow::before{content:''; width:22px; height:1px; background:var(--terracotta-dark);}
+  .section-title{font-family:var(--serif); font-weight:600; font-size:1.9rem; margin-bottom:6px;}
+  .section-lede{color:var(--charcoal-soft); max-width:640px; font-size:0.98rem;}
+  .section-lede.one-line{max-width:none; white-space:nowrap; font-size:0.9rem;}
+
+  .participant-strip{display:flex; flex-wrap:wrap; gap:28px; margin-top:24px; padding:18px 24px; background:var(--white); border:1px solid var(--line); border-radius:12px;}
+  .p-item{display:flex; flex-direction:column; gap:3px;}
+  .p-item .k{font-family:var(--mono); font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--charcoal-soft);}
+  .p-item .v{font-family:var(--serif); font-weight:600; font-size:1.05rem;}
+  .duration-note{font-family:var(--mono); font-size:0.68rem; color:var(--charcoal-soft); margin-top:8px; opacity:0.8; display:flex; align-items:center; gap:7px;}
+  .duration-dot{width:8px; height:8px; border-radius:50%; display:inline-block; flex-shrink:0;}
+
+  .result-grid{display:grid; grid-template-columns:340px 1fr; gap:44px; margin-top:36px; align-items:center;}
+  .dial-card{background:var(--white); border:1px solid var(--line); border-radius:16px; padding:32px; display:flex; flex-direction:column; align-items:center; text-align:center; gap:14px; box-shadow:0 1px 2px rgba(42,37,33,0.04);}
+  .dial-wrap{position:relative; width:210px; height:210px;}
+  .dial-score{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;}
+  .dial-score .num{font-family:var(--serif); font-weight:600; font-size:3rem; line-height:1;}
+  .dial-score .pct{font-family:var(--mono); font-size:0.72rem; letter-spacing:0.08em; color:var(--charcoal-soft); margin-top:2px;}
+  .level-pill{font-family:var(--mono); font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; padding:8px 16px; border-radius:100px; background:var(--terracotta-tint); color:var(--terracotta-dark); font-weight:500;}
+  .level-desc{font-size:0.87rem; color:var(--charcoal-soft); max-width:260px;}
+
+  .maturity-ladder{display:flex; flex-direction:column; gap:0;}
+  .ladder-row{display:grid; grid-template-columns:150px 1fr 90px; align-items:center; gap:16px; padding:11px 0; border-bottom:1px solid var(--line);}
+  .ladder-row:first-child{border-top:1px solid var(--line);}
+  .ladder-row .lname{font-family:var(--serif); font-weight:600; font-size:1.05rem;}
+  .ladder-row .lrange{font-family:var(--mono); font-size:0.72rem; color:var(--charcoal-soft);}
+  .ladder-track{height:6px; background:var(--cream-deep); border-radius:4px; position:relative; overflow:hidden;}
+  .ladder-track .fill{position:absolute; top:0; left:0; bottom:0; border-radius:4px;}
+  .ladder-row.active{background:linear-gradient(90deg, var(--terracotta-tint), transparent 90%); margin:0 -14px; padding:11px 14px; border-radius:6px; border-bottom:1px solid transparent;}
+  .ladder-row.active .lname{color:var(--terracotta-dark);}
+
+  /* Confidence card */
+  .confidence-card{background:var(--white); border:1px solid var(--line); border-radius:14px; padding:24px 26px; margin-top:24px;}
+  .confidence-quiet{display:flex; align-items:center; gap:10px; font-size:0.85rem; color:var(--charcoal-soft); margin-top:20px; padding:2px 2px;}
+  .confidence-quiet-icon{display:inline-flex; align-items:center; justify-content:center; width:18px; height:18px; border-radius:50%; background:var(--teal-tint); color:var(--teal); font-size:0.7rem; flex-shrink:0;}
+  .confidence-head{display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px; margin-bottom:6px;}
+  .confidence-head h3{font-family:var(--serif); font-weight:600; font-size:1.2rem;}
+  .confidence-num{font-family:var(--serif); font-weight:600; font-size:1.8rem;}
+  .confidence-track{height:8px; background:var(--cream-deep); border-radius:5px; overflow:hidden; margin:10px 0 12px 0;}
+  .confidence-fill{height:100%; border-radius:5px;}
+  .confidence-note{font-size:0.85rem; color:var(--charcoal-soft); line-height:1.6;}
+  .confidence-flags{margin-top:12px; padding-left:0; list-style:none; display:flex; flex-direction:column; gap:8px;}
+  .confidence-flags li{font-size:0.85rem; color:var(--charcoal-soft); padding-left:18px; position:relative; line-height:1.5;}
+  .confidence-flags li::before{content:'—'; position:absolute; left:0; color:var(--terracotta);}
+  .confidence-methodology{font-family:var(--mono); font-size:0.68rem; color:var(--charcoal-soft); opacity:0.75; margin-top:14px; line-height:1.6;}
+  .confidence-footer-row{display:flex; justify-content:flex-start; margin-top:14px; padding-top:14px; border-top:1px solid var(--line);}
+
+  .pillar-band{background:var(--cream-deep); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .pillar-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:22px; margin-top:32px;}
+  .pillar-card{background:var(--white); border:1px solid var(--line); border-radius:14px; padding:22px;}
+  .pillar-card .pnum{font-family:var(--mono); font-size:0.68rem; color:var(--terracotta-dark); letter-spacing:0.1em;}
+  .pillar-card .pname{font-family:var(--serif); font-weight:600; font-size:1.25rem; margin:6px 0 14px 0; min-height:60px;}
+  .pillar-bar-track{height:10px; background:var(--cream-deep); border-radius:6px; overflow:hidden; margin-bottom:10px;}
+  .pillar-bar-fill{height:100%; border-radius:6px; background:linear-gradient(90deg, var(--terracotta), var(--terracotta-dark));}
+  .pillar-meta{display:flex; justify-content:space-between; align-items:center; font-size:0.82rem;}
+  .pillar-pct{font-family:var(--serif); font-weight:600; font-size:1.4rem;}
+  .rating-tag{font-family:var(--mono); font-size:0.62rem; letter-spacing:0.08em; text-transform:uppercase; padding:4px 9px; border-radius:100px; white-space:nowrap;}
+
+  .rt-Priority-Development{background:#F4E1DA; color:var(--r-priority);}
+  .rt-Developing{background:#F6E8D3; color:var(--r-developing);}
+  .rt-Moderate{background:#F2EAD0; color:var(--r-moderate);}
+  .rt-Strong{background:#DCEEE3; color:var(--r-strong);}
+  .rt-Exceptional{background:var(--teal-tint); color:var(--teal);}
+  .rt-Emerging-Leader{background:#F4E1DA; color:var(--r-priority);}
+  .rt-Developing-Leader{background:#F6E8D3; color:var(--r-developing);}
+  .rt-Proficient-Leader{background:#F2EAD0; color:var(--r-moderate);}
+  .rt-Advanced-Leader{background:#DCEEE3; color:var(--r-strong);}
+  .rt-Expert-Leader{background:var(--teal-tint); color:var(--teal);}
+
+  .calibration-banner{display:flex; gap:14px; align-items:flex-start; background:var(--terracotta-tint); border:1px solid var(--terracotta-tint); border-radius:12px; padding:18px 20px; margin-top:28px;}
+  .calibration-banner .cb-icon{font-size:1.3rem; line-height:1; flex-shrink:0;}
+  .calibration-banner p{font-size:0.88rem; color:var(--charcoal); line-height:1.6; margin:0;}
+  .calibration-banner p strong{font-weight:700;}
+  .calibration-list{display:flex; flex-direction:column; gap:12px; margin-top:24px;}
+  .calibration-row{background:var(--white); border:1px solid var(--line); border-radius:12px; padding:18px 20px;}
+  .calibration-row-top{display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; margin-bottom:10px;}
+  .calibration-row-top .cr-name{font-family:var(--serif); font-weight:600; font-size:1.1rem;}
+  .calibration-row-top .cr-score{font-family:var(--serif); font-weight:600; font-size:1.15rem; color:var(--charcoal-soft);}
+  .calibration-track{position:relative; height:10px; background:var(--cream-deep); border-radius:6px; margin-bottom:10px;}
+  .calibration-range{position:absolute; top:0; bottom:0; background:rgba(62,124,119,0.25); border-radius:6px;}
+  .calibration-marker{position:absolute; top:-4px; width:2px; height:18px; background:var(--charcoal); border-radius:1px;}
+  .calibration-marker::after{content:''; position:absolute; top:-4px; left:50%; transform:translateX(-50%); width:8px; height:8px; border-radius:50%; background:var(--charcoal);}
+  .cr-note{font-size:0.82rem; color:var(--charcoal-soft); line-height:1.5;}
+  .cr-range-print{display:none;}
+  .cr-flag{font-family:var(--mono); font-size:0.62rem; letter-spacing:0.06em; text-transform:uppercase; padding:3px 9px; border-radius:100px; white-space:nowrap;}
+  .cr-flag.above{background:var(--terracotta-tint); color:var(--terracotta-dark);}
+  .cr-flag.within{background:var(--teal-tint); color:var(--teal);}
+  .cr-flag.below{background:#F6E8D3; color:var(--r-developing);}
+  .calibration-footnote{font-family:var(--mono); font-size:0.68rem; color:var(--charcoal-soft); opacity:0.75; margin-top:18px; line-height:1.6;}
+
+  .sp-grid{display:grid; grid-template-columns:1fr 1fr; gap:36px; margin-top:36px; align-items:start;}
+  .sp-col-head{display:flex; align-items:center; gap:10px; margin-bottom:18px;}
+  .sp-col-head .dot{width:9px; height:9px; border-radius:50%;}
+  .sp-col-head.strengths .dot{background:var(--teal);}
+  .sp-col-head.priorities .dot{background:var(--terracotta);}
+  .sp-col-head h3{font-family:var(--serif); font-weight:600; font-size:1.3rem;}
+  .sp-card{background:var(--white); border:1px solid var(--line); border-radius:12px; padding:18px 20px; margin-bottom:12px;}
+  .sp-card-top{display:flex; gap:16px; align-items:flex-start;}
+  .sp-rank{font-family:var(--serif); font-weight:600; font-size:1.5rem; color:var(--cream-deep); -webkit-text-stroke:1.2px var(--charcoal-soft); min-width:28px;}
+  .sp-body{flex:1;}
+  .sp-body .sp-name{font-family:var(--serif); font-weight:600; font-size:1.12rem; margin-bottom:3px;}
+  .sp-body .sp-pillar{font-family:var(--mono); font-size:0.65rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--charcoal-soft); margin-bottom:8px;}
+  .sp-body .sp-line{font-size:0.88rem; color:var(--charcoal-soft); line-height:1.5;}
+  .sp-score{font-family:var(--serif); font-weight:600; font-size:1.15rem; white-space:nowrap; color:var(--charcoal);}
+
+  .skill-block{margin-top:14px; padding-top:14px; border-top:1px dashed var(--line);}
+  .skill-block h5{font-family:var(--mono); font-size:0.6rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--charcoal-soft); margin-bottom:8px;}
+  .chip-row{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:12px;}
+  .chip{font-family:var(--sans); font-size:0.76rem; padding:5px 11px; border-radius:100px; background:var(--cream); border:1px solid var(--line); color:var(--charcoal);}
+  .chip.primary{background:var(--terracotta-tint); border-color:var(--terracotta-tint); color:var(--terracotta-dark); font-weight:500;}
+  .chip.secondary{background:var(--teal-tint); border-color:var(--teal-tint); color:var(--teal); font-weight:500;}
+  .coaching-list{list-style:none; margin-top:4px; display:flex; flex-direction:column; gap:8px;}
+  .coaching-list li{
+    font-family:var(--serif); font-style:italic; font-size:0.86rem; line-height:1.5; color:var(--charcoal);
+    background:var(--cream); border-left:3px solid var(--terracotta); padding:10px 14px; border-radius:0 8px 8px 0;
+  }
+  .coaching-list li .clabel{font-family:var(--mono); font-style:normal; font-size:0.6rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--terracotta-dark); display:block; margin-bottom:4px;}
+
+  .insight-stack{display:flex; flex-direction:column; gap:18px; margin-top:36px;}
+  .insight-card{background:var(--white); border:1px solid var(--line); border-radius:14px; padding:24px 26px;}
+  .insight-card .ieyebrow{font-family:var(--mono); font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--terracotta-dark); margin-bottom:8px;}
+  .insight-card h4{font-family:var(--serif); font-weight:600; font-size:1.25rem; margin-bottom:12px;}
+  .insight-card p{font-size:0.92rem; color:var(--charcoal-soft); line-height:1.6; margin-bottom:8px;}
+  .insight-card p:last-child{margin-bottom:0;}
+  .insight-card .ihighlight{color:var(--charcoal); font-weight:500;}
+  .insight-card.leverage{border-left:4px solid var(--teal);}
+  .insight-card.future-risk{border-left:4px solid var(--r-priority);}
+  .insight-card.blind-spot{border-left:4px solid var(--r-developing);}
+  .kd-card{background:var(--charcoal); border-radius:14px; padding:28px 30px; margin-top:28px; color:var(--cream);}
+  .kd-card .ieyebrow{font-family:var(--mono); font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--terracotta-tint); margin-bottom:10px;}
+  .kd-card h4{font-family:var(--serif); font-weight:600; font-size:1.35rem; margin-bottom:14px; color:var(--cream);}
+  .kd-card .kd-stat-row{display:flex; align-items:center; gap:18px; margin-bottom:16px; flex-wrap:wrap;}
+  .kd-card .kd-stat{display:flex; flex-direction:column; align-items:center;}
+  .kd-card .kd-stat .kd-num{font-family:var(--serif); font-size:1.6rem; font-weight:600;}
+  .kd-card .kd-stat .kd-lbl{font-family:var(--mono); font-size:0.62rem; letter-spacing:0.08em; text-transform:uppercase; opacity:0.7; margin-top:2px;}
+  .kd-card .kd-arrow{font-size:1.4rem; opacity:0.5;}
+  .kd-card .kd-gap-badge{font-family:var(--mono); font-size:0.7rem; letter-spacing:0.06em; text-transform:uppercase; background:var(--terracotta); color:var(--cream); padding:5px 12px; border-radius:100px; margin-left:auto;}
+  .kd-card p{font-size:0.95rem; line-height:1.65; color:var(--cream); opacity:0.92; margin-bottom:8px;}
+  .kd-card p:last-child{margin-bottom:0;}
+  .kd-card .kd-highlight{font-weight:600; color:var(--terracotta-tint);}
+  .kd-card .kd-footnote{font-family:var(--mono); font-size:0.68rem; opacity:0.55; margin-top:16px; line-height:1.6;}
+  .risk-list{list-style:none; margin-top:6px; display:flex; flex-direction:column; gap:6px;}
+  .risk-list li{font-size:0.92rem; color:var(--charcoal-soft); padding-left:16px; position:relative; line-height:1.5;}
+  .risk-list li::before{content:'•'; position:absolute; left:0; color:var(--r-priority);}
+
+  footer{padding:40px 0 20px 0; border-top:1px solid var(--line); margin-top:24px;}
+  .foot-note{font-size:0.78rem; color:var(--charcoal-soft); max-width:760px; line-height:1.6;}
+
+  @page{ size:A4; margin:14mm; }
+
+  @media print{
+    @page{ size:A4; margin:8mm; }
+    p{orphans:1; widows:1;}
+    body{font-size:10.5px; line-height:1.28; padding-bottom:0 !important;}
+    .masthead{background:var(--charcoal) !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; padding:4px 0 !important;}
+    body.is-report .mast-title{font-size:1rem; margin-top:2px;}
+    body.is-report .brandrow .doctype{font-size:0.62rem; padding:4px 10px;}
+    .masthead-logo, .mast-logo{max-height:28px !important;}
+    .report-toolbar, .progress-shell, footer{display:none !important;}
+    #assessmentView{display:none !important;}
+    .wrap, .wrap-narrow{max-width:100% !important; padding:0 4mm;}
+
+    .pillar-band section[style]{padding:10px 0 !important;}
+    #cta-section{padding:4px 0 !important;}
+    #privacy-section{padding:0 0 2px 0 !important;}
+    section{padding:8px 0 !important;}
+    .section-eyebrow{font-size:0.58rem; margin-bottom:3px;}
+    .section-title{font-size:1.05rem; margin-bottom:3px;}
+    .section-lede{font-size:0.72rem; max-width:none;}
+    .section-lede.one-line{white-space:normal;}
+    .participant-strip{margin-top:5px; padding:5px 10px; gap:14px; font-size:0.68rem;}
+
+    /* Force multi-column layouts — the max-width:900px rule below otherwise wins on narrow PDF viewports */
+    .result-grid{grid-template-columns:150px 1fr !important; gap:16px !important;}
+    .pillar-grid{grid-template-columns:repeat(4,1fr) !important; gap:8px !important;}
+    .sp-grid{grid-template-columns:1fr 1fr !important; gap:14px !important; margin-top:6px !important;}
+
+    /* Overall result: compact dial + ladder side by side, no oversized SVG */
+    .dial-card{padding:8px; gap:3px;}
+    .dial-card svg{width:90px !important; height:90px !important;}
+    .dial-score .num{font-size:1.5rem;}
+    .dial-score .pct{font-size:0.5rem;}
+    .level-pill{font-size:0.56rem; padding:3px 9px;}
+    .level-desc{font-size:0.68rem; max-width:none;}
+    .maturity-ladder{gap:0;}
+    .ladder-row{padding:2px 0 !important; font-size:0.62rem !important;}
+
+    .confidence-quiet{margin-top:8px; font-size:0.68rem;}
+    .confidence-card{padding:6px 9px; margin-top:5px;}
+    .confidence-methodology{font-size:0.54rem; margin-top:4px; line-height:1.25;}
+    .confidence-note{font-size:0.62rem; line-height:1.25;}
+    .confidence-flags{margin-top:4px; gap:2px;}
+    .confidence-flags li{font-size:0.66rem; line-height:1.3;}
+
+    .kd-card{padding:6px 9px; margin-top:4px;}
+    .kd-card h4{font-size:0.85rem; margin-bottom:4px;}
+    .kd-card p{font-size:0.68rem; margin-bottom:3px;}
+    .kd-card .kd-num{font-size:1rem;}
+    .kd-card .kd-footnote{font-size:0.52rem; margin-top:8px;}
+
+    .pillar-card{padding:8px 10px;}
+    .pillar-grid{margin-top:4px !important;}
+
+    /* Calibration: drop the repeated explanatory paragraph and range bar, keep name/score/flag/range as one compact line */
+    .calibration-list{gap:5px; margin-top:8px;}
+    .calibration-row{padding:6px 10px;}
+    .calibration-row-top{margin-bottom:0 !important;}
+    .cr-name{font-size:0.72rem;}
+    .cr-score{font-size:0.72rem;}
+    .cr-flag{font-size:0.52rem; padding:2px 7px;}
+    .calibration-track{display:none !important;}
+    .cr-note{display:none !important;}
+    .cr-range-print{display:block !important; font-size:0.6rem; color:var(--charcoal-soft); margin-top:1px;}
+    .calibration-footnote{font-size:0.56rem; margin-top:4px;}
+    .calibration-banner{padding:8px 10px; margin-bottom:6px;}
+    .calibration-banner p{font-size:0.64rem;}
+
+    /* Force Strengths & Priorities to start cleanly on page 2 */
+    #four-pillar-results{page-break-before:always; break-before:page;}
+    #stengths-priorities{page-break-before:always; break-before:page;}
+    .sp-card{padding:2px 6px; margin-bottom:2px;}
+    .sp-card-top{gap:6px;}
+    .sp-rank{font-size:0.78rem;}
+    .sp-name{font-size:0.68rem;}
+    .sp-pillar{font-size:0.5rem;}
+    .sp-score{font-size:0.68rem;}
+    .sp-col-head{margin-bottom:3px !important;}
+    .sp-col-head h3{font-size:0.8rem;}
+    .sp-line{display:none;}
+    #stengths-priorities .section-lede{font-size:0.66rem; line-height:1.25;}
+    .sp-card .cr-desc, .sp-card p{font-size:0.66rem; margin-top:2px;}
+    .insight-stack{gap:3px; margin-top:4px;}
+    .insight-card{padding:4px 7px;}
+    .insight-card h4{font-size:0.74rem; margin-bottom:2px;}
+    .insight-card p{font-size:0.6rem; margin-bottom:2px; line-height:1.28;}
+    .risk-footnote{font-size:0.5rem !important; margin-top:2px !important; opacity:0.7;}
+    .risk-list{margin-top:3px; gap:2px;}
+    .ieyebrow{font-size:0.5rem;}
+    .kd-quote-detail, .bs-def{display:none !important;}
+
+    /* Coaching Practise/Question/Reflect: inline compact lines instead of individual bordered boxes */
+    .skill-block{margin-top:3px; padding-top:3px;}
+    .skill-block h5{font-size:0.56rem; margin-top:3px; margin-bottom:1px;}
+    .chip-row{display:block; line-height:1.25;}
+    .chip{display:inline; font-size:0.6rem; background:none !important; border:none !important; padding:0 !important; color:var(--charcoal);}
+    .chip:not(:last-child)::after{content:', ';}
+    .coaching-list{gap:0;}
+    .coaching-list li{font-size:0.6rem; padding:1px 6px; border-radius:0; line-height:1.2;}
+    .coaching-list li .clabel{display:inline; font-size:0.52rem; margin-bottom:0; margin-right:3px;}
+
+    /* Compact CTA and privacy into a short professional footer instead of full promo block */
+    .cta-block{margin-top:2px; padding:4px 8px;}
+    .cta-block .wsub{font-size:0.82rem; margin-bottom:2px;}
+    .cta-block p{font-size:0.64rem; margin:1px 0;}
+    .cta-block .cta-lead{font-size:0.7rem; margin-top:4px;}
+    .cta-contact{margin-top:2px; font-size:0.64rem;}
+    .cta-contact p{margin:1px 0;}
+    .foot-note{display:none !important;}
+    .privacy-note{padding:5px 9px; margin-top:3px;}
+    .privacy-note .dtitle{font-size:0.68rem;}
+    .privacy-note p{font-size:0.49rem; line-height:1.15;}
+
+    .sp-card, .pillar-card, .dial-card, .confidence-card, .calibration-row, .insight-card, .kd-card{break-inside:avoid;}
+  }
+
+  @media (max-width:900px){
+    .pfield-grid{grid-template-columns:1fr;}
+    .result-grid{grid-template-columns:1fr;}
+    .pillar-grid{grid-template-columns:1fr 1fr;}
+    .sp-grid{grid-template-columns:1fr;}
+    .pillar-list{grid-template-columns:1fr;}
+    .qcard{flex-direction:column; align-items:flex-start; gap:14px;}
+    .likert-row{align-self:stretch; justify-content:space-between;}
+    .likert-opt{width:auto;}
+    .likert-legend{display:none;}
+    .likert-mini{visibility:visible;}
+    .mast-title{font-size:1.35rem;}
+    .section-lede.one-line{white-space:normal;}
+    body.is-report .brandrow .doctype{font-size:1rem; letter-spacing:0.03em;}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="brandrow">
+      <div class="logo-badge"><img src="data:image/jpeg;base64,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" alt="PISA Consulting"></div>
+      <div class="doctype" id="brandStatus">Assessment In Progress</div>
+    </div>
+    <h1 class="mast-title">PISA Lean Leadership Assessment<span class="tm">™</span></h1>
+  </div>
+</header>
+
+<!-- ============ ASSESSMENT VIEW ============ -->
+<div id="assessmentView">
+  <div class="progress-shell">
+    <div class="wrap-narrow">
+      <div class="progress-inner">
+        <div class="step-chips" id="stepChips"></div>
+        <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+        <div class="progress-label" id="progressLabel">0 / 96 answered</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap-narrow">
+
+    <div class="step active" id="step-welcome">
+      <div class="welcome-copy">
+        <h2 class="wtitle justify">Welcome to the PISA Lean Leadership Assessment<span class="tm">™</span></h2>
+
+        <p class="justify">The PISA Lean Leadership Assessment™ helps you understand your leadership strengths, identify development priorities and create a personalised growth plan.</p>
+        <p class="justify">It measures the capabilities, behaviours and practices that enable leaders to create sustainable organisational performance.</p>
+        <p class="justify">An effective leader develops people, improves systems and continuously creates value for customers and the organisation. They build capable teams, make sound decisions, foster trusted relationships and drive continuous improvement.</p>
+
+        <div class="belief-block">
+          <span class="lead">The PISA Lean Leadership Framework™ is built on one simple belief</span>
+          Sustainable organisational performance is created by leaders who think systematically, behave intentionally, sustain themselves and others, and continuously improve the systems that create value.
+        </div>
+
+        <p>The framework develops leadership across four interconnected pillars:</p>
+        <div class="pillar-list">
+          <div class="pillar-list-item"><div class="pl-name">Leadership Capability</div><div class="pl-sub">How I Think</div></div>
+          <div class="pillar-list-item"><div class="pl-name">Leadership Behaviours</div><div class="pl-sub">How I Lead</div></div>
+          <div class="pillar-list-item"><div class="pl-name">Leadership Resilience</div><div class="pl-sub">How I Sustain My Leadership</div></div>
+          <div class="pillar-list-item"><div class="pl-name">Continuous Improvement Leadership</div><div class="pl-sub">How I Improve People, Processes and Performance</div></div>
+        </div>
+
+
+        <div class="cta-block">
+          <h3 class="wsub">Continue Your Leadership Journey</h3>
+          <p>Completing this assessment is just the beginning.</p>
+          <p>Transforming insight into meaningful leadership growth requires reflection, purposeful development, and consistent action.</p>
+          <p>Whether you're looking for individual coaching, team development, or organisational leadership programmes, we're here to help.</p>
+          <p class="cta-lead">Let's start the conversation.</p>
+          <div class="cta-contact">
+            <p>🌐 <a href="https://www.pisaconsulting.com" target="_blank" rel="noopener">www.pisaconsulting.com</a></p>
+            <p>✉️ <a href="mailto:admin@pisaconsulting.com">admin@pisaconsulting.com</a></p>
+          </div>
+        </div>
+
+        <div class="disclaimer-box">
+          <div class="dtitle">Disclaimer</div>
+          <p>The PISA Lean Leadership Assessment™ is a leadership development tool designed to support self-awareness, coaching and professional growth. It is not intended to diagnose psychological or medical conditions, nor should it be used as the sole basis for employment or promotion decisions.</p>
+          <p>Results are based on self-reported responses and should be interpreted alongside coaching, feedback and professional judgement. The assessment and all related content remain the intellectual property of PISA Consulting.</p>
+          <div class="copyright-line">© 2026 PISA Consulting. All rights reserved.</div>
+        </div>
+
+        <div class="disclaimer-box">
+          <div class="dtitle">Privacy &amp; Confidentiality</div>
+          <p>Your assessment responses and report are treated as confidential and are processed in accordance with applicable data protection and privacy legislation, including the Protection of Personal Information Act (POPIA) in South Africa, the General Data Protection Regulation (GDPR) where applicable, and other relevant privacy laws in jurisdictions in which PISA Consulting operates.</p>
+          <p>Assessment data is used solely for leadership assessment, coaching, development, research (where anonymised), and service improvement. Personal information will not be shared with third parties without your consent unless required by law.</p>
+          <p>For further information about how your personal information is collected, stored, processed, and protected, please refer to our Privacy Policy or contact us at admin@pisaconsulting.com.</p>
+        </div>
+
+        <div class="consent-box">
+          <label class="consent-label">
+            <input type="checkbox" id="consentCheckbox">
+            <span>I have read and understood the disclaimer and privacy information above, and I consent to completing the PISA Lean Leadership Assessment™ on this basis.</span>
+          </label>
+          <div class="field-error-msg" id="err-consent"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-participant">
+      <div class="step-eyebrow">Before You Begin</div>
+      <h2 class="step-title">Participant details</h2>
+      <p class="step-lede">These appear on your final outcome report. Please complete all fields before starting the assessment.</p>
+      <div class="pfield-grid">
+        <div class="pfield">
+          <label>Name (First, Surname)</label>
+          <input type="text" id="pName" placeholder="e.g. Jane Smith">
+          <div class="field-error-msg" id="err-pName"></div>
+        </div>
+        <div class="pfield">
+          <label>Position</label>
+          <input type="text" id="pPosition" placeholder="Role / title">
+          <div class="field-error-msg" id="err-pPosition"></div>
+        </div>
+        <div class="pfield">
+          <label>Organisation</label>
+          <input type="text" id="pOrg" placeholder="Company">
+          <div class="field-error-msg" id="err-pOrg"></div>
+        </div>
+        <div class="pfield">
+          <label>Assessment Date</label>
+          <input type="text" id="pDate" placeholder="DD/MM/YYYY" maxlength="10" inputmode="numeric" autocomplete="off">
+          <div class="field-error-msg" id="err-pDate"></div>
+        </div>
+        <div class="pfield">
+          <label>Leadership Level</label>
+          <select id="pLevel">
+            <option value="" disabled selected>Select level...</option>
+            <option value="Front Line Supervisor">Front Line Supervisor</option>
+            <option value="Middle Management">Middle Management</option>
+            <option value="Senior Management">Senior Management</option>
+            <option value="Executive Management">Executive Management</option>
+          </select>
+          <div class="field-error-msg" id="err-pLevel"></div>
+        </div>
+      </div>
+
+      <div class="completing-block">
+        <h3 class="wsub">Completing the Assessment</h3>
+        <p>Answer each statement honestly based on how you typically lead, not how you aspire to lead.</p>
+        <p>There are no right or wrong answers.</p>
+        <p>Your responses will generate a personalised leadership profile, highlighting your strengths, development priorities and practical coaching recommendations to support your leadership journey.</p>
+      </div>
+
+      <p class="step-lede" style="margin-top:26px; padding-top:20px; border-top:1px solid var(--line); margin-bottom:4px;">You'll now answer 96 short statements in four parts — Awareness, Behaviour, Influence and Outcome — rating each from <em>Never</em> to <em>Always</em>.</p>
+      <p class="step-lede">It takes about 20–25 minutes.</p>
+    </div>
+
+    <!-- section steps injected by JS -->
+    <div id="sectionSteps"></div>
+
+    <div class="step" id="step-review">
+      <div class="step-eyebrow">Final Step</div>
+      <h2 class="step-title">Review &amp; generate</h2>
+      <p class="step-lede">All statements answered. Generate the outcome report below.</p>
+      <div class="review-card">
+        <div class="progress-label">RESPONSES COMPLETE</div>
+        <div class="big" id="reviewCount">0 / 96</div>
+        <div class="review-missing" id="reviewMissing"></div>
+        <button class="btn" id="generateBtn" style="margin-top:18px; width:100%;" disabled>Generate Outcome Report</button>
+      </div>
+    </div>
+
+    <div class="step-nav">
+      <button class="btn ghost" id="backBtn">Back</button>
+      <div class="nav-status" id="navStatus"></div>
+      <button class="btn" id="nextBtn">Next</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ REPORT VIEW ============ -->
+<div id="reportView">
+  <div class="report-toolbar">
+    <div class="wrap report-toolbar-inner">
+      <div class="report-toolbar-note" id="toolbarNote">Step 1: Use "Print / Save as PDF" to download your full report first.</div>
+      <div class="toolbar-btn-group">
+        <button class="btn" id="printBtn" onclick="handlePrintClick()">Print / Save as PDF</button>
+        <button class="btn btn-secondary" id="emailBtn" onclick="handleEmailClick()" disabled title="Save your report first (step 1) to enable this">Email Summary to PISA</button>
+      </div>
+    </div>
+  </div>
+
+  <section id="overall">
+    <div class="wrap">
+      <div class="section-eyebrow">Overall Leadership Result</div>
+      <h2 class="section-title">Where this leader stands today</h2>
+      <p class="section-lede one-line">A raw score of self-reported agreement — not adjusted for role. See Level Calibration below for what this means at this person's seniority.</p>
+      <div class="participant-strip" id="participantStrip"></div>
+
+      <div class="result-grid">
+        <div class="dial-card">
+          <div class="dial-wrap">
+            <svg width="210" height="210" viewBox="0 0 210 210">
+              <circle cx="105" cy="105" r="90" fill="none" stroke="#EFE6DA" stroke-width="14"/>
+              <circle id="dialArc" cx="105" cy="105" r="90" fill="none" stroke="#C0623A" stroke-width="14" stroke-linecap="round" transform="rotate(-90 105 105)"/>
+            </svg>
+            <div class="dial-score">
+              <div class="num" id="overallPct">—</div>
+              <div class="pct">OVERALL SCORE</div>
+            </div>
+          </div>
+          <div class="level-pill" id="overallLevel">—</div>
+          <div class="level-desc" id="overallLevelDesc">—</div>
+        </div>
+        <div class="maturity-ladder" id="maturityLadder"></div>
+      </div>
+
+      <div id="confidenceWrap"></div>
+      <div class="duration-note" id="durationNote"></div>
+
+      <div id="knowingDoingWrap"></div>
+    </div>
+  </section>
+
+  <div class="pillar-band">
+    <div class="wrap">
+      <section id="four-pillar-results" style="padding:48px 0;">
+        <div class="section-eyebrow">Four Pillar Results</div>
+        <h2 class="section-title">Capability, Behaviours, Resilience &amp; Continuous Improvement</h2>
+        <p class="section-lede one-line">Each pillar score is the average of its leadership skills, scored on the five-point behavioural scale and expressed as a percentage.</p>
+        <div class="pillar-grid" id="pillarGrid"></div>
+      </section>
+    </div>
+  </div>
+
+  <section id="level-calibration">
+    <div class="wrap">
+      <div class="section-eyebrow">Level Calibration</div>
+      <h2 class="section-title">How this compares to what's typical at this level</h2>
+      <p class="section-lede">Expectations for these pillars naturally rise with seniority, so the same raw score means different things at different levels — a frontline supervisor and a senior executive who both agree strongly with every statement will land on the same raw score, but only one of them is meeting what their role requires. This compares each pillar score to a general expected range for the selected leadership level — not a hard benchmark, but a useful check.</p>
+      <div id="calibrationBanner"></div>
+      <div class="calibration-list" id="calibrationList"></div>
+      <p class="calibration-footnote">These expected ranges are general guidance for calibration, not a normed or validated benchmark. They're a prompt for coaching conversation, not a verdict.</p>
+    </div>
+  </section>
+
+  <section id="stengths-priorities">
+    <div class="wrap">
+      <div class="section-eyebrow">Strengths &amp; Development Priorities</div>
+      <h2 class="section-title">What to build on, what to focus on next</h2>
+      <p class="section-lede">The five highest-scoring and three lowest-scoring leadership skills from this participant's own responses. Each development priority is matched to Primary Skills (the most direct sub-skills to build first) and Secondary Skills (related sub-skills that reinforce them), plus coaching questions from the PISA Skills Matrix.</p>
+
+      <div class="sp-grid">
+        <div>
+          <div class="sp-col-head strengths"><span class="dot"></span><h3>Top 5 Leadership Strengths</h3></div>
+          <div id="strengthsList"></div>
+          <div class="insight-stack" id="insightStack"></div>
+        </div>
+        <div>
+          <div class="sp-col-head priorities"><span class="dot"></span><h3>Top 3 Development Priorities</h3></div>
+          <div id="prioritiesList"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="pillar-band">
+    <div class="wrap">
+      <section id="cta-section" style="padding:48px 0;">
+        <p class="foot-note">
+          Scored on a five-point behavioural scale (Never – Always). Skill-level bands: Exceptional 90–100%, Strong 80–89%, Moderate 70–79%, Developing 60–69%, Priority Development below 60%.
+        </p>
+        <p class="foot-note" style="margin-top:10px; margin-bottom:26px;">
+          The overall leadership level uses a separate five-stage maturity model (Emerging → Developing → Proficient → Advanced → Expert Leader) with the same score thresholds, so a single lower-scoring skill does not overstate the overall result.
+        </p>
+        <div class="cta-block">
+          <h3 class="wsub">Continue Your Leadership Journey</h3>
+          <p>Completing this assessment is just the beginning.</p>
+          <p>Transforming insight into meaningful leadership growth requires reflection, purposeful development, and consistent action.</p>
+          <p>Whether you're looking for individual coaching, team development, or organisational leadership programmes, we're here to help.</p>
+          <p class="cta-lead">Let's start the conversation.</p>
+          <div class="cta-contact">
+            <p>🌐 <a href="https://www.pisaconsulting.com" target="_blank" rel="noopener">www.pisaconsulting.com</a> &nbsp;·&nbsp; ✉️ <a href="mailto:admin@pisaconsulting.com">admin@pisaconsulting.com</a></p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="pillar-band">
+    <div class="wrap">
+      <section id="privacy-section" style="padding:0 0 48px 0;">
+        <div class="privacy-note">
+          <div class="dtitle">Privacy &amp; Confidentiality</div>
+          <p>Your responses and this report are treated as confidential and processed in accordance with applicable data protection legislation, including POPIA (South Africa) and GDPR where applicable. Data is used solely for leadership assessment, coaching, development and service improvement, and will not be shared with third parties without consent unless required by law. For full details, see our Privacy Policy or contact admin@pisaconsulting.com.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const STATEMENTS = [{"section": "Awareness", "pillar": "Leadership Capability", "construct_id": 1, "construct": "Strategic Thinking", "q_no": 1, "statement": "I consider the long-term implications before making important decisions."}, {"section": "Awareness", "pillar": "Leadership Capability", "construct_id": 2, "construct": "Decision Making", "q_no": 2, "statement": "I evaluate relevant information before making important decisions."}, {"section": "Awareness", "pillar": "Leadership Capability", "construct_id": 3, "construct": "Critical Thinking", "q_no": 3, "statement": "I question assumptions before accepting information or reaching conclusions."}, {"section": "Awareness", "pillar": "Leadership Capability", "construct_id": 4, "construct": "Systems Thinking", "q_no": 4, "statement": "I consider how decisions in one area affect other parts of the organisation."}, {"section": "Awareness", "pillar": "Leadership Capability", "construct_id": 5, "construct": "Planning & Execution", "q_no": 5, "statement": "I develop clear plans that align actions with desired outcomes."}, {"section": "Awareness", "pillar": "Leadership Capability", "construct_id": 6, "construct": "Business Acumen", "q_no": 6, "statement": "I understand how my decisions affect the organisation's financial and operational performance."}, {"section": "Awareness", "pillar": "Leadership Behaviours", "construct_id": 7, "construct": "Integrity", "q_no": 7, "statement": "I act in a manner that is consistent with my values, even when it is difficult."}, {"section": "Awareness", "pillar": "Leadership Behaviours", "construct_id": 8, "construct": "Accountability", "q_no": 8, "statement": "I take personal responsibility for my commitments, decisions and results."}, {"section": "Awareness", "pillar": "Leadership Behaviours", "construct_id": 9, "construct": "Emotional Intelligence", "q_no": 9, "statement": "I recognise how my emotions influence my thoughts, decisions and behaviour."}, {"section": "Awareness", "pillar": "Leadership Behaviours", "construct_id": 10, "construct": "Communication", "q_no": 10, "statement": "I communicate clearly and ensure my messages are understood."}, {"section": "Awareness", "pillar": "Leadership Behaviours", "construct_id": 11, "construct": "Collaboration", "q_no": 11, "statement": "I recognise that collaboration leads to better outcomes than working in isolation."}, {"section": "Awareness", "pillar": "Leadership Behaviours", "construct_id": 12, "construct": "Influence", "q_no": 12, "statement": "I recognise that leadership influence is earned through credibility, trust and positive relationships."}, {"section": "Awareness", "pillar": "Leadership Behaviours", "construct_id": 13, "construct": "Trust Building", "q_no": 13, "statement": "I recognise that trust is built through consistent actions, honesty and reliability."}, {"section": "Awareness", "pillar": "Leadership Resilience", "construct_id": 14, "construct": "Self-Awareness", "q_no": 14, "statement": "I understand my strengths, limitations and the impact my behaviour has on others."}, {"section": "Awareness", "pillar": "Leadership Resilience", "construct_id": 15, "construct": "Emotional Regulation", "q_no": 15, "statement": "I recognise when my emotions may influence my judgement or behaviour."}, {"section": "Awareness", "pillar": "Leadership Resilience", "construct_id": 16, "construct": "Adaptability", "q_no": 16, "statement": "I recognise when changing circumstances require me to adjust my approach."}, {"section": "Awareness", "pillar": "Leadership Resilience", "construct_id": 17, "construct": "Persistance", "q_no": 17, "statement": "I remain committed to achieving important goals despite obstacles or setbacks."}, {"section": "Awareness", "pillar": "Leadership Resilience", "construct_id": 18, "construct": "Learning Agility", "q_no": 18, "statement": "I actively seek opportunities to learn from new experiences, feedback and challenges."}, {"section": "Awareness", "pillar": "Leadership Resilience", "construct_id": 19, "construct": "Recovery", "q_no": 19, "statement": "I recognise when I need to recover physically or mentally to perform at my best."}, {"section": "Awareness", "pillar": "Continuous Improvement Leadership", "construct_id": 20, "construct": "Continuous Improvement Mindset", "q_no": 20, "statement": "I regularly look for opportunities to improve the way work is done."}, {"section": "Awareness", "pillar": "Continuous Improvement Leadership", "construct_id": 21, "construct": "Coaching & Developing Others", "q_no": 21, "statement": "I recognise that developing others is a key responsibility of effective leadership."}, {"section": "Awareness", "pillar": "Continuous Improvement Leadership", "construct_id": 22, "construct": "Empowerment", "q_no": 22, "statement": "I recognise that empowering others increases ownership, capability and performance."}, {"section": "Awareness", "pillar": "Continuous Improvement Leadership", "construct_id": 23, "construct": "Evidence-Based Problem Solving", "q_no": 23, "statement": "I seek relevant facts and data before identifying the cause of a problem."}, {"section": "Awareness", "pillar": "Continuous Improvement Leadership", "construct_id": 24, "construct": "Improvement Systems", "q_no": 24, "statement": "I recognise that consistent improvement requires structured processes and disciplined ways of working."}, {"section": "Behaviour", "pillar": "Leadership Capability", "construct_id": 1, "construct": "Strategic Thinking", "q_no": 25, "statement": "I align my team's priorities with the organisation's strategic direction."}, {"section": "Behaviour", "pillar": "Leadership Capability", "construct_id": 2, "construct": "Decision Making", "q_no": 26, "statement": "I make timely decisions, even when faced with uncertainty."}, {"section": "Behaviour", "pillar": "Leadership Capability", "construct_id": 3, "construct": "Critical Thinking", "q_no": 27, "statement": "I evaluate evidence and challenge assumptions before reaching conclusions."}, {"section": "Behaviour", "pillar": "Leadership Capability", "construct_id": 4, "construct": "Systems Thinking", "q_no": 28, "statement": "I consider how people, processes and systems interact before deciding where change is needed."}, {"section": "Behaviour", "pillar": "Leadership Capability", "construct_id": 5, "construct": "Planning & Execution", "q_no": 29, "statement": "I prioritise tasks and resources to ensure effective execution."}, {"section": "Behaviour", "pillar": "Leadership Capability", "construct_id": 6, "construct": "Business Acumen", "q_no": 30, "statement": "I consider customer needs, costs and business priorities when making decisions."}, {"section": "Behaviour", "pillar": "Leadership Behaviours", "construct_id": 7, "construct": "Integrity", "q_no": 31, "statement": "I am honest, transparent and accountable for my decisions and actions."}, {"section": "Behaviour", "pillar": "Leadership Behaviours", "construct_id": 8, "construct": "Accountability", "q_no": 32, "statement": "I follow through on my commitments and address issues promptly when expectations are not met."}, {"section": "Behaviour", "pillar": "Leadership Behaviours", "construct_id": 9, "construct": "Emotional Intelligence", "q_no": 33, "statement": "I recognise and respond appropriately to the emotions of others."}, {"section": "Behaviour", "pillar": "Leadership Behaviours", "construct_id": 10, "construct": "Communication", "q_no": 34, "statement": "I actively listen to others before responding or making decisions."}, {"section": "Behaviour", "pillar": "Leadership Behaviours", "construct_id": 11, "construct": "Collaboration", "q_no": 35, "statement": "I actively seek input and work constructively with others to achieve shared goals."}, {"section": "Behaviour", "pillar": "Leadership Behaviours", "construct_id": 12, "construct": "Influence", "q_no": 36, "statement": "I use persuasion and sound reasoning to gain commitment rather than relying on authority."}, {"section": "Behaviour", "pillar": "Leadership Behaviours", "construct_id": 13, "construct": "Trust Building", "q_no": 37, "statement": "I act with openness, fairness and consistency in my interactions with others."}, {"section": "Behaviour", "pillar": "Leadership Resilience", "construct_id": 14, "construct": "Self-Awareness", "q_no": 38, "statement": "I regularly seek feedback and reflect on how I can improve my leadership effectiveness."}, {"section": "Behaviour", "pillar": "Leadership Resilience", "construct_id": 15, "construct": "Emotional Regulation", "q_no": 39, "statement": "I remain calm, composed and constructive during pressure, conflict or uncertainty."}, {"section": "Behaviour", "pillar": "Leadership Resilience", "construct_id": 16, "construct": "Adaptability", "q_no": 40, "statement": "I respond positively and effectively to change, uncertainty and new challenges."}, {"section": "Behaviour", "pillar": "Leadership Resilience", "construct_id": 17, "construct": "Persistance", "q_no": 41, "statement": "I maintain focus and continue taking purposeful action when progress is difficult."}, {"section": "Behaviour", "pillar": "Leadership Resilience", "construct_id": 18, "construct": "Learning Agility", "q_no": 42, "statement": "I apply new knowledge and insights to improve my leadership effectiveness."}, {"section": "Behaviour", "pillar": "Leadership Resilience", "construct_id": 19, "construct": "Recovery", "q_no": 43, "statement": "I take deliberate steps to restore my energy and effectiveness after demanding situations."}, {"section": "Behaviour", "pillar": "Continuous Improvement Leadership", "construct_id": 20, "construct": "Continuous Improvement Mindset", "q_no": 44, "statement": "I encourage small, practical improvements that enhance performance and eliminate waste."}, {"section": "Behaviour", "pillar": "Continuous Improvement Leadership", "construct_id": 21, "construct": "Coaching & Developing Others", "q_no": 45, "statement": "I regularly coach others by providing constructive feedback, guidance and opportunities to learn."}, {"section": "Behaviour", "pillar": "Continuous Improvement Leadership", "construct_id": 22, "construct": "Empowerment", "q_no": 46, "statement": "I delegate meaningful responsibility and provide people with the authority to make appropriate decisions."}, {"section": "Behaviour", "pillar": "Continuous Improvement Leadership", "construct_id": 23, "construct": "Evidence-Based Problem Solving", "q_no": 47, "statement": "I use evidence to analyse problems and determine the most appropriate solution."}, {"section": "Behaviour", "pillar": "Continuous Improvement Leadership", "construct_id": 24, "construct": "Improvement Systems", "q_no": 48, "statement": "I use structured improvement methods to identify, implement and sustain improvements."}, {"section": "Influence", "pillar": "Leadership Capability", "construct_id": 1, "construct": "Strategic Thinking", "q_no": 49, "statement": "I encourage others to think beyond immediate challenges and consider future opportunities."}, {"section": "Influence", "pillar": "Leadership Capability", "construct_id": 2, "construct": "Decision Making", "q_no": 50, "statement": "I involve the right people when their input improves the quality of decisions."}, {"section": "Influence", "pillar": "Leadership Capability", "construct_id": 3, "construct": "Critical Thinking", "q_no": 51, "statement": "I encourage others to challenge ideas respectfully and consider different perspectives."}, {"section": "Influence", "pillar": "Leadership Capability", "construct_id": 4, "construct": "Systems Thinking", "q_no": 52, "statement": "I encourage collaboration across teams to improve overall organisational performance."}, {"section": "Influence", "pillar": "Leadership Capability", "construct_id": 5, "construct": "Planning & Execution", "q_no": 53, "statement": "I establish clear expectations and monitor progress to keep others focused on achieving objectives."}, {"section": "Influence", "pillar": "Leadership Capability", "construct_id": 6, "construct": "Business Acumen", "q_no": 54, "statement": "I help others understand how their work contributes to the organisation's overall success."}, {"section": "Influence", "pillar": "Leadership Behaviours", "construct_id": 7, "construct": "Integrity", "q_no": 55, "statement": "I build trust by behaving consistently and ethically in my interactions with others."}, {"section": "Influence", "pillar": "Leadership Behaviours", "construct_id": 8, "construct": "Accountability", "q_no": 56, "statement": "I encourage others to take ownership of their responsibilities and be accountable for their performance."}, {"section": "Influence", "pillar": "Leadership Behaviours", "construct_id": 9, "construct": "Emotional Intelligence", "q_no": 57, "statement": "I demonstrate empathy and adapt my approach to meet the emotional needs of others."}, {"section": "Influence", "pillar": "Leadership Behaviours", "construct_id": 10, "construct": "Communication", "q_no": 58, "statement": "I adapt my communication style to meet the needs of different individuals and situations."}, {"section": "Influence", "pillar": "Leadership Behaviours", "construct_id": 11, "construct": "Collaboration", "q_no": 59, "statement": "I encourage people to work together across boundaries to achieve shared goals."}, {"section": "Influence", "pillar": "Leadership Behaviours", "construct_id": 12, "construct": "Influence", "q_no": 60, "statement": "I inspire others to support shared goals and take positive action."}, {"section": "Influence", "pillar": "Leadership Behaviours", "construct_id": 13, "construct": "Trust Building", "q_no": 61, "statement": "I create an environment where people feel safe to speak honestly without fear."}, {"section": "Influence", "pillar": "Leadership Resilience", "construct_id": 14, "construct": "Self-Awareness", "q_no": 62, "statement": "I demonstrate humility by acknowledging my mistakes and learning from my experiences."}, {"section": "Influence", "pillar": "Leadership Resilience", "construct_id": 15, "construct": "Emotional Regulation", "q_no": 63, "statement": "I respond to challenging situations in ways that help others remain focused and confident."}, {"section": "Influence", "pillar": "Leadership Resilience", "construct_id": 16, "construct": "Adaptability", "q_no": 64, "statement": "I encourage others to embrace change and remain flexible when priorities shift."}, {"section": "Influence", "pillar": "Leadership Resilience", "construct_id": 17, "construct": "Persistance", "q_no": 65, "statement": "I encourage others to persevere and remain committed when challenges arise."}, {"section": "Influence", "pillar": "Leadership Resilience", "construct_id": 18, "construct": "Learning Agility", "q_no": 66, "statement": "I encourage others to learn, experiment and apply new knowledge."}, {"section": "Influence", "pillar": "Leadership Resilience", "construct_id": 19, "construct": "Recovery", "q_no": 67, "statement": "I encourage others to maintain healthy recovery practices that support sustained performance."}, {"section": "Influence", "pillar": "Continuous Improvement Leadership", "construct_id": 20, "construct": "Continuous Improvement Mindset", "q_no": 68, "statement": "I create an environment where people feel empowered to identify and implement improvements."}, {"section": "Influence", "pillar": "Continuous Improvement Leadership", "construct_id": 21, "construct": "Coaching & Developing Others", "q_no": 69, "statement": "I encourage people to build their confidence, capability and potential through continuous development."}, {"section": "Influence", "pillar": "Continuous Improvement Leadership", "construct_id": 22, "construct": "Empowerment", "q_no": 70, "statement": "I create an environment where people feel confident to take initiative and solve problems independently."}, {"section": "Influence", "pillar": "Continuous Improvement Leadership", "construct_id": 23, "construct": "Evidence-Based Problem Solving", "q_no": 71, "statement": "I encourage others to use facts and root cause analysis rather than assumptions when solving problems."}, {"section": "Influence", "pillar": "Continuous Improvement Leadership", "construct_id": 24, "construct": "Improvement Systems", "q_no": 72, "statement": "I encourage others to follow standard improvement practices when solving problems and improving performance."}, {"section": "Outcome", "pillar": "Leadership Capability", "construct_id": 1, "construct": "Strategic Thinking", "q_no": 73, "statement": "My decisions help position the team to achieve long-term success."}, {"section": "Outcome", "pillar": "Leadership Capability", "construct_id": 2, "construct": "Decision Making", "q_no": 74, "statement": "My decisions contribute to positive and sustainable outcomes for the team and organisation."}, {"section": "Outcome", "pillar": "Leadership Capability", "construct_id": 3, "construct": "Critical Thinking", "q_no": 75, "statement": "My approach to analysing problems leads to well-reasoned and effective solutions."}, {"section": "Outcome", "pillar": "Leadership Capability", "construct_id": 4, "construct": "Systems Thinking", "q_no": 76, "statement": "My approach helps create sustainable solutions that benefit the wider organisation."}, {"section": "Outcome", "pillar": "Leadership Capability", "construct_id": 5, "construct": "Planning & Execution", "q_no": 77, "statement": "I consistently deliver planned objectives on time and to the required standard."}, {"section": "Outcome", "pillar": "Leadership Capability", "construct_id": 6, "construct": "Business Acumen", "q_no": 78, "statement": "My decisions create value for customers while supporting sustainable business performance."}, {"section": "Outcome", "pillar": "Leadership Behaviours", "construct_id": 7, "construct": "Integrity", "q_no": 79, "statement": "My integrity creates confidence in my leadership and strengthens the credibility of the organisation."}, {"section": "Outcome", "pillar": "Leadership Behaviours", "construct_id": 8, "construct": "Accountability", "q_no": 80, "statement": "My leadership creates a culture where people take ownership and consistently deliver on their commitments."}, {"section": "Outcome", "pillar": "Leadership Behaviours", "construct_id": 9, "construct": "Emotional Intelligence", "q_no": 81, "statement": "My emotional intelligence strengthens relationships, trust and collaboration within the team."}, {"section": "Outcome", "pillar": "Leadership Behaviours", "construct_id": 10, "construct": "Communication", "q_no": 82, "statement": "My communication promotes understanding, alignment and effective collaboration."}, {"section": "Outcome", "pillar": "Leadership Behaviours", "construct_id": 11, "construct": "Collaboration", "q_no": 83, "statement": "My leadership strengthens teamwork and enables people to achieve results collectively."}, {"section": "Outcome", "pillar": "Leadership Behaviours", "construct_id": 12, "construct": "Influence", "q_no": 84, "statement": "My influence enables people to embrace change, make decisions and achieve shared objectives."}, {"section": "Outcome", "pillar": "Leadership Behaviours", "construct_id": 13, "construct": "Trust Building", "q_no": 85, "statement": "My leadership builds trust that strengthens engagement, collaboration and performance."}, {"section": "Outcome", "pillar": "Leadership Resilience", "construct_id": 14, "construct": "Self-Awareness", "q_no": 86, "statement": "My self-awareness enables me to lead authentically and continuously improve my leadership."}, {"section": "Outcome", "pillar": "Leadership Resilience", "construct_id": 15, "construct": "Emotional Regulation", "q_no": 87, "statement": "My emotional self-control promotes stability, sound decision-making and confidence within the team."}, {"section": "Outcome", "pillar": "Leadership Resilience", "construct_id": 16, "construct": "Adaptability", "q_no": 88, "statement": "My adaptability enables the team to respond effectively to changing business needs."}, {"section": "Outcome", "pillar": "Leadership Resilience", "construct_id": 17, "construct": "Persistance", "q_no": 89, "statement": "My persistence helps the team achieve goals despite difficulties and changing circumstances."}, {"section": "Outcome", "pillar": "Leadership Resilience", "construct_id": 18, "construct": "Learning Agility", "q_no": 90, "statement": "My commitment to learning enables the team to adapt, innovate and improve performance."}, {"section": "Outcome", "pillar": "Leadership Resilience", "construct_id": 19, "construct": "Recovery", "q_no": 91, "statement": "My approach to recovery enables consistent performance, resilience and long-term wellbeing."}, {"section": "Outcome", "pillar": "Continuous Improvement Leadership", "construct_id": 20, "construct": "Continuous Improvement Mindset", "q_no": 92, "statement": "My leadership fosters a culture of continuous improvement that delivers sustainable results."}, {"section": "Outcome", "pillar": "Continuous Improvement Leadership", "construct_id": 21, "construct": "Coaching & Developing Others", "q_no": 93, "statement": "My coaching and development of others strengthens individual performance and builds future leadership capability."}, {"section": "Outcome", "pillar": "Continuous Improvement Leadership", "construct_id": 22, "construct": "Empowerment", "q_no": 94, "statement": "People are confident to make decisions and act independently because I trust them with appropriate authority."}, {"section": "Outcome", "pillar": "Continuous Improvement Leadership", "construct_id": 23, "construct": "Evidence-Based Problem Solving", "q_no": 95, "statement": "My approach leads to effective, sustainable solutions that address the root cause of problems."}, {"section": "Outcome", "pillar": "Continuous Improvement Leadership", "construct_id": 24, "construct": "Improvement Systems", "q_no": 96, "statement": "My leadership embeds sustainable improvement systems that drive continuous organisational performance."}];
+const CONSTRUCTS_META = {"1": {"name": "Strategic Thinking", "pillar": "Leadership Capability", "outcome_statement": "Creates clear strategic direction and long-term organisational success"}, "2": {"name": "Decision Making", "pillar": "Leadership Capability", "outcome_statement": "Enables timely, confident decisions that improve organisational performance."}, "3": {"name": "Critical Thinking", "pillar": "Leadership Capability", "outcome_statement": "Produces objective judgement and better-quality decisions."}, "4": {"name": "Systems Thinking", "pillar": "Leadership Capability", "outcome_statement": "Optimises organisational performance through whole-system thinking."}, "5": {"name": "Planning & Execution", "pillar": "Leadership Capability", "outcome_statement": "Consistently delivers strategic priorities and desired results."}, "6": {"name": "Business Acumen", "pillar": "Leadership Capability", "outcome_statement": "Strengthens organisational value through commercially sound leadership decisions."}, "7": {"name": "Integrity", "pillar": "Leadership Behaviours", "outcome_statement": "Builds credibility through ethical and consistent leadership."}, "8": {"name": "Accountability", "pillar": "Leadership Behaviours", "outcome_statement": "Creates a culture of ownership and dependable performance."}, "9": {"name": "Emotional Intelligence", "pillar": "Leadership Behaviours", "outcome_statement": "Strengthens relationships through emotionally intelligent leadership."}, "10": {"name": "Communication", "pillar": "Leadership Behaviours", "outcome_statement": "Creates clarity, alignment and purposeful action."}, "11": {"name": "Collaboration", "pillar": "Leadership Behaviours", "outcome_statement": "Builds stronger teams through effective partnership and cooperation."}, "12": {"name": "Influence", "pillar": "Leadership Behaviours", "outcome_statement": "Inspires commitment and positive action without relying on authority."}, "13": {"name": "Trust Building", "pillar": "Leadership Behaviours", "outcome_statement": "Creates psychological safety, engagement and lasting trust."}, "14": {"name": "Self-Awareness", "pillar": "Leadership Resilience", "outcome_statement": "Improves leadership through deeper personal insight and intentional action."}, "15": {"name": "Emotional Regulation", "pillar": "Leadership Resilience", "outcome_statement": "Maintains composure and sound judgement under pressure."}, "16": {"name": "Adaptability", "pillar": "Leadership Resilience", "outcome_statement": "Responds effectively to change while maintaining performance."}, "17": {"name": "Persistance", "pillar": "Leadership Resilience", "outcome_statement": "Sustains progress despite setbacks and challenges."}, "18": {"name": "Learning Agility", "pillar": "Leadership Resilience", "outcome_statement": "Accelerates growth through continuous learning and adaptation."}, "19": {"name": "Recovery", "pillar": "Leadership Resilience", "outcome_statement": "Sustains long-term leadership performance through effective renewal."}, "20": {"name": "Continuous Improvement Mindset", "pillar": "Continuous Improvement Leadership", "outcome_statement": "Creates a culture of continuous improvement and innovation."}, "21": {"name": "Coaching & Developing Others", "pillar": "Continuous Improvement Leadership", "outcome_statement": "Builds capable, confident and independent people."}, "22": {"name": "Empowerment", "pillar": "Continuous Improvement Leadership", "outcome_statement": "Enables ownership, initiative and confident decision-making."}, "23": {"name": "Evidence-Based Problem Solving", "pillar": "Continuous Improvement Leadership", "outcome_statement": "Solves problems sustainably through facts, data and root-cause thinking."}, "24": {"name": "Improvement Systems", "pillar": "Continuous Improvement Leadership", "outcome_statement": "Embeds continuous improvement into everyday organisational practice."}};
+const SKILLS_MATRIX = {"1": {"primary_skills": ["Strategic Foresight", "Environmental Scanning", "Scenario Planning"], "secondary_skills": ["Systems Awareness", "Business Insight", "Long-term Planning"], "coaching_parts": {"practice": "Setting aside time each week to think beyond immediate operational demands.", "ask": "What will matter most six to twelve months from now?", "reflect": "Whether your decisions support the organisation's long-term direction"}}, "2": {"primary_skills": ["Analytical Judgement", "Risk Assessment", "Prioritisation"], "secondary_skills": ["Stakeholder Input", "Decisiveness", "Learning from Decisions"], "coaching_parts": {"practice": "Make timely decisions using the best available evidence.", "ask": "Do I have enough information to decide?", "reflect": "The outcome of important decisions and identify one lesson learned."}}, "3": {"primary_skills": ["Evidence Evaluation", "Questioning", "Bias Awareness"], "secondary_skills": ["Logic", "Root Cause Thinking", "Objective Analysis"], "coaching_parts": {"practice": "Challenge assumptions before accepting conclusions.", "ask": "What evidence supports this?", "reflect": "Whether your thinking was objective or influenced by bias."}}, "4": {"primary_skills": ["Systems Mapping", "Interdependency Analysis", "Cross-functional Thinking"], "secondary_skills": ["Pattern Recognition", "Holistic Analysis", "Impact Assessment"], "coaching_parts": {"practice": "Look beyond immediate problems to understand the wider system.", "ask": "Who else will this affect?", "reflect": "Any unintended consequences created by your decisions."}}, "5": {"primary_skills": ["Goal Setting", "Prioritisation", "Project Planning"], "secondary_skills": ["Execution Discipline", "Monitoring", "Accountability"], "coaching_parts": {"practice": "Translate priorities into clear actions and follow through consistently.", "ask": "What is the next most important action?", "reflect": "What helped or hindered successful execution."}}, "6": {"primary_skills": ["Commercial Awareness", "Financial Literacy", "Customer Value"], "secondary_skills": ["Operational Insight", "Value Creation", "Strategic Alignment"], "coaching_parts": {"practice": "Connect everyday decisions to customer and organisational value.", "ask": "How does this create value?", "reflect": "How your decisions improved business performance."}}, "7": {"primary_skills": ["Ethics", "Honesty", "Consistency"], "secondary_skills": ["Transparency", "Values Alignment", "Courage"], "coaching_parts": {"practice": "Acting consistently with your values, even when it is difficult.", "ask": "Am I doing what is right or what is easiest?", "reflect": "Whether your actions consistently matched your commitments."}}, "8": {"primary_skills": ["Ownership", "Reliability", "Follow-through"], "secondary_skills": ["Responsibility", "Performance Management", "Commitment"], "coaching_parts": {"practice": "Taking ownership for your decisions, actions and results.", "ask": "What responsibility is mine to own?", "reflect": "How consistently you followed through on your commitments."}}, "9": {"primary_skills": ["Self-awareness", "Empathy", "Social Awareness"], "secondary_skills": ["Relationship Management", "Listening", "Emotional Insight"], "coaching_parts": {"practice": "Recognising your emotions before responding to others.", "ask": "What might this person be feeling right now?", "reflect": "How your emotional responses influenced your relationships."}}, "10": {"primary_skills": ["Active Listening", "Clarity", "Presentation"], "secondary_skills": ["Questioning", "Feedback", "Influencing Communication"], "coaching_parts": {"practice": "Communicating clearly, listening actively and confirming understanding.", "ask": "Have I created clarity, not just delivered information?", "reflect": "Whether people understood your intended message."}}, "11": {"primary_skills": ["Teamwork", "Partnership", "Conflict Resolution"], "secondary_skills": ["Knowledge Sharing", "Co-creation", "Networking"], "coaching_parts": {"practice": "Involving others early and encouraging shared ownership.", "ask": "Who else could strengthen this outcome?", "reflect": "How effectively you worked across teams and functions."}}, "12": {"primary_skills": ["Persuasion", "Negotiation", "Stakeholder Management"], "secondary_skills": ["Credibility", "Storytelling", "Relationship Building"], "coaching_parts": {"practice": "Building commitment through trust, credibility and shared purpose.", "ask": "Am I inspiring commitment or relying on authority?", "reflect": "How willingly others supported your ideas."}}, "13": {"primary_skills": ["Reliability", "Psychological Safety", "Authenticity"], "secondary_skills": ["Consistency", "Fairness", "Openness"], "coaching_parts": {"practice": "Demonstrating consistency, openness and reliability every day.", "ask": "Would others describe me as trustworthy?", "reflect": "Whether your actions strengthened or weakened trust."}}, "14": {"primary_skills": ["Reflection", "Feedback Seeking", "Values Awareness"], "secondary_skills": ["Strength Awareness", "Humility", "Self Insight"], "coaching_parts": {"practice": "Reflecting regularly on your thoughts, behaviours and impact.", "ask": "What am I not seeing about myself?", "reflect": "The feedback and insights you gained."}}, "15": {"primary_skills": ["Self-control", "Composure", "Stress Management"], "secondary_skills": ["Mindfulness", "Impulse Control", "Resilience"], "coaching_parts": {"practice": "Pausing before responding in emotionally charged situations.", "ask": "How can I respond rather than react?", "reflect": "How well you maintained composure under pressure."}}, "16": {"primary_skills": ["Flexibility", "Learning", "Change Agility"], "secondary_skills": ["Curiosity", "Problem Solving", "Resilience"], "coaching_parts": {"practice": "Adjusting your approach when circumstances change.", "ask": "What needs to change now?", "reflect": "How effectively you adapted without losing focus."}}, "17": {"primary_skills": ["Grit", "Determination", "Persistence"], "secondary_skills": ["Focus", "Optimism", "Discipline"], "coaching_parts": {"practice": "Maintaining purposeful action despite setbacks.", "ask": "What is the next step forward?", "reflect": "How you responded when progress became difficult"}}, "18": {"primary_skills": ["Learning", "Experimentation", "Feedback"], "secondary_skills": ["Knowledge Transfer", "Curiosity", "Adaptation"], "coaching_parts": {"practice": "Seeking feedback and applying new learning quickly.", "ask": "What did I learn today?", "reflect": "How you applied your learning to improve your leadership."}}, "19": {"primary_skills": ["Energy Management", "Wellbeing", "Recovery Planning"], "secondary_skills": ["Work-Life Balance", "Stress Recovery", "Self-care"], "coaching_parts": {"practice": "Building regular recovery into your leadership routine.", "ask": "What do I need to restore my energy?", "reflect": "How effectively you maintained your wellbeing and performance."}}, "20": {"primary_skills": ["Kaizen", "Innovation", "Waste Elimination"], "secondary_skills": ["Experimentation", "Customer Focus", "Learning"], "coaching_parts": {"practice": "The key behaviours for this leadership skill.", "reflect": "Weekly on progress. Seek feedback and coaching."}}, "21": {"primary_skills": ["Coaching", "Questioning", "Feedback"], "secondary_skills": ["Mentoring", "Capability Building", "Talent Development"], "coaching_parts": {"practice": "Asking questions that help people think for themselves.", "ask": "How can I develop this person's capability?", "reflect": "How your coaching increased confidence and ownership."}}, "22": {"primary_skills": ["Delegation", "Trust", "Decision Rights"], "secondary_skills": ["Ownership", "Autonomy", "Coaching"], "coaching_parts": {"practice": "Delegating meaningful responsibility with appropriate authority.", "ask": "Am I enabling ownership or creating dependence?", "reflect": "How confidently others made decisions without your involvement."}}, "23": {"primary_skills": ["Data Analysis", "Root Cause Analysis", "Critical Thinking"], "secondary_skills": ["Fact Finding", "Structured Problem Solving", "Decision Quality"], "coaching_parts": {"practice": "Using facts and root-cause thinking before deciding on solutions.", "ask": "What evidence supports this conclusion?", "reflect": "Whether you solved the root cause rather than the symptom."}}, "24": {"primary_skills": ["Standardisation", "Visual Management", "Governance"], "secondary_skills": ["PDCA", "Performance Review", "Sustainment"], "coaching_parts": {"practice": "Creating routines that make improvement part of everyday work.", "ask": "What system will sustain this improvement?", "reflect": "Whether improvements became consistent habits rather than one-off success."}}};
+const RELATED_CONSTRUCTS = {"1": ["Systems Thinking", "Decision Making", "Adaptability"], "2": ["Strategic Thinking", "Critical Thinking", "Systems Thinking", "Adaptability", "Business Acumen"], "3": ["Strategic Thinking", "Decision Making", "Systems Thinking", "Evidence-Based Problem Solving", "Adaptability"], "4": ["Strategic Thinking", "Critical Thinking", "Decision Making", "Business Acumen", "Evidence-Based Problem Solving"], "5": ["Strategic Thinking", "Decision Making", "Systems Thinking", "Business Acumen", "Adaptability", "Continuous Improvement Mindset"], "6": ["Strategic Thinking", "Systems Thinking", "Planning & Execution", "Decision Making"], "7": ["Accountability", "Trust Building", "Self-Awareness", "Emotional Regulation"], "8": ["Integrity", "Decision Making", "Planning & Execution", "Empowerment", "Trust Building"], "9": ["Self-Awareness", "Emotional Regulation", "Communication", "Trust Building", "Collaboration"], "10": ["Emotional Intelligence", "Influence", "Collaboration", "Trust Building"], "11": ["Communication", "Trust Building", "Influence", "Emotional Intelligence"], "12": ["Communication", "Trust Building", "Collaboration", "Emotional Intelligence"], "13": ["Integrity", "Communication", "Collaboration", "Emotional Intelligence", "Accountability"], "14": ["Emotional Regulation", "Emotional Intelligence", "Learning Agility", "Adaptability"], "15": ["Self-Awareness", "Emotional Intelligence", "Adaptability", "Recovery"], "16": ["Learning Agility", "Emotional Regulation", "Persistance", "Continuous Improvement Mindset"], "17": ["Adaptability", "Emotional Regulation", "Recovery", "Learning Agility"], "18": ["Self-Awareness", "Adaptability", "Continuous Improvement Mindset", "Coaching & Developing Others"], "19": ["Emotional Regulation", "Persistance", "Self-Awareness"], "20": ["Evidence-Based Problem Solving", "Improvement Systems", "Learning Agility", "Adaptability"], "21": ["Empowerment", "Communication", "Emotional Intelligence", "Continuous Improvement Mindset"], "22": ["Coaching & Developing Others", "Accountability", "Trust Building", "Collaboration"], "23": ["Critical Thinking", "Systems Thinking", "Continuous Improvement Mindset", "Improvement Systems"], "24": ["Continuous Improvement Mindset", "Evidence-Based Problem Solving", "Planning & Execution", "Systems Thinking"]};
+
+
+const LIKERT = [
+  {v:1, label:"Never"},
+  {v:2, label:"Rarely"},
+  {v:3, label:"Sometimes"},
+  {v:4, label:"Often"},
+  {v:5, label:"Always"}
+];
+
+const SECTIONS = ["Awareness","Behaviour","Influence","Outcome"];
+const SECTION_INTRO = {
+  Awareness: "How I think — one statement for each leadership skill.",
+  Behaviour: "What I consistently do — one statement for each leadership skill.",
+  Influence: "How I shape others — one statement for each leadership skill.",
+  Outcome: "The results my leadership creates — one statement for each leadership skill."
+};
+
+const MATURITY = [
+  {name:"Expert Leader", range:"90 – 100%", min:0.90, desc:"Demonstrates exceptional leadership capability consistently and serves as a role model."},
+  {name:"Advanced Leader", range:"80 – 89%", min:0.80, desc:"Strong, dependable leadership with only a few targeted development opportunities."},
+  {name:"Proficient Leader", range:"70 – 79%", min:0.70, desc:"Effective leadership overall, with several capabilities that could be strengthened."},
+  {name:"Developing Leader", range:"60 – 69%", min:0.60, desc:"Demonstrates emerging leadership capability but requires focused development in key areas."},
+  {name:"Emerging Leader", range:"Below 60%", min:0, desc:"Leadership foundations are still developing and require structured coaching and support."}
+];
+
+const LEVEL_EXPECTATIONS = {
+  "Front Line Supervisor": {
+    "Leadership Capability": [0.50, 0.70],
+    "Leadership Behaviours": [0.60, 0.80],
+    "Leadership Resilience": [0.55, 0.75],
+    "Continuous Improvement Leadership": [0.45, 0.65]
+  },
+  "Middle Management": {
+    "Leadership Capability": [0.60, 0.80],
+    "Leadership Behaviours": [0.65, 0.85],
+    "Leadership Resilience": [0.60, 0.80],
+    "Continuous Improvement Leadership": [0.55, 0.75]
+  },
+  "Senior Management": {
+    "Leadership Capability": [0.70, 0.85],
+    "Leadership Behaviours": [0.70, 0.90],
+    "Leadership Resilience": [0.65, 0.85],
+    "Continuous Improvement Leadership": [0.65, 0.85]
+  },
+  "Executive Management": {
+    "Leadership Capability": [0.75, 0.95],
+    "Leadership Behaviours": [0.75, 0.95],
+    "Leadership Resilience": [0.70, 0.90],
+    "Continuous Improvement Leadership": [0.70, 0.90]
+  }
+};
+
+const responses = {}; // qno -> 1..5
+const ATTENTION_CHECK = {
+  section: "Influence",
+  insertAfterIndex: 1, // lands at roughly item 50 of 96 — the true midpoint of the assessment
+  statement: "To confirm these ratings reflect careful reading rather than autopilot, please select \u201COften\u201D for this statement.",
+  correctValue: 4
+};
+let attentionCheckValue = null;
+let currentStep = 0; // 0=welcome, 1=participant, 2..5=sections, 6=review
+const totalSteps = 7;
+let assessmentStartTime = null;
+let assessmentStarted = false;
+
+function ratingClass(r){ return 'rt-' + r.replace(/\s+/g,'-'); }
+function pct(v){ return Math.round(v*100) + '%'; }
+const PISA_SUMMARY_EMAIL = 'admin@pisaconsulting.com';
+function ratingBand(p){
+  if(p >= 0.90) return "Exceptional";
+  if(p >= 0.80) return "Strong";
+  if(p >= 0.70) return "Moderate";
+  if(p >= 0.60) return "Developing";
+  return "Priority Development";
+}
+function levelForScore(p){
+  for(const m of MATURITY){ if(p >= m.min) return m; }
+  return MATURITY[MATURITY.length-1];
+}
+
+/* ---------- Build assessment steps ---------- */
+function buildSectionSteps(){
+  const host = document.getElementById('sectionSteps');
+  let html = '';
+  SECTIONS.forEach((sec, i) => {
+    const items = STATEMENTS.filter(s => s.section === sec);
+    const cardsHtml = items.map(s => `
+          <div class="qcard" id="qcard-${s.q_no}">
+            <div class="qnum">${String(s.q_no).padStart(2,'0')}</div>
+            <div class="qtext">${s.statement}</div>
+            <div class="likert-row">
+              ${LIKERT.map(l => `
+                <label class="likert-opt" title="${l.label}">
+                  <input type="radio" name="q${s.q_no}" value="${l.v}" onchange="setResponse(${s.q_no}, ${l.v})">
+                  <span class="likert-dot"></span>
+                  <span class="likert-mini">${l.label}</span>
+                </label>`).join('')}
+            </div>
+          </div>`);
+    if(sec === ATTENTION_CHECK.section){
+      const acCard = `
+          <div class="qcard" id="qcard-ac1">
+            <div class="qnum">\u2014</div>
+            <div class="qtext">${ATTENTION_CHECK.statement}</div>
+            <div class="likert-row">
+              ${LIKERT.map(l => `
+                <label class="likert-opt" title="${l.label}">
+                  <input type="radio" name="qac1" value="${l.v}" onchange="setAttentionResponse(${l.v})">
+                  <span class="likert-dot"></span>
+                  <span class="likert-mini">${l.label}</span>
+                </label>`).join('')}
+            </div>
+          </div>`;
+      cardsHtml.splice(ATTENTION_CHECK.insertAfterIndex, 0, acCard);
+    }
+    html += `<div class="step" id="step-section-${i}">
+      <div class="step-eyebrow">Part ${i+1} of 4 — Leadership ${sec}</div>
+      <h2 class="step-title">${sec}</h2>
+      <p class="step-lede">${SECTION_INTRO[sec]}</p>
+      <div class="likert-legend">${LIKERT.map(l=>`<span>${l.label}</span>`).join('')}</div>
+      <div class="qlist">
+        ${cardsHtml.join('')}
+      </div>
+    </div>`;
+  });
+  host.innerHTML = html;
+}
+
+function setAttentionResponse(val){
+  attentionCheckValue = val;
+}
+
+function setResponse(qno, val){
+  responses[qno] = val;
+  document.getElementById('qcard-'+qno).classList.remove('unanswered');
+  updateProgress();
+}
+
+function updateProgress(){
+  const answered = Object.keys(responses).length;
+  document.getElementById('progressFill').style.width = (answered/96*100) + '%';
+  document.getElementById('progressLabel').textContent = answered + ' / 96 answered';
+  document.getElementById('reviewCount').textContent = answered + ' / 96';
+  const missing = 96 - answered;
+  const missingEl = document.getElementById('reviewMissing');
+  const genBtn = document.getElementById('generateBtn');
+  if(missing > 0){
+    missingEl.textContent = missing + ' statement' + (missing===1?'':'s') + ' still unanswered';
+    genBtn.disabled = true;
+  } else {
+    missingEl.textContent = '';
+    genBtn.disabled = false;
+  }
+}
+
+document.getElementById('pDate').addEventListener('input', (e) => {
+  let digits = e.target.value.replace(/\D/g, '').slice(0, 8);
+  let formatted = digits;
+  if(digits.length > 4){
+    formatted = digits.slice(0,2) + '/' + digits.slice(2,4) + '/' + digits.slice(4);
+  } else if(digits.length > 2){
+    formatted = digits.slice(0,2) + '/' + digits.slice(2);
+  }
+  e.target.value = formatted;
+});
+
+function isValidDDMMYYYY(value){
+  const m = value.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+  if(!m) return false;
+  const day = parseInt(m[1],10), month = parseInt(m[2],10), year = parseInt(m[3],10);
+  if(month < 1 || month > 12) return false;
+  if(year < 1900 || year > 2100) return false;
+  const daysInMonth = new Date(year, month, 0).getDate();
+  if(day < 1 || day > daysInMonth) return false;
+  return true;
+}
+
+/* ---------- Participant validation ---------- */
+function validateParticipant(){
+  const fields = [
+    ['pName','Please enter the participant name.'],
+    ['pPosition','Please enter a position.'],
+    ['pOrg','Please enter an organisation.']
+  ];
+  let allValid = true;
+  fields.forEach(([id,msg]) => {
+    const el = document.getElementById(id);
+    const errEl = document.getElementById('err-'+id);
+    if(!el.value.trim()){
+      el.classList.add('field-error');
+      errEl.textContent = msg;
+      allValid = false;
+    } else {
+      el.classList.remove('field-error');
+      errEl.textContent = '';
+    }
+  });
+
+  const dateEl = document.getElementById('pDate');
+  const dateErrEl = document.getElementById('err-pDate');
+  if(!dateEl.value.trim()){
+    dateEl.classList.add('field-error');
+    dateErrEl.textContent = 'Please enter the assessment date.';
+    allValid = false;
+  } else if(!isValidDDMMYYYY(dateEl.value.trim())){
+    dateEl.classList.add('field-error');
+    dateErrEl.textContent = 'Please enter a valid date in DD/MM/YYYY format.';
+    allValid = false;
+  } else {
+    dateEl.classList.remove('field-error');
+    dateErrEl.textContent = '';
+  }
+
+  const levelEl = document.getElementById('pLevel');
+  const levelErrEl = document.getElementById('err-pLevel');
+  if(!levelEl.value){
+    levelEl.classList.add('field-error');
+    levelErrEl.textContent = 'Please select a leadership level.';
+    allValid = false;
+  } else {
+    levelEl.classList.remove('field-error');
+    levelErrEl.textContent = '';
+  }
+  return allValid;
+}
+
+/* ---------- Step navigation ---------- */
+const stepEls = () => [
+  document.getElementById('step-welcome'),
+  document.getElementById('step-participant'),
+  document.getElementById('step-section-0'),
+  document.getElementById('step-section-1'),
+  document.getElementById('step-section-2'),
+  document.getElementById('step-section-3'),
+  document.getElementById('step-review')
+];
+
+function renderStepChips(){
+  const chips = document.getElementById('stepChips');
+  chips.innerHTML = Array.from({length: totalSteps}).map((_,i) =>
+    `<div class="step-chip ${i<currentStep?'done':''} ${i===currentStep?'current':''}"></div>`
+  ).join('');
+}
+
+function goToStep(n){
+  // Guard: leaving welcome step (0) forward requires consent
+  if(currentStep === 0 && n > 0){
+    const consent = document.getElementById('consentCheckbox');
+    const box = consent.closest('.consent-box');
+    const err = document.getElementById('err-consent');
+    if(!consent.checked){
+      box.classList.add('field-error');
+      err.textContent = 'Please confirm you have read the disclaimer and privacy information before continuing.';
+      return;
+    } else {
+      box.classList.remove('field-error');
+      err.textContent = '';
+    }
+  }
+  // Guard: leaving participant step (1) forward requires validation
+  if(currentStep === 1 && n > 1){
+    if(!validateParticipant()) return;
+  }
+  const els = stepEls();
+  els.forEach(el => el.classList.remove('active'));
+  currentStep = Math.max(0, Math.min(totalSteps-1, n));
+  els[currentStep].classList.add('active');
+  renderStepChips();
+
+  if(currentStep >= 2 && !assessmentStarted){
+    assessmentStarted = true;
+    assessmentStartTime = Date.now();
+  }
+
+  document.getElementById('backBtn').style.visibility = (currentStep===0) ? 'hidden' : 'visible';
+  const nextBtn = document.getElementById('nextBtn');
+  if(currentStep === totalSteps - 1){
+    nextBtn.style.display = 'none';
+  } else {
+    nextBtn.style.display = 'inline-block';
+    nextBtn.textContent = (currentStep === totalSteps - 2) ? 'Review Answers' : 'Next';
+  }
+  const statusMap = ['Welcome','Participant details','Part 1 of 4 — Awareness','Part 2 of 4 — Behaviour','Part 3 of 4 — Influence','Part 4 of 4 — Outcome','Review & generate'];
+  document.getElementById('navStatus').textContent = statusMap[currentStep];
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+document.getElementById('backBtn').addEventListener('click', () => goToStep(currentStep - 1));
+document.getElementById('nextBtn').addEventListener('click', () => goToStep(currentStep + 1));
+['pName','pPosition','pOrg','pDate'].forEach(id => {
+  document.getElementById(id).addEventListener('input', () => {
+    const el = document.getElementById(id);
+    if(el.value.trim()){
+      el.classList.remove('field-error');
+      document.getElementById('err-'+id).textContent = '';
+    }
+  });
+});
+
+document.getElementById('pLevel').addEventListener('change', () => {
+  const el = document.getElementById('pLevel');
+  if(el.value){
+    el.classList.remove('field-error');
+    document.getElementById('err-pLevel').textContent = '';
+  }
+});
+
+document.getElementById('consentCheckbox').addEventListener('change', (e) => {
+  if(e.target.checked){
+    e.target.closest('.consent-box').classList.remove('field-error');
+    document.getElementById('err-consent').textContent = '';
+  }
+});
+
+/* ---------- Scoring ---------- */
+function computeResults(){
+  const constructScores = {};
+  const sectionScores = {}; // construct_id -> { Awareness: val, Behaviour: val, Influence: val, Outcome: val }
+  STATEMENTS.forEach(s => {
+    const val = responses[s.q_no];
+    if(!constructScores[s.construct_id]) constructScores[s.construct_id] = {sum:0, count:0};
+    constructScores[s.construct_id].sum += val;
+    constructScores[s.construct_id].count += 1;
+    if(!sectionScores[s.construct_id]) sectionScores[s.construct_id] = {};
+    sectionScores[s.construct_id][s.section] = val;
+  });
+
+  const constructs = [];
+  for(let id = 1; id <= 24; id++){
+    const meta = CONSTRUCTS_META[id];
+    const cs = constructScores[id];
+    const avg = cs.sum / cs.count;
+    const percentage = avg / 5;
+    const sec = sectionScores[id] || {};
+    const awareness_pct = sec.Awareness != null ? sec.Awareness / 5 : null;
+    const outcome_pct = sec.Outcome != null ? sec.Outcome / 5 : null;
+    const knowing_doing_gap = (awareness_pct != null && outcome_pct != null) ? (awareness_pct - outcome_pct) : null;
+    constructs.push({
+      id, name: meta.name, pillar: meta.pillar,
+      outcome_statement: meta.outcome_statement,
+      avg_score: avg, percentage,
+      rating: ratingBand(percentage),
+      awareness_pct, outcome_pct, knowing_doing_gap
+    });
+  }
+
+  const pillarOrder = ["Leadership Capability","Leadership Behaviours","Leadership Resilience","Continuous Improvement Leadership"];
+  const pillars = {};
+  pillarOrder.forEach(p => {
+    const inPillar = constructs.filter(c => c.pillar === p);
+    const avgPct = inPillar.reduce((a,c)=>a+c.percentage,0) / inPillar.length;
+    pillars[p] = [avgPct, ratingBand(avgPct)];
+  });
+
+  const overallScore = constructs.reduce((a,c)=>a+c.percentage,0) / constructs.length;
+  const overallLevel = levelForScore(overallScore).name;
+
+  return { overall_score: overallScore, overall_level: overallLevel, pillars, constructs };
+}
+
+/* ---------- Response-pattern confidence ---------- */
+function computeConfidence(durationMs){
+  const vals = STATEMENTS.map(s => responses[s.q_no]);
+  let score = 100;
+  const flags = [];
+
+  // Longest identical run
+  let longestRun = 1, run = 1;
+  for(let i=1;i<vals.length;i++){
+    if(vals[i] === vals[i-1]){ run++; longestRun = Math.max(longestRun, run); } else { run = 1; }
+  }
+  if(longestRun >= 25){
+    score -= 30;
+    flags.push('A long run of ' + longestRun + ' identical ratings in a row suggests straight-lining rather than considered responses.');
+  } else if(longestRun >= 15){
+    score -= 18;
+    flags.push('A run of ' + longestRun + ' identical ratings in a row suggests some responses may not have been fully considered.');
+  } else if(longestRun >= 10){
+    score -= 8;
+    flags.push('A noticeable run of identical ratings (' + longestRun + ' in a row) was detected.');
+  }
+
+  // Distribution / dominant value
+  const counts = {1:0,2:0,3:0,4:0,5:0};
+  vals.forEach(v => counts[v]++);
+  const total = vals.length;
+  const dominantPct = Math.max(...Object.values(counts)) / total;
+  if(dominantPct >= 0.6){
+    score -= 20;
+    flags.push('Over ' + Math.round(dominantPct*100) + '% of all responses used the same rating, suggesting limited differentiation between statements.');
+  } else if(dominantPct >= 0.45){
+    score -= 10;
+    flags.push('A single rating value was used unusually often across the assessment.');
+  }
+
+  // Extreme / neutral bias
+  const extremePct = (counts[1] + counts[5]) / total;
+  const midPct = counts[3] / total;
+  if(extremePct >= 0.85){
+    score -= 12;
+    flags.push('Responses were almost exclusively at the extremes (Never / Always), which can reduce reliability.');
+  }
+  if(midPct >= 0.55){
+    score -= 10;
+    flags.push('A high proportion of Sometimes responses may indicate limited engagement with individual statements.');
+  }
+
+  // Intra-skill consistency (proxy for contradictory answers)
+  const byConstruct = {};
+  STATEMENTS.forEach(s => {
+    if(!byConstruct[s.construct_id]) byConstruct[s.construct_id] = [];
+    byConstruct[s.construct_id].push(responses[s.q_no]);
+  });
+  const inconsistentConstructIds = [];
+  Object.keys(byConstruct).forEach(cid => {
+    const arr = byConstruct[cid];
+    const mean = arr.reduce((a,b)=>a+b,0) / arr.length;
+    const variance = arr.reduce((a,b)=>a+Math.pow(b-mean,2),0) / arr.length;
+    const sd = Math.sqrt(variance);
+    if(sd >= 1.6) inconsistentConstructIds.push(cid);
+  });
+  const highSdCount = inconsistentConstructIds.length;
+
+  function pillarBreakdown(constructIds){
+    const counts = {};
+    constructIds.forEach(cid => {
+      const pillar = CONSTRUCTS_META[cid].pillar;
+      counts[pillar] = (counts[pillar] || 0) + 1;
+    });
+    return Object.entries(counts).map(([p,c]) => `${p} (${c})`).join(', ');
+  }
+
+  if(highSdCount >= 6){
+    score -= 15;
+    flags.push(highSdCount + ' leadership skills show widely inconsistent ratings between their related statements — concentrated in ' + pillarBreakdown(inconsistentConstructIds) + ' — which may indicate contradictory responses.');
+  } else if(highSdCount >= 3){
+    score -= 8;
+    flags.push('Some leadership skills show inconsistent ratings between their related statements — within ' + pillarBreakdown(inconsistentConstructIds) + '.');
+  }
+
+  // Embedded attention check — a direct signal, not an inference, so it carries more weight
+  if(attentionCheckValue == null){
+    score -= 30;
+    flags.push('An embedded instruction partway through the assessment ("select Often for this statement") was left unanswered, suggesting statements may not have been read carefully.');
+  } else if(attentionCheckValue !== ATTENTION_CHECK.correctValue){
+    score -= 30;
+    flags.push('An embedded instruction partway through the assessment ("select Often for this statement") was not followed, suggesting statements may not have been read carefully.');
+  }
+
+  // Timing
+  if(durationMs != null){
+    const minutes = durationMs / 60000;
+    if(minutes < 4){
+      score -= 25;
+      flags.push('The assessment was completed in under 4 minutes, which is unusually fast for 96 statements and may indicate responses were not fully considered.');
+    } else if(minutes < 8){
+      score -= 12;
+      flags.push('The assessment was completed faster than typical, which may indicate limited time was spent per statement.');
+    } else if(minutes > 120){
+      score -= 10;
+      flags.push('The assessment took considerably longer than typical, which may indicate the session was interrupted or completed over multiple sittings.');
+    }
+  }
+
+  score = Math.max(0, Math.min(100, Math.round(score)));
+  return { score, flags };
+}
+
+let REPORT_DATA = null;
+let CONFIDENCE_DATA = null;
+let ASSESSMENT_DURATION_MS = null;
+
+document.getElementById('generateBtn').addEventListener('click', () => {
+  ASSESSMENT_DURATION_MS = assessmentStartTime ? (Date.now() - assessmentStartTime) : null;
+  REPORT_DATA = computeResults();
+  CONFIDENCE_DATA = computeConfidence(ASSESSMENT_DURATION_MS);
+  document.getElementById('assessmentView').style.display = 'none';
+  document.getElementById('reportView').style.display = 'block';
+  document.getElementById('brandStatus').textContent = 'Outcome Report';
+  document.body.classList.add('is-report');
+  renderReport();
+  window.scrollTo({top:0});
+});
+
+/* ---------- Report rendering ---------- */
+let hasSavedReport = false;
+
+function handlePrintClick(){
+  window.print();
+}
+
+window.addEventListener('afterprint', function(){
+  hasSavedReport = true;
+  const emailBtn = document.getElementById('emailBtn');
+  const note = document.getElementById('toolbarNote');
+  if(emailBtn){
+    emailBtn.disabled = false;
+    emailBtn.title = 'Opens your email app with a text summary for PISA';
+  }
+  if(note){
+    note.textContent = 'Report saved. Step 2 (optional): Email a text summary to PISA.';
+  }
+});
+
+function handleEmailClick(){
+  if(!REPORT_DATA) return;
+  const name = document.getElementById('pName').value || 'Not provided';
+  const position = document.getElementById('pPosition').value || 'Not provided';
+  const org = document.getElementById('pOrg').value || 'Not provided';
+  const date = document.getElementById('pDate').value || 'Not provided';
+  const level = document.getElementById('pLevel').value || 'Not provided';
+
+  const sortedConstructs = [...REPORT_DATA.constructs].sort((a,b) => b.percentage - a.percentage);
+  const topStrengths = sortedConstructs.slice(0,5).map(c => `- ${c.name}: ${pct(c.percentage)}`).join('\n');
+  const topPriorities = sortedConstructs.slice(-3).reverse().map(c => `- ${c.name}: ${pct(c.percentage)}`).join('\n');
+
+  const subject = `PISA Lean Leadership Assessment Summary — ${name} (${org})`;
+  const body =
+`This is a text summary only — it does not include the full visual report.
+The respondent should also send their saved PDF separately if you need the complete report.
+
+Name: ${name}
+Position: ${position}
+Organisation: ${org}
+Assessment Date: ${date}
+Leadership Level: ${level}
+
+Overall Score: ${pct(REPORT_DATA.overall_score)} — ${REPORT_DATA.overall_level}
+
+Top 5 Strengths:
+${topStrengths}
+
+Top 3 Development Priorities:
+${topPriorities}`;
+
+  const mailto = `mailto:${PISA_SUMMARY_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  window.location.href = mailto;
+}
+
+function renderParticipantStrip(){
+  const vals = [
+    ['Name', document.getElementById('pName').value || '—'],
+    ['Position', document.getElementById('pPosition').value || '—'],
+    ['Organisation', document.getElementById('pOrg').value || '—'],
+    ['Assessment Date', document.getElementById('pDate').value || '—'],
+    ['Leadership Level', document.getElementById('pLevel').value || '—']
+  ];
+  document.getElementById('participantStrip').innerHTML = vals.map(([k,v]) =>
+    `<div class="p-item"><div class="k">${k}</div><div class="v">${v}</div></div>`).join('');
+}
+
+function renderOverall(){
+  const p = REPORT_DATA.overall_score;
+  document.getElementById('overallPct').textContent = pct(p);
+  document.getElementById('overallLevel').textContent = REPORT_DATA.overall_level;
+  const circumference = 2 * Math.PI * 90;
+  const arc = document.getElementById('dialArc');
+  arc.setAttribute('stroke-dasharray', circumference);
+  arc.setAttribute('stroke-dashoffset', circumference * (1 - p));
+
+  const levelInfo = MATURITY.find(m => m.name === REPORT_DATA.overall_level);
+  document.getElementById('overallLevelDesc').textContent = levelInfo ? levelInfo.desc : '';
+
+  const ladder = document.getElementById('maturityLadder');
+  ladder.innerHTML = MATURITY.map(m => `
+    <div class="ladder-row ${m.name === REPORT_DATA.overall_level ? 'active' : ''}">
+      <div class="lname">${m.name}</div>
+      <div class="ladder-track"><div class="fill" style="width:${m.min*100}%; background:${m.name===REPORT_DATA.overall_level ? 'var(--terracotta)' : 'var(--cream-deep)'}; border:${m.name===REPORT_DATA.overall_level ? 'none' : '1px solid var(--line)'};"></div></div>
+      <div class="lrange">${m.range}</div>
+    </div>
+  `).join('');
+}
+
+function renderConfidence(){
+  const s = CONFIDENCE_DATA.score;
+  const wrap = document.getElementById('confidenceWrap');
+
+  if(CONFIDENCE_DATA.flags.length === 0){
+    wrap.innerHTML = `
+      <div class="confidence-quiet">
+        <span class="confidence-quiet-icon">✓</span>
+        No response-pattern concerns were detected — ratings show healthy variation across statements and a typical completion time.
+      </div>`;
+    return;
+  }
+
+  let color = 'var(--r-strong)';
+  if(s < 60) color = 'var(--r-priority)';
+  else if(s < 80) color = 'var(--r-developing)';
+
+  wrap.innerHTML = `
+    <div class="confidence-card">
+      <div class="confidence-head">
+        <h3>Response Pattern Confidence</h3>
+        <div class="confidence-num">${s}%</div>
+      </div>
+      <div class="confidence-track"><div class="confidence-fill" style="width:${s}%; background:${color};"></div></div>
+      <p class="confidence-note">The following response patterns were detected and may be worth exploring with the participant before relying heavily on this result:</p>
+      <ul class="confidence-flags">${CONFIDENCE_DATA.flags.map(f => `<li>${f}</li>`).join('')}</ul>
+      <div class="confidence-methodology">Heuristic indicator only, based on response-pattern signals (straight-lining, extreme or middling response bias, inconsistency between related statements, and completion time). It is not a measure of a person's character or honesty — use it as a prompt for the coach to check in with the participant, not as a judgement.</div>
+    </div>`;
+}
+
+function renderPillars(){
+  const order = ["Leadership Capability","Leadership Behaviours","Leadership Resilience","Continuous Improvement Leadership"];
+  const grid = document.getElementById('pillarGrid');
+  grid.innerHTML = order.map((name,i) => {
+    const [score, rating] = REPORT_DATA.pillars[name];
+    return `
+    <div class="pillar-card">
+      <div class="pnum">PILLAR ${i+1}</div>
+      <div class="pname">${name}</div>
+      <div class="pillar-bar-track"><div class="pillar-bar-fill" style="width:${score*100}%;"></div></div>
+      <div class="pillar-meta">
+        <span class="pillar-pct">${pct(score)}</span>
+        <span class="rating-tag ${ratingClass(rating)}">${rating}</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderCalibration(){
+  const level = document.getElementById('pLevel').value;
+  const bannerEl = document.getElementById('calibrationBanner');
+  const listEl = document.getElementById('calibrationList');
+
+  if(!level || !LEVEL_EXPECTATIONS[level]){
+    bannerEl.innerHTML = '';
+    listEl.innerHTML = '<p class="cr-note">No leadership level was selected, so a level comparison isn\'t available for this report.</p>';
+    return;
+  }
+
+  const order = ["Leadership Capability","Leadership Behaviours","Leadership Resilience","Continuous Improvement Leadership"];
+  const expectations = LEVEL_EXPECTATIONS[level];
+
+  // First pass: compute each pillar's status without building HTML yet, so we know
+  // up front how many pillars are "above" before deciding how much explanation each row needs.
+  const rowData = order.map(name => {
+    const [score] = REPORT_DATA.pillars[name];
+    const [lo, hi] = expectations[name];
+    let flag, flagClass;
+    if(score > hi){ flag = 'Above typical range'; flagClass = 'above'; }
+    else if(score < lo){ flag = 'Below typical range'; flagClass = 'below'; }
+    else { flag = 'Within typical range'; flagClass = 'within'; }
+    return { name, score, lo, hi, flag, flagClass };
+  });
+
+  const aboveCount = rowData.filter(r => r.flagClass === 'above').length;
+  const showBanner = aboveCount >= 2;
+
+  const rows = rowData.map(({name, score, lo, hi, flag, flagClass}) => {
+    let note;
+    if(flagClass === 'above'){
+      note = showBanner
+        ? `Above what's typically expected for ${level}.`
+        : `Scoring above what's typically expected for ${level}. Worth validating with manager observation, peer input, or 360 feedback where possible — self-assessments that run consistently high are common and don't necessarily mean the self-view is inaccurate, but it's worth checking.`;
+    } else if(flagClass === 'below'){
+      note = `Below what's typically expected for ${level} — likely worth prioritising in development planning.`;
+    } else {
+      note = `In line with what's typically expected for ${level}.`;
+    }
+
+    const rangeLeftPct = lo * 100;
+    const rangeWidthPct = (hi - lo) * 100;
+    const markerLeftPct = Math.min(98, Math.max(1, score * 100));
+
+    return `
+      <div class="calibration-row">
+        <div class="calibration-row-top">
+          <div class="cr-name">${name}</div>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <span class="cr-score">${pct(score)}</span>
+            <span class="cr-flag ${flagClass}">${flag}</span>
+          </div>
+        </div>
+        <div class="calibration-track">
+          <div class="calibration-range" style="left:${rangeLeftPct}%; width:${rangeWidthPct}%;"></div>
+          <div class="calibration-marker" style="left:${markerLeftPct}%;"></div>
+        </div>
+        <div class="cr-note">${note} <span style="opacity:0.7;">(Typical range for ${level}: ${pct(lo)}–${pct(hi)})</span></div>
+        <div class="cr-range-print">Typical range for ${level}: ${pct(lo)}–${pct(hi)} — ${flag}</div>
+      </div>`;
+  }).join('');
+
+  listEl.innerHTML = rows;
+
+  if(showBanner){
+    bannerEl.innerHTML = `
+      <div class="calibration-banner">
+        <div class="cb-icon">⚠️</div>
+        <p><strong>Several pillars are scoring above what's typical for ${level}.</strong> Self-report inflation is a well-documented pattern, particularly earlier in a leadership career — it doesn't necessarily mean the self-view is wrong, but it's worth validating this profile with manager observation, peer feedback, or a 360 before treating it as the full picture.</p>
+      </div>`;
+  } else {
+    bannerEl.innerHTML = '';
+  }
+}
+
+function skillChipsHTML(cid){
+  const sk = SKILLS_MATRIX[cid];
+  if(!sk) return '';
+  const parts = sk.coaching_parts || {};
+  const bullets = [];
+  if(parts.practice) bullets.push(['Practise', parts.practice]);
+  if(parts.ask) bullets.push(['Question', parts.ask]);
+  if(parts.reflect) bullets.push(['Reflect', parts.reflect]);
+  return `
+    <div class="skill-block">
+      <h5>Primary Skills to Develop</h5>
+      <div class="chip-row">${sk.primary_skills.map(s=>`<span class="chip primary">${s}</span>`).join('')}</div>
+      <h5>Secondary Skills to Develop</h5>
+      <div class="chip-row">${sk.secondary_skills.map(s=>`<span class="chip secondary">${s}</span>`).join('')}</div>
+      <h5>Coaching Questions &amp; Practice</h5>
+      <ul class="coaching-list">
+        ${bullets.map(([label,text]) => `<li><span class="clabel">${label}</span>${text}</li>`).join('')}
+      </ul>
+    </div>`;
+}
+
+function renderStrengthsPriorities(){
+  const sorted = [...REPORT_DATA.constructs].sort((a,b) => b.percentage - a.percentage);
+  const strengths = sorted.slice(0,5);
+  const priorities = [...sorted].reverse().slice(0,3);
+
+  document.getElementById('strengthsList').innerHTML = strengths.map((c,i) => `
+    <div class="sp-card">
+      <div class="sp-card-top">
+        <div class="sp-rank">${i+1}</div>
+        <div class="sp-body">
+          <div class="sp-name">${c.name}</div>
+          <div class="sp-pillar">${c.pillar}</div>
+          <div class="sp-line">${c.outcome_statement || ''}</div>
+        </div>
+        <div class="sp-score">${pct(c.percentage)}</div>
+      </div>
+    </div>`).join('');
+
+  document.getElementById('prioritiesList').innerHTML = priorities.map((c,i) => `
+    <div class="sp-card">
+      <div class="sp-card-top">
+        <div class="sp-rank">${i+1}</div>
+        <div class="sp-body">
+          <div class="sp-name">${c.name}</div>
+          <div class="sp-pillar">${c.pillar}</div>
+        </div>
+        <div class="sp-score">${pct(c.percentage)}</div>
+      </div>
+      ${skillChipsHTML(c.id)}
+    </div>`).join('');
+}
+
+function renderDuration(){
+  const el = document.getElementById('durationNote');
+  if(ASSESSMENT_DURATION_MS == null){ el.textContent = ''; return; }
+  const totalMinutes = Math.round(ASSESSMENT_DURATION_MS / 60000);
+  const h = Math.floor(totalMinutes / 60);
+  const m = totalMinutes % 60;
+  const text = h > 0 ? (h + 'h ' + m + 'm') : (m + ' min');
+
+  let color = 'var(--r-strong)'; // green
+  if(totalMinutes < 12 || totalMinutes > 30){
+    color = 'var(--r-priority)'; // red
+  } else if(totalMinutes < 20 || totalMinutes > 25){
+    color = 'var(--r-developing)'; // amber
+  }
+
+  el.innerHTML = '<span class="duration-dot" style="background:'+color+';"></span>Assessment completion duration: ' + text;
+}
+
+function renderInsights(){
+  const byName = {};
+  REPORT_DATA.constructs.forEach(c => byName[c.name] = c);
+  const overall = REPORT_DATA.overall_score;
+
+  // --- Leadership Leverage Point ---
+  let leverageHTML = '';
+  let bestCandidate = null, bestWeakRelated = [];
+  Object.keys(RELATED_CONSTRUCTS).forEach(cidStr => {
+    const cid = parseInt(cidStr, 10);
+    const candidate = REPORT_DATA.constructs.find(c => c.id === cid);
+    const relatedNames = RELATED_CONSTRUCTS[cidStr];
+    const weakRelated = relatedNames
+      .map(n => byName[n])
+      .filter(c => c && c.percentage < overall);
+    if(weakRelated.length > bestWeakRelated.length){
+      bestCandidate = candidate;
+      bestWeakRelated = weakRelated;
+    }
+  });
+
+  if(bestCandidate && bestWeakRelated.length >= 2){
+    const names = bestWeakRelated.map(c => c.name);
+    const joined = names.length > 1
+      ? names.slice(0,-1).join(', ') + ' and ' + names[names.length-1]
+      : names[0];
+    leverageHTML = `
+      <p>Identifying the one capability that would create the greatest improvement across the entire profile.</p>
+      <p><span class="ihighlight">Improve your ${bestCandidate.name}</span> and you are likely to improve ${joined} simultaneously.</p>`;
+  } else {
+    leverageHTML = `<p>Identifying the one capability that would create the greatest improvement across the entire profile.</p>
+      <p>This profile is fairly evenly spread — no single capability stands out as a leverage point for the other skills measured.</p>`;
+  }
+
+  // --- Future Leadership Risk ---
+  const PILLAR_RISK_TEMPLATE = {
+    "Leadership Capability": skill => `Without stronger ${skill}, decision-making may stay slower and less confident than the role requires.`,
+    "Leadership Behaviours": skill => `If ${skill} doesn't develop, team ownership and trust may continue to erode.`,
+    "Leadership Resilience": skill => `Without progress on ${skill}, initiative fatigue and difficulty sustaining momentum are likely to continue.`,
+    "Continuous Improvement Leadership": skill => `If ${skill} remains a gap, improvement efforts may keep stalling or reverting to old habits.`
+  };
+  const pillarOrder = ["Leadership Capability","Leadership Behaviours","Leadership Resilience","Continuous Improvement Leadership"];
+  const weakPillars = pillarOrder.filter(p => REPORT_DATA.pillars[p][0] < overall);
+  const finalRisks = weakPillars.map(p => {
+    const pillarSkills = REPORT_DATA.constructs.filter(c => c.pillar === p);
+    const weakestSkill = [...pillarSkills].sort((a,b) => a.percentage - b.percentage)[0];
+    return PILLAR_RISK_TEMPLATE[p](weakestSkill.name);
+  });
+
+  const riskHTML = finalRisks.length ? `
+    <p>If this profile remains unchanged over the next 12 months you may experience:</p>
+    <ul class="risk-list">
+      ${finalRisks.map(r => `<li>${r}</li>`).join('')}
+    </ul>
+    <p class="risk-footnote" style="margin-top:8px; font-size:0.8rem; opacity:0.8;">Each risk points to the lowest-scoring skill within a pillar that scores below this profile's own overall average — not an external benchmark.</p>` : `
+    <p>No pillar currently scores below this profile's own overall average, so no specific risk stands out from this data.</p>`;
+
+  // --- Leadership Blind Spot ---
+  const BEHAVIOUR_PILLAR = "Leadership Behaviours";
+  const behaviourConstructs = REPORT_DATA.constructs.filter(c => c.pillar === BEHAVIOUR_PILLAR);
+  const behaviourSorted = [...behaviourConstructs].sort((a,b) => b.percentage - a.percentage);
+  const bHigh = behaviourSorted[0];
+  const bLow = behaviourSorted[behaviourSorted.length - 1];
+  let blindSpotHTML = '';
+  if(bHigh && bLow && (bHigh.percentage - bLow.percentage) >= 0.15){
+    blindSpotHTML = `
+      <p class="bs-def">Different to a weakness — a blind spot is a gap between how you see yourself and how others may experience you.</p>
+      <p>Your profile suggests you may believe you are strong in <span class="ihighlight">${bHigh.name}</span>, yet your lower <span class="ihighlight">${bLow.name}</span> score suggests others may experience this differently.</p>
+      <p class="bs-coaching-note">This is coaching, not judgement — worth exploring together rather than assuming either score is the full picture.</p>
+      <p style="margin-top:8px; font-size:0.8rem; opacity:0.8;">Based entirely on this participant's own self-ratings, not on feedback from managers, peers or direct reports — treat it as a prompt to seek that outside view, not a substitute for it.</p>`;
+  } else {
+    blindSpotHTML = `
+      <p class="bs-def">Different to a weakness — a blind spot is a gap between how you see yourself and how others may experience you.</p>
+      <p>No strong blind-spot pattern stands out in this profile; scores across the Leadership Behaviours pillar are relatively consistent.</p>
+      <p class="bs-coaching-note">This is coaching, not judgement — worth checking in with trusted colleagues regardless.</p>
+      <p style="margin-top:8px; font-size:0.8rem; opacity:0.8;">Based entirely on this participant's own self-ratings, not on feedback from managers, peers or direct reports.</p>`;
+  }
+
+  document.getElementById('insightStack').innerHTML = `
+    <div class="insight-card leverage">
+      <div class="ieyebrow">Leadership Leverage Point</div>
+      <h4>Where to focus for the widest impact</h4>
+      ${leverageHTML}
+    </div>
+    <div class="insight-card future-risk">
+      <div class="ieyebrow">Future Leadership Risk</div>
+      <h4>If this profile remains unchanged</h4>
+      ${riskHTML}
+    </div>
+    <div class="insight-card blind-spot">
+      <div class="ieyebrow">Leadership Blind Spot</div>
+      <h4>How you see yourself vs how others may experience you</h4>
+      ${blindSpotHTML}
+    </div>`;
+}
+
+const KD_GAP_THRESHOLD = 0.20; // 20 percentage points — only surface when the gap is genuinely large
+
+function renderKnowingDoingGap(){
+  const wrap = document.getElementById('knowingDoingWrap');
+  const withGap = REPORT_DATA.constructs.filter(c => c.knowing_doing_gap != null && c.knowing_doing_gap >= KD_GAP_THRESHOLD);
+  if(withGap.length === 0){
+    wrap.innerHTML = '';
+    return;
+  }
+  const worst = withGap.sort((a,b) => b.knowing_doing_gap - a.knowing_doing_gap)[0];
+  const gapPts = Math.round(worst.knowing_doing_gap * 100);
+  const awarenessStatement = STATEMENTS.find(s => s.construct_id === worst.id && s.section === 'Awareness');
+  const outcomeStatement = STATEMENTS.find(s => s.construct_id === worst.id && s.section === 'Outcome');
+
+  wrap.innerHTML = `
+    <div class="kd-card">
+      <div class="ieyebrow">Knowing–Doing Gap</div>
+      <h4>You already know this matters. It isn't showing up in results.</h4>
+      <div class="kd-stat-row">
+        <div class="kd-stat">
+          <div class="kd-num">${pct(worst.awareness_pct)}</div>
+          <div class="kd-lbl">Awareness</div>
+        </div>
+        <div class="kd-arrow">→</div>
+        <div class="kd-stat">
+          <div class="kd-num">${pct(worst.outcome_pct)}</div>
+          <div class="kd-lbl">Outcome</div>
+        </div>
+        <div class="kd-gap-badge">${gapPts}-pt gap</div>
+      </div>
+      <p>The largest gap in this profile is in <span class="kd-highlight">${worst.name}</span> — the widest gap of any leadership skill between recognising something matters and it actually showing up in results.</p>
+      <p class="kd-quote-detail">This participant rated the following statement highly: <span class="kd-highlight">"${awarenessStatement ? awarenessStatement.statement : ''}"</span> — but rated the corresponding outcome, <span class="kd-highlight">"${outcomeStatement ? outcomeStatement.statement : ''}"</span>, far lower.</p>
+      <p>A gap this size usually isn't a knowledge problem. It's a signal to explore what's getting in the way of turning intent into consistent action — habits, capacity, confidence, or organisational barriers are more likely culprits than a lack of awareness.</p>
+      <div class="kd-footnote">Calculated directly from this participant's own Awareness and Outcome statement ratings for each leadership skill (no external benchmark). Shown only when the gap is 20 percentage points or more; this profile's largest gap was for ${worst.name}.</div>
+    </div>`;
+}
+
+function renderReport(){
+  renderParticipantStrip();
+  renderDuration();
+  renderOverall();
+  renderConfidence();
+  renderKnowingDoingGap();
+  renderPillars();
+  renderCalibration();
+  renderStrengthsPriorities();
+  renderInsights();
+}
+
+/* ---------- Init ---------- */
+buildSectionSteps();
+updateProgress();
+goToStep(0);
+</script>
+</body>
+</html>

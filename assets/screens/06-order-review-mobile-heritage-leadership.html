@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Order Review - Heritage Leadership</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&amp;family=Open+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                            "primary-fixed": "#ffdbcf",
+                            "text-body": "#4A423C",
+                            "on-primary-fixed": "#380d00",
+                            "surface-container-highest": "#ebe1da",
+                            "surface-container": "#f6ece5",
+                            "inverse-primary": "#ffb59b",
+                            "on-background": "#1f1b17",
+                            "primary-container": "#9e4c2c",
+                            "on-error": "#ffffff",
+                            "on-tertiary": "#ffffff",
+                            "border-subtle": "#E2D6C8",
+                            "on-tertiary-fixed": "#002022",
+                            "tertiary-container": "#006f76",
+                            "status-success": "#3E7C77",
+                            "page-bg": "#F7F2EC",
+                            "primary": "#803517",
+                            "surface-container-low": "#fcf2eb",
+                            "error": "#ba1a1a",
+                            "on-tertiary-fixed-variant": "#004f54",
+                            "secondary-fixed-dim": "#ffb599",
+                            "on-surface-variant": "#55433d",
+                            "error-container": "#ffdad6",
+                            "secondary-panel": "#EFE6DA",
+                            "secondary-fixed": "#ffdbce",
+                            "inverse-on-surface": "#f9efe8",
+                            "on-surface": "#1f1b17",
+                            "surface-tint": "#974727",
+                            "surface-container-high": "#f1e6e0",
+                            "card-bg": "#FFFDFB",
+                            "surface-container-lowest": "#ffffff",
+                            "outline-variant": "#dbc1b9",
+                            "on-secondary-fixed": "#370e00",
+                            "surface-bright": "#fff8f5",
+                            "tertiary-fixed-dim": "#81d4db",
+                            "surface-variant": "#ebe1da",
+                            "surface-dim": "#e2d8d2",
+                            "surface": "#fff8f5",
+                            "tertiary": "#00555a",
+                            "on-primary-fixed-variant": "#793012",
+                            "on-secondary-fixed-variant": "#7b2f09",
+                            "outline": "#88726b",
+                            "secondary-container": "#fd9265",
+                            "primary-fixed-dim": "#ffb59b",
+                            "on-secondary-container": "#742904",
+                            "on-primary": "#ffffff",
+                            "secondary": "#9a4520",
+                            "on-error-container": "#93000a",
+                            "on-secondary": "#ffffff",
+                            "on-tertiary-container": "#9ceff6",
+                            "tertiary-fixed": "#9df0f8",
+                            "on-primary-container": "#ffd9cc",
+                            "background": "#fff8f5",
+                            "inverse-surface": "#352f2b"
+                    },
+                    "borderRadius": {
+                            "DEFAULT": "0.25rem",
+                            "lg": "0.5rem",
+                            "xl": "0.75rem",
+                            "full": "9999px"
+                    },
+                    "spacing": {
+                            "unit": "8px",
+                            "gutter": "16px",
+                            "margin-desktop": "64px",
+                            "margin-mobile": "20px",
+                            "container-max": "1200px"
+                    },
+                    "fontFamily": {
+                            "headline-md": ["Open Sans"],
+                            "eyebrow": ["Open Sans"],
+                            "headline-lg": ["Open Sans"],
+                            "mono-label": ["JetBrains Mono"],
+                            "headline-xl": ["Open Sans"],
+                            "body-lg": ["Open Sans"],
+                            "headline-xl-mobile": ["Open Sans"],
+                            "body-md": ["Open Sans"]
+                    },
+                    "fontSize": {
+                            "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                            "eyebrow": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.15em", "fontWeight": "600"}],
+                            "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                            "mono-label": ["13px", {"lineHeight": "1.0", "fontWeight": "400"}],
+                            "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                            "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                            "headline-xl-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                            "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Base styles forcing minimum constraints based on requirements */
+        body {
+            background-color: #F7F2EC; /* page-bg */
+            min-height: 100vh;
+        }
+        
+        .card-sharp {
+            border-radius: 0;
+            border: 1px solid #E2D6C8; /* border-subtle */
+            background-color: #FFFDFB; /* card-bg */
+        }
+
+        .btn-primary {
+            border-radius: 3px;
+            background-color: #9E4C2C; /* primary-container */
+            color: #FFFDFB;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            transition: opacity 0.2s;
+        }
+        
+        .btn-primary:active {
+            opacity: 0.8;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-page-bg text-on-surface antialiased font-body-md">
+<!-- Top Navigation Placeholder (Hidden for transactional focus) -->
+<!-- Content Canvas -->
+<main class="w-full max-w-[390px] mx-auto px-gutter py-6 flex flex-col gap-6">
+<!-- Header -->
+<header class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center text-text-body hover:text-primary transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Your order</h1>
+</header>
+<!-- Order Card -->
+<section class="card-sharp p-6 flex flex-col gap-6">
+<!-- Breakdown -->
+<div class="flex flex-col gap-4">
+<div class="flex justify-between items-start gap-4">
+<div class="flex flex-col gap-1 flex-1">
+<span class="font-eyebrow text-eyebrow text-text-body uppercase">ASSESSMENT</span>
+<h2 class="font-body-lg text-body-lg text-on-surface font-semibold">PISA Lean Leadership Assessment</h2>
+</div>
+<span class="font-body-md text-body-md text-on-surface whitespace-nowrap">R1 260,87</span>
+</div>
+<div class="flex justify-between items-center border-t border-border-subtle pt-4">
+<span class="font-body-md text-body-md text-text-body">VAT (15%)</span>
+<span class="font-body-md text-body-md text-on-surface">R189,13</span>
+</div>
+<div class="flex justify-between items-center border-t border-border-subtle pt-4">
+<span class="font-headline-md text-headline-md text-on-surface">Total</span>
+<span class="font-headline-md text-headline-md text-primary">R1 450,00</span>
+</div>
+</div>
+<!-- Details -->
+<div class="bg-secondary-panel p-4 flex flex-col gap-3">
+<div class="flex justify-between items-center">
+<span class="font-eyebrow text-eyebrow text-text-body uppercase">REFERENCE</span>
+<span class="font-mono-label text-mono-label text-on-surface">INV-8842-A</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-eyebrow text-eyebrow text-text-body uppercase">ACCOUNT</span>
+<span class="font-body-md text-body-md text-on-surface">sarah.j@company.co.za</span>
+</div>
+</div>
+</section>
+<!-- What happens next -->
+<section class="flex flex-col gap-4 px-2">
+<h3 class="font-headline-md text-headline-md text-on-surface">What happens next</h3>
+<ul class="flex flex-col gap-4">
+<li class="flex gap-4 items-start">
+<span class="w-6 h-6 flex-shrink-0 flex items-center justify-center bg-secondary-panel text-primary font-bold text-sm border border-border-subtle">1</span>
+<p class="font-body-md text-body-md text-text-body pt-0.5">Secure payment processing via Payfast.</p>
+</li>
+<li class="flex gap-4 items-start">
+<span class="w-6 h-6 flex-shrink-0 flex items-center justify-center bg-secondary-panel text-primary font-bold text-sm border border-border-subtle">2</span>
+<p class="font-body-md text-body-md text-text-body pt-0.5">Immediate email delivery of your assessment link.</p>
+</li>
+<li class="flex gap-4 items-start">
+<span class="w-6 h-6 flex-shrink-0 flex items-center justify-center bg-secondary-panel text-primary font-bold text-sm border border-border-subtle">3</span>
+<p class="font-body-md text-body-md text-text-body pt-0.5">VAT Invoice sent to your registered email.</p>
+</li>
+</ul>
+</section>
+<!-- Action Area -->
+<section class="mt-4 flex flex-col gap-4 pb-8">
+<button class="btn-primary w-full font-headline-md text-headline-md font-semibold tracking-wide">
+                Pay R1 450,00 with Payfast
+            </button>
+<div class="flex items-center justify-center gap-2 text-text-body opacity-70">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span class="font-eyebrow text-eyebrow uppercase">SECURE ENCRYPTED CHECKOUT</span>
+</div>
+</section>
+</main>
+</body></html>

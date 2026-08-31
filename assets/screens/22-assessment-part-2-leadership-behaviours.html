@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PISA Consulting - Lean Leadership Assessment</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;1,400&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#370e00",
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#352f2b",
+                        "outline-variant": "#dbc1b9",
+                        "tertiary": "#00555a",
+                        "secondary-fixed": "#ffdbce",
+                        "surface-container-highest": "#ebe1da",
+                        "surface-container-high": "#f1e6e0",
+                        "card-bg": "#FFFDFB",
+                        "surface-tint": "#974727",
+                        "surface": "#fff8f5",
+                        "on-tertiary-fixed": "#002022",
+                        "on-tertiary-fixed-variant": "#004f54",
+                        "text-body": "#4A423C",
+                        "secondary-container": "#fd9265",
+                        "outline": "#88726b",
+                        "on-tertiary": "#ffffff",
+                        "secondary-panel": "#EFE6DA",
+                        "on-secondary-fixed-variant": "#7b2f09",
+                        "primary-fixed-dim": "#ffb59b",
+                        "primary-fixed": "#ffdbcf",
+                        "surface-variant": "#ebe1da",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed": "#380d00",
+                        "tertiary-fixed": "#9df0f8",
+                        "border-subtle": "#E2D6C8",
+                        "page-bg": "#F7F2EC",
+                        "background": "#fff8f5",
+                        "tertiary-container": "#006f76",
+                        "on-primary-container": "#ffd9cc",
+                        "primary-container": "#9e4c2c",
+                        "status-success": "#3E7C77",
+                        "error-container": "#ffdad6",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#f9efe8",
+                        "secondary": "#9a4520",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed-dim": "#ffb599",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#fcf2eb",
+                        "on-primary-fixed-variant": "#793012",
+                        "on-background": "#1f1b17",
+                        "on-secondary-container": "#742904",
+                        "on-surface-variant": "#55433d",
+                        "on-surface": "#1f1b17",
+                        "tertiary-fixed-dim": "#81d4db",
+                        "inverse-primary": "#ffb59b",
+                        "surface-container": "#f6ece5",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#fff8f5",
+                        "surface-dim": "#e2d8d2",
+                        "on-tertiary-container": "#9ceff6",
+                        "primary": "#803517"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "unit": "8px",
+                        "container-max": "1200px",
+                        "margin-mobile": "20px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Open Sans"],
+                        "body-md": ["Open Sans"],
+                        "headline-lg": ["Open Sans"],
+                        "headline-xl": ["Open Sans"],
+                        "headline-xl-mobile": ["Open Sans"],
+                        "eyebrow": ["Open Sans"],
+                        "mono-label": ["JetBrains Mono"],
+                        "body-lg": ["Open Sans"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "headline-xl": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "headline-xl-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "eyebrow": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.15em", "fontWeight": "600" }],
+                        "mono-label": ["13px", { "lineHeight": "1.0", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        input[type="radio"] {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 22px;
+            height: 22px;
+            border: 1px solid #E2D6C8;
+            border-radius: 50%;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+            background-color: #FFFDFB;
+        }
+        input[type="radio"]:checked {
+            border-color: #9E4C2C;
+        }
+        input[type="radio"]:checked::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 12px;
+            background-color: #9E4C2C;
+            border-radius: 50%;
+        }
+        
+        .radio-group-header {
+            display: grid;
+            grid-template-columns: 1fr repeat(5, 60px);
+            gap: 16px;
+            margin-bottom: 8px;
+            align-items: end;
+            padding-bottom: 8px;
+        }
+        
+        .radio-row {
+            display: grid;
+            grid-template-columns: 1fr repeat(5, 60px);
+            gap: 16px;
+            align-items: center;
+        }
+        
+        .radio-cell {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body class="bg-page-bg text-on-surface font-body-md antialiased min-h-screen flex flex-col">
+<!-- TopNavBar (Shared Component) -->
+<nav class="bg-surface dark:bg-inverse-surface border-b border-border-subtle dark:border-outline-variant w-full z-50">
+<div class="flex justify-between items-center h-16 px-margin-desktop max-w-container-max mx-auto w-full">
+<div class="font-headline-md text-headline-md font-semibold text-on-surface dark:text-inverse-on-surface uppercase tracking-widest text-sm">
+                PISA Consulting
+            </div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-text-body dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200 font-eyebrow text-eyebrow" href="#">Our Philosophy</a>
+<a class="text-secondary dark:text-secondary-fixed border-b-2 border-secondary dark:border-secondary-fixed pb-1 font-eyebrow text-eyebrow" href="#">Leadership Programs</a>
+<a class="text-text-body dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200 font-eyebrow text-eyebrow" href="#">Strategic Insights</a>
+<a class="text-text-body dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200 font-eyebrow text-eyebrow" href="#">About Us</a>
+<a class="text-text-body dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200 font-eyebrow text-eyebrow" href="#">Contact</a>
+</div>
+<a class="font-eyebrow text-eyebrow text-primary dark:text-primary-fixed hover:opacity-80 transition-opacity" href="#">Client Portal</a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col items-center w-full px-margin-mobile md:px-0 pt-8 pb-32">
+<div class="w-full max-w-[900px] flex flex-col gap-8">
+<!-- Breadcrumb -->
+<div class="font-mono-label text-mono-label text-text-body">
+                My Assessments &gt; PISA Lean Leadership Assessment &gt; Part 2 of 4
+            </div>
+<!-- Progress Bar Section -->
+<div class="w-full bg-page-bg border-b border-border-subtle h-[47px] flex items-center justify-between sticky top-0 z-40 py-2">
+<div class="flex items-center gap-6">
+<div class="flex gap-2 items-center">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<div class="w-2 h-2 rounded-full border border-secondary"></div>
+<div class="w-2 h-2 rounded-full border border-secondary"></div>
+<div class="w-2 h-2 rounded-full border border-secondary"></div>
+<div class="w-2 h-2 rounded-full border border-secondary"></div>
+<div class="w-2 h-2 rounded-full border border-secondary"></div>
+</div>
+<div class="w-[240px] h-1 bg-border-subtle relative">
+<div class="absolute left-0 top-0 h-full bg-secondary w-[40%]"></div>
+</div>
+<div class="flex gap-4 font-mono-label text-mono-label">
+<span class="text-on-surface">38 / 96 answered</span>
+<span class="text-text-body">Part 2: 14 of 24</span>
+</div>
+</div>
+<div class="px-3 py-1 border border-status-success text-status-success rounded-full font-mono-label text-[11px] uppercase tracking-wider">
+                    Saved
+                </div>
+</div>
+<!-- Header -->
+<div class="flex flex-col gap-2 mt-4">
+<span class="font-eyebrow text-eyebrow text-secondary">PART 2 OF 4</span>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Leadership Behaviours</h1>
+<p class="font-body-md text-body-md text-text-body">How I lead. These statements describe how you work with and through other people.</p>
+</div>
+<!-- Assessment Area -->
+<div class="w-full flex flex-col gap-0 mt-6">
+<!-- Desktop Headers -->
+<div class="hidden md:block">
+<div class="radio-group-header font-eyebrow text-eyebrow text-text-body text-center">
+<div class="text-left opacity-0">Statement</div>
+<div>Never</div>
+<div>Rarely</div>
+<div>Sometimes</div>
+<div>Often</div>
+<div>Always</div>
+</div>
+</div>
+<div class="flex flex-col gap-[14px]">
+<!-- Card 1 -->
+<div class="bg-card-bg border border-border-subtle p-5 rounded">
+<div class="radio-row">
+<div class="flex gap-4 items-start">
+<span class="font-mono-label text-mono-label text-secondary pt-1">25</span>
+<span class="font-body-md text-body-md text-on-surface">I give people the context behind a decision, not just the decision.</span>
+</div>
+<!-- Mobile Headers & Radios -->
+<div class="radio-cell flex-col md:flex-row gap-1 md:gap-0 mt-4 md:mt-0 col-span-5 md:col-span-1 md:col-start-2 flex items-center justify-between md:justify-center w-full">
+<span class="md:hidden font-eyebrow text-eyebrow text-text-body">Never</span>
+<input name="q25" type="radio" value="1"/>
+</div>
+<div class="radio-cell flex-col md:flex-row gap-1 md:gap-0 col-span-5 md:col-span-1 flex items-center justify-between md:justify-center w-full">
+<span class="md:hidden font-eyebrow text-eyebrow text-text-body">Rarely</span>
+<input name="q25" type="radio" value="2"/>
+</div>
+<div class="radio-cell flex-col md:flex-row gap-1 md:gap-0 col-span-5 md:col-span-1 flex items-center justify-between md:justify-center w-full">
+<span class="md:hidden font-eyebrow text-eyebrow text-text-body">Sometimes</span>
+<input name="q25" type="radio" value="3"/>
+</div>
+<div class="radio-cell flex-col md:flex-row gap-1 md:gap-0 col-span-5 md:col-span-1 flex items-center justify-between md:justify-center w-full">
+<span class="md:hidden font-eyebrow text-eyebrow text-text-body">Often</span>
+<input checked="" name="q25" type="radio" value="4"/>
+</div>
+<div class="radio-cell flex-col md:flex-row gap-1 md:gap-0 col-span-5 md:col-span-1 flex items-center justify-between md:justify-center w-full">
+<span class="md:hidden font-eyebrow text-eyebrow text-text-body">Always</span>
+<input name="q25" type="radio" value="5"/>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-card-bg border border-border-subtle p-5 rounded">
+<div class="radio-row">
+<div class="flex gap-4 items-start">
+<span class="font-mono-label text-mono-label text-secondary pt-1">26</span>
+<span class="font-body-md text-body-md text-on-surface">I hold people to what we agreed, without making it personal.</span>
+</div>
+<div class="radio-cell flex-col md:flex-row gap-1 md:gap-0 mt-4 md:mt-0 col-span-5 md:col-span-1 md:col-start-2 flex items-center justify-between md:justify-center w-full">
+<span class="md:hidden font-eyebrow text-eyebrow text-text-body">Never</span>
+<input name="q26" type="radio" value="1"/>
+</div>
+<div class="radio-cell flex-col md:flex-row gap-1 md:gap-0 col-span-5 md:col-span-1 flex items-center justify-between md:justify-center w-full">
+<span class="md:hidden font-eyebrow text-eyebrow text-text-body">Rarely</span>
+<input name="q26" type="radio" value="2"/>
+</div>
+<div class="radio-cell flex-col md:flex-row gap-1 md:gap-0 col-span-5 md:col-span-1 flex items-center justify-between md:justify-center w-full">
+<span class="md:hidden font-eyebrow text-eyebrow text-text-body">Sometimes</span>
+<input checked="" name="q26" type="radio" value="3"/>
+</div>
+<div class="radio-cell flex-col md:flex-row gap-1 md:gap-0 col-span-5 md:col-span-1 flex items-center justify-between md:justify-center w-full">
+<span class="md:hidden font-eyebrow text-eyebrow text-text-body">Often</span>
+<input name="q26" type="radio" value="4"/>
+</div>
+<div class="radio-cell flex-col md:flex-row gap-1 md:gap-0 col-span-5 md:col-span-1 flex items-center justify-between md:justify-center w-full">
+<span class="md:hidden font-eyebrow text-eyebrow text-text-body">Always</span>
+<input name="q26" type="radio" value="5"/>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-card-bg border border-border-subtle p-5 rounded">
+<div class="radio-row">
+<div class="flex gap-4 items-start">
+<span class="font-mono-label text-mono-label text-secondary pt-1">27</span>
+<span class="font-body-md text-body-md text-on-surface">I say the difficult thing early rather than letting it grow.</span>
+</div>
+<div class="radio-cell flex-col md:flex-row gap-1 md:gap-0 mt-4 md:mt-0 col-span-5 md:col-span-1 md:col-start-2 flex items-center justify-between md:justify-center w-full">
+<span class="md:hidden font-eyebrow text-eyebrow text-text-body">Never</span>
+<input name="q27" type="radio" value="1"/>
+</div>
+<div class="radio-cell flex-col md:flex-row gap-1 md:gap-0 col-span-5 md:col-span-1 flex items-center justify-between md:justify-center w-full">
+<span class="md:hidden font-eyebrow text-eyebrow text-text-body">Rarely</span>
+<input name="q27" type="radio" value="2"/>
+</div>
+<div class="radio-cell flex-col md:flex-row gap-1 md:gap-0 col-span-5 md:col-span-1 flex items-center justify-between md:justify-center w-full">
+<span class="md:hidden font-eyebrow text-eyebrow text-text-body">Sometimes</span>
+<input name="q27" type="radio" value="3"/>
+</div>
+<div class="radio-cell flex-col md:flex-row gap-1 md:gap-0 col-span-5 md:col-span-1 flex items-center justify-between md:justify-center w-full">
+<span class="md:hidden font-eyebrow text-eyebrow text-text-body">Often</span>
+<input name="q27" type="radio" value="4"/>
+</div>
+<div class="radio-cell flex-col md:flex-row gap-1 md:gap-0 col-span-5 md:col-span-1 flex items-center justify-between md:justify-center w-full">
+<span class="md:hidden font-eyebrow text-eyebrow text-text-body">Always</span>
+<input checked="" name="q27" type="radio" value="5"/>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-card-bg border border-border-subtle p-5 rounded">
+<div class="radio-row">
+<div class="flex gap-4 items-start">
+<span class="font-mono-label text-mono-label text-secondary pt-1">28</span>
+<span class="font-body-md text-body-md text-on-surface">I change my mind in public when the evidence changes.</span>
+</div>
+<div class="radio-cell flex-col md:flex-row gap-1 md:gap-0 mt-4 md:mt-0 col-span-5 md:col-span-1 md:col-start-2 flex items-center justify-between md:justify-center w-full">
+<span class="md:hidden font-eyebrow text-eyebrow text-text-body">Never</span>
+<input name="q28" type="radio" value="1"/>
+</div>
+<div class="radio-cell flex-col md:flex-row gap-1 md:gap-0 col-span-5 md:col-span-1 flex items-center justify-between md:justify-center w-full">
+<span class="md:hidden font-eyebrow text-eyebrow text-text-body">Rarely</span>
+<input name="q28" type="radio" value="2"/>
+</div>
+<div class="radio-cell flex-col md:flex-row gap-1 md:gap-0 col-span-5 md:col-span-1 flex items-center justify-between md:justify-center w-full">
+<span class="md:hidden font-eyebrow text-eyebrow text-text-body">Sometimes</span>
+<input name="q28" type="radio" value="3"/>
+</div>
+<div class="radio-cell flex-col md:flex-row gap-1 md:gap-0 col-span-5 md:col-span-1 flex items-center justify-between md:justify-center w-full">
+<span class="md:hidden font-eyebrow text-eyebrow text-text-body">Often</span>
+<input name="q28" type="radio" value="4"/>
+</div>
+<div class="radio-cell flex-col md:flex-row gap-1 md:gap-0 col-span-5 md:col-span-1 flex items-center justify-between md:justify-center w-full">
+<span class="md:hidden font-eyebrow text-eyebrow text-text-body">Always</span>
+<input name="q28" type="radio" value="5"/>
+</div>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="bg-card-bg border border-border-subtle p-5 rounded">
+<div class="radio-row">
+<div class="flex gap-4 items-start">
+<span class="font-mono-label text-mono-label text-secondary pt-1">29</span>
+<span class="font-body-md text-body-md text-on-surface">I make sure credit lands with the person who earned it.</span>
+</div>
+<div class="radio-cell flex-col md:flex-row gap-1 md:gap-0 mt-4 md:mt-0 col-span-5 md:col-span-1 md:col-start-2 flex items-center justify-between md:justify-center w-full">
+<span class="md:hidden font-eyebrow text-eyebrow text-text-body">Never</span>
+<input name="q29" type="radio" value="1"/>
+</div>
+<div class="radio-cell flex-col md:flex-row gap-1 md:gap-0 col-span-5 md:col-span-1 flex items-center justify-between md:justify-center w-full">
+<span class="md:hidden font-eyebrow text-eyebrow text-text-body">Rarely</span>
+<input name="q29" type="radio" value="2"/>
+</div>
+<div class="radio-cell flex-col md:flex-row gap-1 md:gap-0 col-span-5 md:col-span-1 flex items-center justify-between md:justify-center w-full">
+<span class="md:hidden font-eyebrow text-eyebrow text-text-body">Sometimes</span>
+<input name="q29" type="radio" value="3"/>
+</div>
+<div class="radio-cell flex-col md:flex-row gap-1 md:gap-0 col-span-5 md:col-span-1 flex items-center justify-between md:justify-center w-full">
+<span class="md:hidden font-eyebrow text-eyebrow text-text-body">Often</span>
+<input checked="" name="q29" type="radio" value="4"/>
+</div>
+<div class="radio-cell flex-col md:flex-row gap-1 md:gap-0 col-span-5 md:col-span-1 flex items-center justify-between md:justify-center w-full">
+<span class="md:hidden font-eyebrow text-eyebrow text-text-body">Always</span>
+<input name="q29" type="radio" value="5"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Navigation Actions -->
+<div class="w-full flex justify-between items-center mt-8 border-t border-border-subtle pt-8">
+<button class="h-[48px] px-8 border border-primary-container text-primary-container rounded-[3px] font-eyebrow text-eyebrow tracking-widest uppercase hover:bg-surface-container-high transition-colors">
+                    Back
+                </button>
+<div class="font-mono-label text-mono-label text-text-body hidden sm:block">
+                    Part 2 of 4, Leadership Behaviours
+                </div>
+<button class="h-[48px] px-8 bg-primary-container text-white rounded-[3px] font-eyebrow text-eyebrow tracking-widest uppercase hover:bg-primary transition-colors">
+                    Next
+                </button>
+</div>
+</div>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="bg-page-bg dark:bg-surface-dim border-t border-border-subtle dark:border-outline-variant mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center py-12 px-margin-desktop max-w-container-max mx-auto w-full">
+<div class="font-body-md text-body-md text-text-body dark:text-on-surface-variant mb-4 md:mb-0">
+                © 2024 Heritage Leadership (PISA Consulting). All rights reserved.
+            </div>
+<div class="flex gap-6">
+<a class="font-eyebrow text-eyebrow text-text-body dark:text-on-surface-variant hover:text-secondary transition-colors duration-200 uppercase" href="#">Privacy Policy</a>
+<a class="font-eyebrow text-eyebrow text-text-body dark:text-on-surface-variant hover:text-secondary transition-colors duration-200 uppercase" href="#">Terms of Service</a>
+<a class="font-eyebrow text-eyebrow text-text-body dark:text-on-surface-variant hover:text-secondary transition-colors duration-200 uppercase" href="#">Ethical Standards</a>
+</div>
+</div>
+</footer>
+</body></html>

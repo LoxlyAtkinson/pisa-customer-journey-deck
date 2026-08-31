@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Leadership Behaviours Assessment</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container-low": "#fcf2eb",
+                        "card-bg": "#FFFDFB",
+                        "tertiary-fixed": "#9df0f8",
+                        "tertiary-fixed-dim": "#81d4db",
+                        "on-tertiary-fixed-variant": "#004f54",
+                        "on-tertiary-container": "#9ceff6",
+                        "error-container": "#ffdad6",
+                        "background": "#fff8f5",
+                        "primary-fixed": "#ffdbcf",
+                        "outline-variant": "#dbc1b9",
+                        "surface-container-high": "#f1e6e0",
+                        "on-tertiary": "#ffffff",
+                        "tertiary": "#00555a",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#1f1b17",
+                        "primary-fixed-dim": "#ffb59b",
+                        "surface-variant": "#ebe1da",
+                        "on-secondary-fixed-variant": "#7b2f09",
+                        "secondary-panel": "#EFE6DA",
+                        "inverse-on-surface": "#f9efe8",
+                        "surface-tint": "#974727",
+                        "page-bg": "#F7F2EC",
+                        "surface-dim": "#e2d8d2",
+                        "on-secondary-container": "#742904",
+                        "inverse-primary": "#ffb59b",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed": "#380d00",
+                        "error": "#ba1a1a",
+                        "primary-container": "#9e4c2c",
+                        "secondary-container": "#fd9265",
+                        "primary": "#803517",
+                        "on-secondary-fixed": "#370e00",
+                        "surface": "#fff8f5",
+                        "on-tertiary-fixed": "#002022",
+                        "on-primary-fixed-variant": "#793012",
+                        "on-error": "#ffffff",
+                        "outline": "#88726b",
+                        "secondary-fixed-dim": "#ffb599",
+                        "on-primary-container": "#ffd9cc",
+                        "secondary-fixed": "#ffdbce",
+                        "border-subtle": "#E2D6C8",
+                        "surface-container": "#f6ece5",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#352f2b",
+                        "tertiary-container": "#006f76",
+                        "text-body": "#4A423C",
+                        "on-surface-variant": "#55433d",
+                        "secondary": "#9a4520",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#ebe1da",
+                        "surface-bright": "#fff8f5",
+                        "on-background": "#1f1b17",
+                        "status-success": "#3E7C77"
+                    },
+                    borderRadius: {
+                        DEFAULT: "3px",
+                        lg: "3px",
+                        xl: "3px",
+                        full: "9999px"
+                    },
+                    spacing: {
+                        "margin-desktop": "64px",
+                        "container-max": "1200px",
+                        "gutter": "16px",
+                        "unit": "8px",
+                        "margin-mobile": "16px"
+                    },
+                    fontFamily: {
+                        "mono-label": ["JetBrains Mono"],
+                        "body-md": ["Open Sans"],
+                        "headline-xl": ["Open Sans"],
+                        "body-lg": ["Open Sans"],
+                        "headline-lg": ["Open Sans"],
+                        "headline-md": ["Open Sans"],
+                        "headline-xl-mobile": ["Open Sans"],
+                        "eyebrow": ["Open Sans"]
+                    },
+                    fontSize: {
+                        "mono-label": ["13px", { lineHeight: "1.0", fontWeight: "400" }],
+                        "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+                        "headline-xl": ["48px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "600" }],
+                        "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+                        "headline-lg": ["32px", { lineHeight: "1.2", fontWeight: "600" }],
+                        "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "600" }],
+                        "headline-xl-mobile": ["32px", { lineHeight: "1.2", fontWeight: "600" }],
+                        "eyebrow": ["12px", { lineHeight: "1.0", letterSpacing: "0.15em", fontWeight: "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .custom-radio {
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border: 1px solid #E2D6C8;
+            border-radius: 50%;
+            background-color: #FFFDFB;
+            cursor: pointer;
+            position: relative;
+            outline: none;
+        }
+        .custom-radio:checked {
+            border-color: #9E4C2C;
+            background-color: #FFFDFB;
+        }
+        .custom-radio:checked::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 12px;
+            background-color: #9E4C2C;
+            border-radius: 50%;
+        }
+        body {
+            background-color: #F7F2EC;
+            color: #2A2521;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="antialiased min-h-screen flex flex-col relative w-full max-w-[390px] mx-auto overflow-x-hidden border-x border-border-subtle bg-[#F7F2EC]">
+<!-- Top Navigation Header -->
+<header class="fixed top-0 w-full max-w-[390px] z-50 bg-[#F7F2EC] border-b border-border-subtle px-margin-mobile h-16 flex justify-between items-center">
+<div class="font-headline-md text-headline-md font-bold tracking-tight text-[#2A2521]">
+            PISA CONSULTING
+        </div>
+<button aria-label="Menu" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</header>
+<!-- Progress Indicator -->
+<div class="pt-20 px-margin-mobile pb-6">
+<div class="flex justify-between items-center mb-2 font-eyebrow text-eyebrow text-text-body">
+<span>PART 2 OF 4</span>
+<span>25%</span>
+</div>
+<div class="h-1 bg-surface-variant w-full overflow-hidden">
+<div class="h-full bg-primary-container w-1/4"></div>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-[#2A2521] mt-6 mb-2">Leadership Behaviours</h1>
+<p class="font-body-md text-body-md text-text-body">Please rate how frequently you exhibit the following behaviours in your current role.</p>
+</div>
+<!-- Assessment Form -->
+<main class="flex-1 px-margin-mobile pb-24">
+<!-- Statement Card 1 -->
+<div class="bg-card-bg border border-border-subtle p-6 mb-6">
+<p class="font-body-lg text-body-lg text-[#2A2521] mb-8 font-semibold">1. I actively seek out diverse perspectives when making strategic decisions.</p>
+<div class="flex justify-between items-center relative before:content-[''] before:absolute before:top-3 before:left-3 before:right-3 before:h-[1px] before:bg-border-subtle before:z-0">
+<label class="flex flex-col items-center gap-2 z-10 cursor-pointer group">
+<input class="custom-radio" name="q1" type="radio" value="1"/>
+<span class="font-mono-label text-mono-label text-text-body group-hover:text-primary-container transition-colors">Never</span>
+</label>
+<label class="flex flex-col items-center gap-2 z-10 cursor-pointer group">
+<input class="custom-radio" name="q1" type="radio" value="2"/>
+<span class="font-mono-label text-mono-label text-text-body group-hover:text-primary-container transition-colors">Rarely</span>
+</label>
+<label class="flex flex-col items-center gap-2 z-10 cursor-pointer group">
+<input class="custom-radio" name="q1" type="radio" value="3"/>
+<span class="font-mono-label text-mono-label text-text-body group-hover:text-primary-container transition-colors">Sometimes</span>
+</label>
+<label class="flex flex-col items-center gap-2 z-10 cursor-pointer group">
+<input class="custom-radio" name="q1" type="radio" value="4"/>
+<span class="font-mono-label text-mono-label text-text-body group-hover:text-primary-container transition-colors">Often</span>
+</label>
+<label class="flex flex-col items-center gap-2 z-10 cursor-pointer group">
+<input class="custom-radio" name="q1" type="radio" value="5"/>
+<span class="font-mono-label text-mono-label text-text-body group-hover:text-primary-container transition-colors">Always</span>
+</label>
+</div>
+</div>
+<!-- Statement Card 2 -->
+<div class="bg-card-bg border border-border-subtle p-6 mb-6">
+<p class="font-body-lg text-body-lg text-[#2A2521] mb-8 font-semibold">2. I delegate complex tasks to team members to foster their professional growth.</p>
+<div class="flex justify-between items-center relative before:content-[''] before:absolute before:top-3 before:left-3 before:right-3 before:h-[1px] before:bg-border-subtle before:z-0">
+<label class="flex flex-col items-center gap-2 z-10 cursor-pointer group">
+<input class="custom-radio" name="q2" type="radio" value="1"/>
+<span class="font-mono-label text-mono-label text-text-body group-hover:text-primary-container transition-colors">Never</span>
+</label>
+<label class="flex flex-col items-center gap-2 z-10 cursor-pointer group">
+<input class="custom-radio" name="q2" type="radio" value="2"/>
+<span class="font-mono-label text-mono-label text-text-body group-hover:text-primary-container transition-colors">Rarely</span>
+</label>
+<label class="flex flex-col items-center gap-2 z-10 cursor-pointer group">
+<input class="custom-radio" name="q2" type="radio" value="3"/>
+<span class="font-mono-label text-mono-label text-text-body group-hover:text-primary-container transition-colors">Sometimes</span>
+</label>
+<label class="flex flex-col items-center gap-2 z-10 cursor-pointer group">
+<input class="custom-radio" name="q2" type="radio" value="4"/>
+<span class="font-mono-label text-mono-label text-text-body group-hover:text-primary-container transition-colors">Often</span>
+</label>
+<label class="flex flex-col items-center gap-2 z-10 cursor-pointer group">
+<input class="custom-radio" name="q2" type="radio" value="5"/>
+<span class="font-mono-label text-mono-label text-text-body group-hover:text-primary-container transition-colors">Always</span>
+</label>
+</div>
+</div>
+<!-- Statement Card 3 -->
+<div class="bg-card-bg border border-border-subtle p-6 mb-8">
+<p class="font-body-lg text-body-lg text-[#2A2521] mb-8 font-semibold">3. I provide constructive, actionable feedback immediately following significant events.</p>
+<div class="flex justify-between items-center relative before:content-[''] before:absolute before:top-3 before:left-3 before:right-3 before:h-[1px] before:bg-border-subtle before:z-0">
+<label class="flex flex-col items-center gap-2 z-10 cursor-pointer group">
+<input class="custom-radio" name="q3" type="radio" value="1"/>
+<span class="font-mono-label text-mono-label text-text-body group-hover:text-primary-container transition-colors">Never</span>
+</label>
+<label class="flex flex-col items-center gap-2 z-10 cursor-pointer group">
+<input class="custom-radio" name="q3" type="radio" value="2"/>
+<span class="font-mono-label text-mono-label text-text-body group-hover:text-primary-container transition-colors">Rarely</span>
+</label>
+<label class="flex flex-col items-center gap-2 z-10 cursor-pointer group">
+<input class="custom-radio" name="q3" type="radio" value="3"/>
+<span class="font-mono-label text-mono-label text-text-body group-hover:text-primary-container transition-colors">Sometimes</span>
+</label>
+<label class="flex flex-col items-center gap-2 z-10 cursor-pointer group">
+<input class="custom-radio" name="q3" type="radio" value="4"/>
+<span class="font-mono-label text-mono-label text-text-body group-hover:text-primary-container transition-colors">Often</span>
+</label>
+<label class="flex flex-col items-center gap-2 z-10 cursor-pointer group">
+<input class="custom-radio" name="q3" type="radio" value="5"/>
+<span class="font-mono-label text-mono-label text-text-body group-hover:text-primary-container transition-colors">Always</span>
+</label>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Actions -->
+<div class="fixed bottom-0 w-full max-w-[390px] bg-[#F7F2EC] border-t border-border-subtle p-margin-mobile flex gap-4 z-40 pb-8">
+<button class="h-12 flex-1 border border-primary-container text-primary-container font-eyebrow text-eyebrow rounded bg-transparent hover:bg-surface-variant transition-colors flex items-center justify-center">
+            BACK
+        </button>
+<button class="h-12 flex-[2] bg-primary-container text-on-primary font-eyebrow text-eyebrow rounded hover:bg-primary transition-colors flex items-center justify-center">
+            NEXT
+        </button>
+</div>
+</body></html>

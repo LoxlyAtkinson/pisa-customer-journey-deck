@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Leadership Assessments Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&amp;family=Open+Sans:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#ffb59b",
+                        "on-background": "#1f1b17",
+                        "tertiary-fixed": "#9df0f8",
+                        "on-primary-container": "#ffd9cc",
+                        "surface-container-highest": "#ebe1da",
+                        "secondary": "#9a4520",
+                        "text-body": "#4A423C",
+                        "on-surface-variant": "#55433d",
+                        "on-primary-fixed": "#380d00",
+                        "tertiary-container": "#006f76",
+                        "primary-container": "#9e4c2c",
+                        "surface-container-low": "#fcf2eb",
+                        "border-subtle": "#E2D6C8",
+                        "on-tertiary-container": "#9ceff6",
+                        "on-surface": "#1f1b17",
+                        "surface-variant": "#ebe1da",
+                        "on-primary": "#ffffff",
+                        "secondary-panel": "#EFE6DA",
+                        "primary-fixed-dim": "#ffb59b",
+                        "on-error": "#ffffff",
+                        "background": "#fff8f5",
+                        "on-secondary": "#ffffff",
+                        "outline": "#88726b",
+                        "primary": "#803517",
+                        "outline-variant": "#dbc1b9",
+                        "error-container": "#ffdad6",
+                        "surface": "#fff8f5",
+                        "on-secondary-fixed": "#370e00",
+                        "surface-tint": "#974727",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#793012",
+                        "page-bg": "#F7F2EC",
+                        "surface-container-high": "#f1e6e0",
+                        "inverse-on-surface": "#f9efe8",
+                        "on-secondary-fixed-variant": "#7b2f09",
+                        "error": "#ba1a1a",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed": "#ffdbce",
+                        "inverse-surface": "#352f2b",
+                        "secondary-fixed-dim": "#ffb599",
+                        "tertiary": "#00555a",
+                        "on-secondary-container": "#742904",
+                        "on-tertiary-fixed": "#002022",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed-variant": "#004f54",
+                        "primary-fixed": "#ffdbcf",
+                        "tertiary-fixed-dim": "#81d4db",
+                        "surface-dim": "#e2d8d2",
+                        "card-bg": "#FFFDFB",
+                        "status-success": "#3E7C77",
+                        "surface-bright": "#fff8f5",
+                        "secondary-container": "#fd9265",
+                        "surface-container": "#f6ece5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "20px",
+                        "gutter": "24px",
+                        "margin-desktop": "64px",
+                        "unit": "8px",
+                        "container-max": "1200px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Open Sans"],
+                        "headline-md": ["Open Sans"],
+                        "headline-xl-mobile": ["Open Sans"],
+                        "eyebrow": ["Open Sans"],
+                        "body-md": ["Open Sans"],
+                        "mono-label": ["JetBrains Mono"],
+                        "body-lg": ["Open Sans"],
+                        "headline-xl": ["Open Sans"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "headline-xl-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "eyebrow": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.15em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "mono-label": ["13px", { "lineHeight": "1.0", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-xl": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #F7F2EC; }
+        .material-symbols-outlined {
+          font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md text-text-body antialiased flex h-screen overflow-hidden">
+<!-- SideNavBar from JSON -->
+<nav class="bg-secondary-panel border-r border-border-subtle h-screen left-0 fixed top-0 w-64 flex flex-col py-8 z-40">
+<div class="px-gutter mb-12">
+<div class="flex items-center space-x-3 mb-2">
+<div class="w-10 h-10 bg-primary text-on-primary flex items-center justify-center font-headline-md text-headline-md">
+                    AP
+                </div>
+<div>
+<h1 class="font-headline-md text-headline-md text-primary">Admin Panel</h1>
+<p class="font-eyebrow text-eyebrow text-text-body opacity-70 mt-1">Consultancy Portal</p>
+</div>
+</div>
+</div>
+<div class="flex-grow">
+<ul class="flex flex-col">
+<li class="px-gutter py-3 text-primary font-bold border-r-2 border-primary cursor-pointer flex items-center space-x-3 hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</li>
+<li class="px-gutter py-3 text-text-body cursor-pointer flex items-center space-x-3 hover:bg-surface-container-high transition-all active:scale-95">
+<span class="material-symbols-outlined">group</span>
+<span class="font-body-md text-body-md">Users</span>
+</li>
+<li class="px-gutter py-3 text-text-body cursor-pointer flex items-center space-x-3 hover:bg-surface-container-high transition-all active:scale-95">
+<span class="material-symbols-outlined">assignment</span>
+<span class="font-body-md text-body-md">Assessments</span>
+</li>
+<li class="px-gutter py-3 text-text-body cursor-pointer flex items-center space-x-3 hover:bg-surface-container-high transition-all active:scale-95">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-body-md text-body-md">Analytics</span>
+</li>
+<li class="px-gutter py-3 text-text-body cursor-pointer flex items-center space-x-3 hover:bg-surface-container-high transition-all active:scale-95">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</li>
+</ul>
+</div>
+<div class="px-gutter mt-auto">
+<button class="w-full h-12 bg-primary text-on-primary font-body-md text-body-md flex items-center justify-center hover:bg-primary-fixed-variant transition-colors">
+                Export Report
+            </button>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="ml-64 flex-1 h-screen overflow-y-auto px-margin-desktop py-12">
+<header class="mb-12 flex justify-between items-end">
+<div>
+<h2 class="font-headline-xl text-headline-xl text-primary mb-2">Leadership Assessments</h2>
+<p class="font-body-lg text-body-lg text-text-body max-w-2xl">Overview of executive evaluation metrics and user progress.</p>
+</div>
+<div class="flex items-center space-x-4">
+<button class="h-12 px-6 border border-primary text-primary font-body-md text-body-md flex items-center hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined mr-2">filter_list</span>
+                    Filter
+                </button>
+</div>
+</header>
+<!-- Stats Overview Bento -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-12">
+<div class="bg-card-bg border border-border-subtle p-8 flex flex-col justify-between h-40 hover:bg-surface-container transition-colors">
+<span class="font-eyebrow text-eyebrow text-text-body uppercase">Total Registered</span>
+<div class="flex items-baseline space-x-2 mt-auto">
+<span class="font-headline-xl text-headline-xl text-primary">1,248</span>
+<span class="font-body-md text-body-md text-status-success flex items-center">
+<span class="material-symbols-outlined text-[16px] mr-1">arrow_upward</span> 12%
+                    </span>
+</div>
+</div>
+<div class="bg-card-bg border border-border-subtle p-8 flex flex-col justify-between h-40 hover:bg-surface-container transition-colors">
+<span class="font-eyebrow text-eyebrow text-text-body uppercase">Assessments Taken</span>
+<div class="flex items-baseline space-x-2 mt-auto">
+<span class="font-headline-xl text-headline-xl text-primary">892</span>
+<span class="font-body-md text-body-md text-status-success flex items-center">
+<span class="material-symbols-outlined text-[16px] mr-1">arrow_upward</span> 5%
+                    </span>
+</div>
+</div>
+<div class="bg-card-bg border border-border-subtle p-8 flex flex-col justify-between h-40 hover:bg-surface-container transition-colors">
+<span class="font-eyebrow text-eyebrow text-text-body uppercase">Completion Rate</span>
+<div class="flex items-baseline space-x-2 mt-auto">
+<span class="font-headline-xl text-headline-xl text-primary">71.4%</span>
+<span class="font-body-md text-body-md text-text-body opacity-70 flex items-center">
+                        Target: 75%
+                    </span>
+</div>
+</div>
+</section>
+<!-- Data Table -->
+<section class="bg-card-bg border border-border-subtle">
+<div class="px-8 py-6 border-b border-border-subtle flex justify-between items-center bg-surface-container-low">
+<h3 class="font-headline-md text-headline-md text-primary">Recent User Activity</h3>
+<div class="relative w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 transform -translate-y-1/2 text-text-body">search</span>
+<input class="w-full h-12 pl-10 pr-4 bg-card-bg border border-border-subtle font-body-md text-body-md focus:outline-none focus:border-primary transition-colors" placeholder="Search users..." type="text"/>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container border-b border-border-subtle">
+<th class="px-8 py-4 font-eyebrow text-eyebrow text-text-body uppercase">Name / ID</th>
+<th class="px-8 py-4 font-eyebrow text-eyebrow text-text-body uppercase">Date Registered</th>
+<th class="px-8 py-4 font-eyebrow text-eyebrow text-text-body uppercase">Last Assessment</th>
+<th class="px-8 py-4 font-eyebrow text-eyebrow text-text-body uppercase">Status</th>
+<th class="px-8 py-4 font-eyebrow text-eyebrow text-text-body uppercase text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-subtle">
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-8 py-6">
+<div class="font-body-lg text-body-lg text-primary font-semibold">Sarah Jenkins</div>
+<div class="font-mono-label text-mono-label text-text-body opacity-70 mt-1">#REF-8842-A</div>
+</td>
+<td class="px-8 py-6 font-body-md text-body-md text-text-body">Oct 12, 2023</td>
+<td class="px-8 py-6 font-body-md text-body-md text-text-body">Strategic Vision (Nov 1)</td>
+<td class="px-8 py-6">
+<span class="inline-flex items-center px-3 py-1 bg-status-success text-on-primary font-eyebrow text-eyebrow uppercase">
+                                    Completed
+                                </span>
+</td>
+<td class="px-8 py-6 text-right">
+<button class="h-12 px-6 border border-primary-container text-primary-container bg-transparent font-body-md text-body-md hover:bg-surface-container transition-colors inline-flex items-center justify-center">
+                                    Email User
+                                </button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-8 py-6">
+<div class="font-body-lg text-body-lg text-primary font-semibold">Michael Chen</div>
+<div class="font-mono-label text-mono-label text-text-body opacity-70 mt-1">#REF-9102-C</div>
+</td>
+<td class="px-8 py-6 font-body-md text-body-md text-text-body">Oct 15, 2023</td>
+<td class="px-8 py-6 font-body-md text-body-md text-text-body">Conflict Resolution (Pending)</td>
+<td class="px-8 py-6">
+<span class="inline-flex items-center px-3 py-1 border border-border-subtle text-text-body font-eyebrow text-eyebrow uppercase">
+                                    In Progress
+                                </span>
+</td>
+<td class="px-8 py-6 text-right">
+<button class="h-12 px-6 border border-primary-container text-primary-container bg-transparent font-body-md text-body-md hover:bg-surface-container transition-colors inline-flex items-center justify-center">
+                                    Email User
+                                </button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-8 py-6">
+<div class="font-body-lg text-body-lg text-primary font-semibold">Dr. Elena Rostova</div>
+<div class="font-mono-label text-mono-label text-text-body opacity-70 mt-1">#REF-7719-B</div>
+</td>
+<td class="px-8 py-6 font-body-md text-body-md text-text-body">Sep 28, 2023</td>
+<td class="px-8 py-6 font-body-md text-body-md text-text-body">Emotional Intelligence (Oct 5)</td>
+<td class="px-8 py-6">
+<span class="inline-flex items-center px-3 py-1 bg-status-success text-on-primary font-eyebrow text-eyebrow uppercase">
+                                    Completed
+                                </span>
+</td>
+<td class="px-8 py-6 text-right">
+<button class="h-12 px-6 border border-primary-container text-primary-container bg-transparent font-body-md text-body-md hover:bg-surface-container transition-colors inline-flex items-center justify-center">
+                                    Email User
+                                </button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-8 py-6">
+<div class="font-body-lg text-body-lg text-primary font-semibold">David Mokoena</div>
+<div class="font-mono-label text-mono-label text-text-body opacity-70 mt-1">#REF-6521-D</div>
+</td>
+<td class="px-8 py-6 font-body-md text-body-md text-text-body">Oct 20, 2023</td>
+<td class="px-8 py-6 font-body-md text-body-md text-text-body">-</td>
+<td class="px-8 py-6">
+<span class="inline-flex items-center px-3 py-1 bg-surface-container-high text-text-body border border-border-subtle font-eyebrow text-eyebrow uppercase">
+                                    Not Started
+                                </span>
+</td>
+<td class="px-8 py-6 text-right">
+<button class="h-12 px-6 border border-primary-container text-primary-container bg-transparent font-body-md text-body-md hover:bg-surface-container transition-colors inline-flex items-center justify-center">
+                                    Email User
+                                </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-8 py-4 border-t border-border-subtle flex justify-between items-center text-text-body bg-surface-container-low">
+<span class="font-body-md text-body-md">Showing 1 to 4 of 1,248 entries</span>
+<div class="flex space-x-2">
+<button class="w-10 h-10 border border-border-subtle flex items-center justify-center hover:bg-surface-container transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 border border-border-subtle flex items-center justify-center bg-primary text-on-primary font-mono-label text-mono-label">1</button>
+<button class="w-10 h-10 border border-border-subtle flex items-center justify-center hover:bg-surface-container transition-colors font-mono-label text-mono-label">2</button>
+<button class="w-10 h-10 border border-border-subtle flex items-center justify-center hover:bg-surface-container transition-colors font-mono-label text-mono-label">3</button>
+<span class="w-10 h-10 flex items-center justify-center">...</span>
+<button class="w-10 h-10 border border-border-subtle flex items-center justify-center hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+</body></html>

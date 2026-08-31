@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PISA Lean Leadership Assessment - PISA Consulting</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-container": "#006f76",
+                      "on-tertiary-fixed-variant": "#004f54",
+                      "on-surface": "#1f1b17",
+                      "on-secondary-container": "#742904",
+                      "text-body": "#4A423C",
+                      "on-surface-variant": "#55433d",
+                      "card-bg": "#FFFDFB",
+                      "surface": "#fff8f5",
+                      "secondary-fixed": "#ffdbce",
+                      "surface-container-high": "#f1e6e0",
+                      "primary-container": "#9e4c2c",
+                      "on-error": "#ffffff",
+                      "secondary-panel": "#EFE6DA",
+                      "inverse-on-surface": "#f9efe8",
+                      "error-container": "#ffdad6",
+                      "surface-container-low": "#fcf2eb",
+                      "page-bg": "#F7F2EC",
+                      "primary-fixed": "#ffdbcf",
+                      "on-secondary-fixed-variant": "#7b2f09",
+                      "secondary": "#9a4520",
+                      "border-subtle": "#E2D6C8",
+                      "on-background": "#1f1b17",
+                      "primary": "#803517",
+                      "primary-fixed-dim": "#ffb59b",
+                      "surface-tint": "#974727",
+                      "on-secondary": "#ffffff",
+                      "on-primary-container": "#ffd9cc",
+                      "surface-dim": "#e2d8d2",
+                      "tertiary-fixed-dim": "#81d4db",
+                      "surface-bright": "#fff8f5",
+                      "surface-variant": "#ebe1da",
+                      "on-tertiary-container": "#9ceff6",
+                      "inverse-primary": "#ffb59b",
+                      "outline": "#88726b",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-fixed": "#380d00",
+                      "on-error-container": "#93000a",
+                      "inverse-surface": "#352f2b",
+                      "on-primary-fixed-variant": "#793012",
+                      "surface-container-highest": "#ebe1da",
+                      "secondary-fixed-dim": "#ffb599",
+                      "on-primary": "#ffffff",
+                      "status-success": "#3E7C77",
+                      "tertiary": "#00555a",
+                      "on-tertiary-fixed": "#002022",
+                      "error": "#ba1a1a",
+                      "tertiary-fixed": "#9df0f8",
+                      "secondary-container": "#fd9265",
+                      "surface-container-lowest": "#ffffff",
+                      "outline-variant": "#dbc1b9",
+                      "surface-container": "#f6ece5",
+                      "on-secondary-fixed": "#370e00",
+                      "background": "#fff8f5",
+                      // Specific overrides based on prompt requirements
+                      "charcoal": "#2A2521",
+                      "pisa-cream": "#F7F2EC",
+                      "pisa-deep-cream": "#EFE6DA",
+                      "pisa-border": "#E2D6C8",
+                      "pisa-eyebrow": "#F1DDD1",
+                      "pisa-primary": "#9E4C2C",
+                      "pisa-active-tab": "#C0623A"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0px",
+                      "none": "0px",
+                      "sm": "0px",
+                      "md": "0px",
+                      "lg": "0px",
+                      "xl": "0px",
+                      "2xl": "0px",
+                      "3xl": "0px",
+                      "full": "0px",
+                      "btn": "3px" // Specific requirement for buttons
+              },
+              "spacing": {
+                      "margin-desktop": "64px",
+                      "unit": "8px",
+                      "container-max": "1200px",
+                      "margin-mobile": "20px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "eyebrow": ["Open Sans"],
+                      "body-lg": ["Open Sans"],
+                      "headline-lg": ["Open Sans"],
+                      "headline-md": ["Open Sans"],
+                      "mono-label": ["JetBrains Mono"],
+                      "headline-xl": ["Open Sans"],
+                      "body-md": ["Open Sans"],
+                      "headline-xl-mobile": ["Open Sans"]
+              },
+              "fontSize": {
+                      "eyebrow": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.15em", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "mono-label": ["13px", {"lineHeight": "1.0", "fontWeight": "400"}],
+                      "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-xl-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "pisa-body": ["17px", {"lineHeight": "1.6", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        body {
+            background-color: #F7F2EC;
+            color: #4A423C;
+        }
+        .material-symbols-outlined {
+          font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="font-body-md antialiased min-h-screen flex flex-col selection:bg-pisa-primary selection:text-white">
+<!-- 1. Header -->
+<header class="h-[72px] bg-pisa-cream border-b border-pisa-border sticky top-0 z-50 flex items-center px-8 md:px-margin-desktop justify-between w-full">
+<div class="font-headline-md tracking-tight text-charcoal flex items-center gap-2">
+            PISA CONSULTING
+        </div>
+<nav class="hidden md:flex items-center gap-8 font-body-md text-charcoal">
+<a class="hover:text-pisa-primary transition-colors border-b-2 border-transparent hover:border-pisa-primary py-1" href="#">Assessments</a>
+<a class="hover:text-pisa-primary transition-colors border-b-2 border-transparent hover:border-pisa-primary py-1" href="#">Sign in</a>
+</nav>
+<button class="md:hidden text-charcoal flex items-center justify-center p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<main class="flex-grow flex flex-col w-full">
+<!-- 2. Breadcrumbs -->
+<div class="w-full bg-pisa-cream px-8 md:px-margin-desktop py-4">
+<div class="max-w-container-max mx-auto w-full">
+<nav aria-label="Breadcrumb" class="text-[13px] text-text-body font-mono-label flex items-center gap-2 opacity-80">
+<a class="hover:text-pisa-primary transition-colors" href="#">Home</a>
+<span>/</span>
+<a class="hover:text-pisa-primary transition-colors" href="#">Assessments</a>
+<span>/</span>
+<span class="text-charcoal font-semibold">PISA Lean Leadership Assessment</span>
+</nav>
+</div>
+</div>
+<!-- 3. Hero -->
+<section class="w-full bg-charcoal min-h-[440px] flex flex-col md:flex-row relative overflow-hidden text-pisa-cream">
+<div class="w-full md:w-[60%] px-8 md:pl-margin-desktop py-12 md:py-16 flex flex-col justify-center z-10 max-w-container-max md:ml-auto">
+<div class="md:pr-12 lg:pr-24">
+<span class="text-[12px] uppercase tracking-widest font-semibold text-pisa-eyebrow mb-4 block">ASSESSMENT</span>
+<h1 class="text-headline-xl-mobile md:text-headline-xl text-pisa-cream mb-4 font-semibold leading-tight">PISA Lean Leadership Assessment</h1>
+<p class="text-body-lg text-pisa-deep-cream mb-8 opacity-90 max-w-2xl">Understand how you lead and discover areas for strategic growth within the Lean framework.</p>
+<div class="flex flex-wrap items-center gap-y-2 gap-x-4 text-[13px] text-pisa-deep-cream font-mono-label mb-10 py-3 border-y border-pisa-border/20">
+<span class="flex items-center gap-1.5 whitespace-nowrap"><span class="material-symbols-outlined text-[16px]">article</span> 96 statements</span>
+<span class="hidden sm:inline text-pisa-border/30">|</span>
+<span class="flex items-center gap-1.5 whitespace-nowrap"><span class="material-symbols-outlined text-[16px]">pie_chart</span> 4 areas</span>
+<span class="hidden sm:inline text-pisa-border/30">|</span>
+<span class="flex items-center gap-1.5 whitespace-nowrap"><span class="material-symbols-outlined text-[16px]">schedule</span> About 20 to 25 minutes</span>
+<span class="hidden sm:inline text-pisa-border/30">|</span>
+<span class="flex items-center gap-1.5 whitespace-nowrap"><span class="material-symbols-outlined text-[16px]">devices</span> Online, at your own pace</span>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-end gap-6 mb-8">
+<div>
+<div class="text-[32px] font-headline-lg text-pisa-cream leading-none mb-1">R1 450,00</div>
+<div class="text-[13px] text-pisa-deep-cream opacity-80">Includes VAT at 15%</div>
+</div>
+<div class="flex flex-col gap-2 w-full sm:w-auto mt-4 sm:mt-0">
+<button class="bg-pisa-primary hover:bg-pisa-primary/90 text-white w-full sm:w-[240px] h-[48px] rounded-btn font-semibold flex items-center justify-center transition-colors shadow-none border-0">
+                                Buy this assessment
+                            </button>
+<span class="text-[13px] text-pisa-deep-cream opacity-80 text-center sm:text-left">You will create your account on the next page</span>
+</div>
+</div>
+</div>
+</div>
+<div class="w-full md:w-[40%] h-[300px] md:h-auto relative z-0">
+<div class="absolute inset-0 bg-cover bg-center md:bg-left w-full h-full opacity-80 mix-blend-luminosity hover:mix-blend-normal transition-all duration-700" data-alt="A calm, modern, minimalist meeting room bathed in soft, natural daylight. The aesthetic is strictly editorial and high-end corporate. The palette features muted tones of cream, taupe, and charcoal. A sleek, unadorned wooden table and contemporary ergonomic chairs are visible, but the focus is on the spacious, serene, and uncluttered atmosphere suitable for executive leadership discussions." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDaJVPgIRoSzMwrceje0QeaLb-s9goWz0rQQqAUwE0GI64D9vFwQgE0J1RAltervGHgRXp8TLgZYPUzG3g-XpSDv4Cog6YrdKvLLe47ATIzNQci5ek80cxLB8P6gPao5wLBKsO-CEEnReWOej1K6dQX6WSU77Vv_jdGi6x8g1seF9P1acQkg6KweL_0H-Dc0C4Gh9xiWDsMZaRQ254fk7x_-6Mu5_O1QBdSwoM-DE4lSxQBfFhj7EY')"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-charcoal via-charcoal/80 to-transparent hidden md:block"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-charcoal to-transparent block md:hidden"></div>
+</div>
+</section>
+<!-- 4. Tab Strip -->
+<div class="w-full h-[56px] bg-card-bg border-b border-pisa-border px-8 md:px-margin-desktop sticky top-[72px] z-40">
+<div class="max-w-container-max mx-auto h-full flex items-end gap-8 overflow-x-auto no-scrollbar whitespace-nowrap">
+<a class="h-full flex items-center px-1 border-b-[3px] border-pisa-active-tab text-charcoal font-semibold text-body-md" href="#">Overview</a>
+<a class="h-full flex items-center px-1 border-b-[3px] border-transparent text-text-body hover:text-charcoal hover:border-pisa-border transition-colors text-body-md" href="#">What it measures</a>
+<a class="h-full flex items-center px-1 border-b-[3px] border-transparent text-text-body hover:text-charcoal hover:border-pisa-border transition-colors text-body-md" href="#">Your report</a>
+<a class="h-full flex items-center px-1 border-b-[3px] border-transparent text-text-body hover:text-charcoal hover:border-pisa-border transition-colors text-body-md" href="#">Sample report</a>
+<a class="h-full flex items-center px-1 border-b-[3px] border-transparent text-text-body hover:text-charcoal hover:border-pisa-border transition-colors text-body-md" href="#">Questions</a>
+</div>
+</div>
+<!-- 5. Content -->
+<section class="w-full px-8 md:px-margin-desktop py-16 md:py-24 bg-page-bg">
+<div class="max-w-container-max mx-auto flex justify-center">
+<div class="w-full max-w-[780px] bg-card-bg p-8 md:p-12 border border-pisa-border">
+<h2 class="text-headline-md text-charcoal mb-8 border-b border-pisa-border pb-4">What this assessment is for</h2>
+<div class="space-y-6 text-pisa-body text-text-body">
+<p>The PISA Lean Leadership Assessment provides a clear, objective measure of your current leadership behaviors against the core principles of Lean management. It is designed not to evaluate your technical knowledge, but rather to reveal the underlying habits and mindsets that drive your day-to-day decision making and team interactions.</p>
+<p>By answering a carefully structured series of statements, you will uncover your natural tendencies in areas such as problem-solving orientation, respect for people, continuous improvement focus, and systemic thinking. The resulting profile acts as a precise mirror, reflecting both your inherent strengths and the blind spots that may be hindering organizational flow.</p>
+<p>This assessment is the foundational step for leaders who are committed to moving beyond theoretical management concepts towards practical, sustainable execution. It provides the empirical baseline necessary to craft a targeted personal development plan, ultimately enabling you to cultivate a more resilient, engaged, and high-performing culture within your sphere of influence.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. Bottom CTA Band -->
+<section class="w-full h-auto min-h-[180px] bg-pisa-deep-cream border-t border-pisa-border py-12 px-8 flex flex-col items-center justify-center text-center">
+<h3 class="text-headline-md text-charcoal mb-3">Ready to start?</h3>
+<p class="text-body-md text-text-body mb-6 max-w-md">Purchase the assessment now and receive immediate access to the questionnaire and your comprehensive personalized report.</p>
+<button class="bg-pisa-primary hover:bg-pisa-primary/90 text-white w-full sm:w-[240px] h-[48px] rounded-btn font-semibold flex items-center justify-center transition-colors shadow-none border-0">
+                Buy this assessment
+            </button>
+</section>
+</main>
+<!-- 7. Footer -->
+<footer class="w-full min-h-[160px] bg-charcoal text-pisa-cream py-12 px-8 md:px-margin-desktop flex flex-col md:flex-row items-center justify-between gap-6 border-t border-[#1a1714]">
+<div class="font-headline-md tracking-tight text-pisa-cream flex items-center gap-2">
+            PISA CONSULTING
+        </div>
+<nav class="flex flex-wrap justify-center gap-6 text-[13px] font-mono-label opacity-80">
+<a class="hover:text-white hover:underline transition-all" href="#">Privacy Policy</a>
+<a class="hover:text-white hover:underline transition-all" href="#">Terms of Service</a>
+<a class="hover:text-white hover:underline transition-all" href="#">Contact</a>
+</nav>
+<div class="text-[12px] opacity-60 font-body-md text-center md:text-right">
+            © 2024 PISA Consulting. All Rights Reserved.
+        </div>
+</footer>
+</body></html>

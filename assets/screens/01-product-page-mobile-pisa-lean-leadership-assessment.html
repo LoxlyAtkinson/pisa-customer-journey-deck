@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=390, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>PISA Lean Leadership Assessment - Mobile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#006f76",
+                        "on-tertiary-fixed-variant": "#004f54",
+                        "on-surface": "#1f1b17",
+                        "on-secondary-container": "#742904",
+                        "text-body": "#4A423C",
+                        "on-surface-variant": "#55433d",
+                        "card-bg": "#FFFDFB",
+                        "surface": "#fff8f5",
+                        "secondary-fixed": "#ffdbce",
+                        "surface-container-high": "#f1e6e0",
+                        "primary-container": "#9e4c2c",
+                        "on-error": "#ffffff",
+                        "secondary-panel": "#EFE6DA",
+                        "inverse-on-surface": "#f9efe8",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#fcf2eb",
+                        "page-bg": "#F7F2EC",
+                        "primary-fixed": "#ffdbcf",
+                        "on-secondary-fixed-variant": "#7b2f09",
+                        "secondary": "#9a4520",
+                        "border-subtle": "#E2D6C8",
+                        "on-background": "#1f1b17",
+                        "primary": "#803517",
+                        "primary-fixed-dim": "#ffb59b",
+                        "surface-tint": "#974727",
+                        "on-secondary": "#ffffff",
+                        "on-primary-container": "#ffd9cc",
+                        "surface-dim": "#e2d8d2",
+                        "tertiary-fixed-dim": "#81d4db",
+                        "surface-bright": "#fff8f5",
+                        "surface-variant": "#ebe1da",
+                        "on-tertiary-container": "#9ceff6",
+                        "inverse-primary": "#ffb59b",
+                        "outline": "#88726b",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#380d00",
+                        "on-error-container": "#93000a",
+                        "inverse-surface": "#352f2b",
+                        "on-primary-fixed-variant": "#793012",
+                        "surface-container-highest": "#ebe1da",
+                        "secondary-fixed-dim": "#ffb599",
+                        "on-primary": "#ffffff",
+                        "status-success": "#3E7C77",
+                        "tertiary": "#00555a",
+                        "on-tertiary-fixed": "#002022",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed": "#9df0f8",
+                        "secondary-container": "#fd9265",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#dbc1b9",
+                        "surface-container": "#f6ece5",
+                        "on-secondary-fixed": "#370e00",
+                        "background": "#fff8f5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px",
+                        "btn": "3px",
+                        "card": "0px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "unit": "8px",
+                        "container-max": "1200px",
+                        "margin-mobile": "20px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "eyebrow": ["Open Sans"],
+                        "body-lg": ["Open Sans"],
+                        "headline-lg": ["Open Sans"],
+                        "headline-md": ["Open Sans"],
+                        "mono-label": ["JetBrains Mono"],
+                        "headline-xl": ["Open Sans"],
+                        "body-md": ["Open Sans"],
+                        "headline-xl-mobile": ["Open Sans"]
+                    },
+                    "fontSize": {
+                        "eyebrow": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.15em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "mono-label": ["13px", { "lineHeight": "1.0", "fontWeight": "400" }],
+                        "headline-xl": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-xl-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { width: 390px; margin: 0 auto; overflow-x: hidden; background-color: #F7F2EC; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-page-bg text-on-surface font-body-md relative min-h-screen pb-20">
+<!-- TopNav - Hidden on Mobile Task specific context (Product Detail) -->
+<!-- Mobile Header -->
+<header class="fixed top-0 w-full z-40 bg-page-bg border-b border-border-subtle h-16 flex items-center px-5 justify-between">
+<div class="flex items-center gap-3 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+<span class="font-eyebrow text-eyebrow uppercase tracking-widest text-on-surface">Assessments</span>
+</div>
+<span class="material-symbols-outlined text-on-surface">more_vert</span>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-16 px-5 flex flex-col gap-8 pb-8">
+<!-- Hero Section Stacked -->
+<section class="flex flex-col gap-6 pt-6">
+<div class="flex flex-col gap-4">
+<span class="font-eyebrow text-eyebrow text-primary uppercase tracking-widest">Leadership Evaluation</span>
+<h1 class="font-headline-xl-mobile text-headline-xl-mobile text-on-surface text-balance">
+                    PISA Lean Leadership Assessment
+                </h1>
+<p class="font-body-lg text-body-lg text-text-body mt-2">
+                    A comprehensive evaluation framework designed to identify operational inefficiencies and cultivate lean thinking methodologies within executive management teams in corporate environments.
+                </p>
+<div class="flex items-center gap-2 mt-2">
+<span class="font-eyebrow text-eyebrow text-on-surface">R1 450,00</span>
+<span class="font-mono-label text-mono-label text-text-body">/ per assessment</span>
+</div>
+<button class="mt-4 w-full h-[48px] bg-primary-container text-on-error font-eyebrow text-eyebrow flex items-center justify-center rounded-btn uppercase tracking-widest active:opacity-80 transition-opacity">
+                    Buy this assessment
+                </button>
+</div>
+<div class="w-full aspect-[4/3] bg-surface-container-high border border-border-subtle overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="A softly lit, muted photograph of a modern executive meeting room. The space features minimalist furniture, subtle wood textures, and neutral tones. The mood is calm and deeply professional, aligning with a high-end corporate leadership aesthetic. The lighting is natural and diffuse, avoiding harsh shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhMV1ZLkh3-LfTa8I_jyWSR7aWL4kIxHQ6EEmOZNyiRSCut09qp2U7J7ZA_try8GGDCL41VWpyXFwvXQgLjDbFPXSifqHmq9ClN6epi4x2xaDdaZuoiIeR-EudcFWt1VQqC_Av18Rn-gPIeU-7-dhSBRqCmbhSBAP5IFR0MGDr7xDT8ZNGpgV2aJZrDuqSBU9W75pkg_4LvBK-o6qLnND7S8WbWZgdhu1RMoZIeAIW4nSsPXhvBIM"/>
+</div>
+</section>
+<!-- Horizontal Tab Strip -->
+<nav class="w-full border-b border-border-subtle overflow-x-auto hide-scrollbar snap-x">
+<ul class="flex w-max items-center">
+<li class="snap-start px-4 py-4 border-b-2 border-[#C0623A] font-eyebrow text-eyebrow text-on-surface uppercase tracking-widest whitespace-nowrap">Overview</li>
+<li class="snap-start px-4 py-4 font-eyebrow text-eyebrow text-text-body uppercase tracking-widest whitespace-nowrap">Methodology</li>
+<li class="snap-start px-4 py-4 font-eyebrow text-eyebrow text-text-body uppercase tracking-widest whitespace-nowrap">Outcomes</li>
+<li class="snap-start px-4 py-4 font-eyebrow text-eyebrow text-text-body uppercase tracking-widest whitespace-nowrap">Reviews (12)</li>
+</ul>
+</nav>
+<!-- Details Content -->
+<section class="flex flex-col gap-6">
+<h2 class="font-headline-md text-headline-md text-on-surface">Key Focus Areas</h2>
+<!-- Cards stack -->
+<div class="flex flex-col gap-4">
+<div class="bg-card-bg border border-border-subtle p-6 rounded-card flex flex-col gap-3">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">speed</span>
+<h3 class="font-headline-md text-body-lg text-on-surface font-semibold">Operational Velocity</h3>
+<p class="font-body-md text-body-md text-text-body">Measure the speed and efficiency of decision-making processes across department silos.</p>
+</div>
+<div class="bg-card-bg border border-border-subtle p-6 rounded-card flex flex-col gap-3">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">psychology</span>
+<h3 class="font-headline-md text-body-lg text-on-surface font-semibold">Lean Cognitive Alignment</h3>
+<p class="font-body-md text-body-md text-text-body">Evaluate the leadership team's inherent understanding and adoption of waste-reduction principles.</p>
+</div>
+</div>
+</section>
+<!-- Charcoal Dark Section -->
+<section class="bg-[#2A2521] text-card-bg -mx-5 px-5 py-12 flex flex-col gap-6 mt-4">
+<h2 class="font-headline-lg text-headline-lg-mobile text-card-bg">Who is this for?</h2>
+<ul class="flex flex-col gap-4 font-body-md text-body-md text-surface-container-high">
+<li class="flex items-start gap-3">
+<div class="w-2 h-2 bg-primary mt-2 flex-shrink-0"></div>
+<span>C-Suite executives aiming to restructure internal operations.</span>
+</li>
+<li class="flex items-start gap-3">
+<div class="w-2 h-2 bg-primary mt-2 flex-shrink-0"></div>
+<span>Department heads facing bottlenecks in cross-functional delivery.</span>
+</li>
+<li class="flex items-start gap-3">
+<div class="w-2 h-2 bg-primary mt-2 flex-shrink-0"></div>
+<span>Organizations transitioning to agile or lean frameworks.</span>
+</li>
+</ul>
+</section>
+</main>
+<!-- Fixed Bottom Bar -->
+<div class="fixed bottom-0 w-full h-[64px] bg-card-bg border-t border-border-subtle flex items-center justify-between px-5 z-50">
+<div class="flex flex-col">
+<span class="font-eyebrow text-eyebrow text-text-body uppercase">Total</span>
+<span class="font-headline-md text-body-lg text-on-surface font-semibold">R1 450,00</span>
+</div>
+<button class="h-[44px] px-6 bg-primary-container text-on-error font-eyebrow text-eyebrow flex items-center justify-center rounded-btn uppercase tracking-widest active:opacity-80 transition-opacity whitespace-nowrap">
+            Buy this assessment
+        </button>
+</div>
+</body></html>

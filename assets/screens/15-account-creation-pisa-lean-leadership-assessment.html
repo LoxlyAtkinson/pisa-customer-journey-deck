@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PISA Consulting - Create Account</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&amp;family=Open+Sans:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface-variant": "#55433d",
+                    "inverse-surface": "#352f2b",
+                    "text-body": "#4A423C",
+                    "tertiary-container": "#006f76",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed-variant": "#7b2f09",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed": "#370e00",
+                    "on-tertiary-fixed": "#002022",
+                    "tertiary": "#00555a",
+                    "surface": "#fff8f5",
+                    "on-secondary-container": "#742904",
+                    "tertiary-fixed": "#9df0f8",
+                    "primary-fixed-dim": "#ffb59b",
+                    "surface-variant": "#ebe1da",
+                    "surface-container-low": "#fcf2eb",
+                    "surface-container-highest": "#ebe1da",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed": "#ffdbcf",
+                    "on-primary-fixed-variant": "#793012",
+                    "error-container": "#ffdad6",
+                    "surface-dim": "#e2d8d2",
+                    "border-subtle": "#E2D6C8",
+                    "outline-variant": "#dbc1b9",
+                    "on-tertiary-fixed-variant": "#004f54",
+                    "on-surface": "#1f1b17",
+                    "inverse-on-surface": "#f9efe8",
+                    "surface-bright": "#fff8f5",
+                    "on-primary-container": "#ffd9cc",
+                    "surface-container": "#f6ece5",
+                    "on-primary-fixed": "#380d00",
+                    "card-bg": "#FFFDFB",
+                    "on-secondary": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "primary-container": "#9e4c2c",
+                    "inverse-primary": "#ffb59b",
+                    "background": "#fff8f5",
+                    "page-bg": "#F7F2EC",
+                    "status-success": "#3E7C77",
+                    "on-background": "#1f1b17",
+                    "secondary": "#9a4520",
+                    "secondary-container": "#fd9265",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed-dim": "#81d4db",
+                    "surface-tint": "#974727",
+                    "secondary-panel": "#EFE6DA",
+                    "secondary-fixed-dim": "#ffb599",
+                    "surface-container-high": "#f1e6e0",
+                    "on-error-container": "#93000a",
+                    "primary": "#803517",
+                    "outline": "#88726b",
+                    "secondary-fixed": "#ffdbce",
+                    "on-tertiary-container": "#9ceff6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "8px",
+                    "margin-mobile": "20px",
+                    "gutter": "24px",
+                    "margin-desktop": "64px",
+                    "container-max": "1200px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Open Sans"],
+                    "headline-lg": ["Open Sans"],
+                    "headline-xl": ["Open Sans"],
+                    "headline-md": ["Open Sans"],
+                    "body-md": ["Open Sans"],
+                    "eyebrow": ["Open Sans"],
+                    "mono-label": ["JetBrains Mono"],
+                    "headline-xl-mobile": ["Open Sans"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "eyebrow": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.15em", "fontWeight": "600"}],
+                    "mono-label": ["13px", {"lineHeight": "1.0", "fontWeight": "400"}],
+                    "headline-xl-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #F7F2EC;
+            color: #4A423C;
+        }
+        .header-wordmark { color: #2A2521; }
+        .heading-dark { color: #2A2521; }
+        .link-primary { color: #9E4C2C; }
+        .border-base { border-color: #E2D6C8; }
+        .bg-cream { background-color: #EFE6DA; }
+        
+        /* Form specifics matching guidelines */
+        input[type="text"], input[type="email"], input[type="password"] {
+            height: 48px;
+            border-radius: 0;
+            border-color: #E2D6C8;
+        }
+        input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus {
+            outline: none;
+            border-color: #9E4C2C;
+            box-shadow: none;
+        }
+        input[type="checkbox"] {
+            border-radius: 0;
+            border-color: #E2D6C8;
+            color: #9E4C2C;
+        }
+        input[type="checkbox"]:focus {
+            outline: none;
+            box-shadow: none;
+            border-color: #9E4C2C;
+        }
+        .btn-primary {
+            background-color: #9E4C2C;
+            color: #FFFDFB;
+            height: 48px;
+            border-radius: 3px;
+        }
+        .btn-primary:hover { background-color: #803517; }
+    </style>
+</head>
+<body class="font-body-md antialiased min-h-screen flex flex-col">
+<!-- Header -->
+<header class="h-16 flex items-center justify-between px-margin-mobile md:px-margin-desktop max-w-[1100px] mx-auto w-full border-b border-border-subtle md:border-none">
+<div class="font-headline-md header-wordmark tracking-tight">PISA CONSULTING</div>
+<a class="text-[13px] hover:underline" href="#">Cancel and go back</a>
+</header>
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-[1100px] mx-auto px-margin-mobile md:px-0 py-8 md:py-12 flex flex-col gap-6">
+<!-- Subheader -->
+<div class="text-[13px]">
+            Step 1 of 2: Your account. Next: Payment.
+        </div>
+<div class="flex flex-col md:flex-row gap-gutter">
+<!-- Left Column: Form -->
+<div class="w-full md:w-[62%]">
+<div class="bg-card-bg border border-base flex flex-col">
+<!-- Top Strip -->
+<div class="bg-cream p-4 text-[13px] border-b border-base">
+                        Already bought from PISA before? <a class="link-primary hover:underline font-semibold" href="#">Sign in instead</a>
+</div>
+<div class="p-6 md:p-[32px] flex flex-col gap-8">
+<!-- Heading & Intro -->
+<div class="flex flex-col gap-2">
+<h1 class="text-[32px] font-semibold heading-dark leading-tight">Create your account</h1>
+<p class="text-body-md">You need an account so your assessment and your report stay yours. It takes one minute and you will not have to do it again.</p>
+</div>
+<!-- Form Fields -->
+<form class="flex flex-col gap-6">
+<div class="flex flex-col gap-1">
+<label class="text-[14px] font-semibold heading-dark" for="fullName">Full name</label>
+<input class="w-full bg-card-bg border border-base p-3 text-body-md" id="fullName" required="" type="text"/>
+<span class="text-[13px] mt-1">This will appear on your final report.</span>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-[14px] font-semibold heading-dark" for="email">Email address</label>
+<input class="w-full bg-card-bg border border-base p-3 text-body-md" id="email" required="" type="email"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-[14px] font-semibold heading-dark" for="confirmEmail">Confirm email address</label>
+<input class="w-full bg-card-bg border border-base p-3 text-body-md" id="confirmEmail" required="" type="email"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-[14px] font-semibold heading-dark" for="password">Choose a password</label>
+<div class="relative">
+<input class="w-full bg-card-bg border border-base p-3 pr-16 text-body-md" id="password" required="" type="password"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 link-primary text-[14px] font-semibold" type="button">Show</button>
+</div>
+<span class="text-[13px] mt-1">Minimum 8 characters.</span>
+</div>
+<!-- Info Panel -->
+<div class="border border-base p-4 flex flex-col gap-2 mt-2">
+<h3 class="text-[15px] font-semibold heading-dark">How PISA uses your information</h3>
+<p class="text-[13px] leading-relaxed">
+                                    We use your details strictly to manage your assessment, generate your report, and communicate essential updates regarding your purchase. We do not sell data to third parties.
+                                </p>
+<a class="text-[13px] link-primary hover:underline" href="#">Read our full privacy notice</a>
+</div>
+<!-- Checkbox -->
+<div class="flex items-start gap-3 mt-4">
+<div class="flex items-center h-5 mt-1">
+<input class="w-5 h-5 bg-card-bg border border-base cursor-pointer" id="marketing" type="checkbox"/>
+</div>
+<div class="flex flex-col">
+<label class="text-[14px] cursor-pointer" for="marketing">Optional. I agree that PISA Consulting may send me emails occasionally about leadership insights and new assessments.</label>
+<span class="text-[13px] mt-1">You can unsubscribe at any time.</span>
+</div>
+</div>
+<!-- Submit -->
+<div class="mt-6 flex flex-col gap-4">
+<button class="btn-primary w-full font-semibold text-body-md transition-colors" type="submit">Continue to payment</button>
+<p class="text-[13px] text-center">The next page shows your order. You will not be charged until you press Pay on it.</p>
+</div>
+</form>
+</div>
+</div>
+</div>
+<!-- Right Column: Summary -->
+<div class="w-full md:w-[38%]">
+<div class="bg-card-bg border border-base p-6 md:p-[24px] flex flex-col gap-4 sticky top-8">
+<div class="font-eyebrow text-[15px] uppercase tracking-widest text-text-body">
+                        What you are buying
+                    </div>
+<div class="flex flex-col gap-1">
+<div class="text-[17px] heading-dark font-semibold">PISA Lean Leadership Assessment</div>
+<div class="text-[24px] heading-dark font-semibold mt-2">R1 450,00</div>
+</div>
+<hr class="border-border-subtle my-2"/>
+<div class="text-[13px] leading-relaxed flex flex-col gap-3">
+<p>
+                            Includes full access to the 45-minute online assessment and the comprehensive customized PDF report generated immediately upon completion.
+                        </p>
+<p>
+                            Payments are securely processed via Payfast. We accept Visa, Mastercard, Instant EFT, and SnapScan.
+                        </p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full max-w-[1100px] mx-auto px-margin-mobile md:px-0 py-8 flex items-center gap-6 text-[13px]">
+<a class="hover:underline" href="#">Privacy notice</a>
+<a class="hover:underline" href="#">Terms of use</a>
+</footer>
+</body></html>
