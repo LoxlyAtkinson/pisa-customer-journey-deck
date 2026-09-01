@@ -3,18 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PISA Leadership Assessment Portal - Journey Walkthrough</title>
+  <title>PISA Leadership Assessment Portal - Customer Journey</title>
   <style>
     :root {
       --ink: #241c18;
-      --soft-ink: #5e524b;
+      --muted: #62564e;
       --page: #f7f2ec;
       --paper: #fffdfb;
       --line: #e2d6c8;
-      --brand: #803517;
-      --brand-2: #00555a;
-      --brand-3: #b45a32;
-      --shadow: 0 24px 60px rgba(45, 31, 24, 0.18);
+      --brand: #8f3f20;
+      --brand-dark: #5a2412;
+      --teal: #2f7773;
+      --charcoal: #201a17;
+      --shadow: 0 22px 54px rgba(43, 29, 22, 0.18);
     }
 
     * {
@@ -25,8 +26,8 @@
     body {
       margin: 0;
       min-height: 100%;
-      color: var(--ink);
       background: var(--page);
+      color: var(--ink);
       font-family: Inter, "Open Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
@@ -39,15 +40,15 @@
     }
 
     .deck {
-      min-height: 100vh;
       display: grid;
-      grid-template-rows: 1fr 70px;
+      grid-template-rows: 1fr 68px;
+      min-height: 100vh;
     }
 
     .slide {
       display: none;
-      min-height: calc(100vh - 70px);
-      padding: 24px 24px 18px;
+      min-height: calc(100vh - 68px);
+      padding: 22px;
     }
 
     .slide.active {
@@ -56,57 +57,59 @@
     }
 
     .canvas {
+      position: relative;
+      overflow: hidden;
       width: min(1540px, 100%);
-      height: min(850px, calc(100vh - 112px));
+      height: min(860px, calc(100vh - 108px));
       background: var(--paper);
       border: 1px solid rgba(226, 214, 200, 0.95);
       box-shadow: var(--shadow);
-      overflow: hidden;
-      position: relative;
     }
 
     .cover {
       display: grid;
-      grid-template-columns: 0.85fr 1.15fr;
+      grid-template-columns: 0.9fr 1.1fr;
       min-height: 100%;
-      background: #201a17;
+      background: var(--charcoal);
       color: #fff8f5;
     }
 
-    .cover-copy {
-      padding: 64px 56px;
+    .cover-copy,
+    .summary {
       display: flex;
       flex-direction: column;
       justify-content: center;
       gap: 24px;
+      padding: 64px 58px;
     }
 
     .cover-visual {
       min-width: 0;
-      border-left: 1px solid rgba(255, 248, 245, 0.16);
       overflow: hidden;
+      border-left: 1px solid rgba(255, 248, 245, 0.16);
     }
 
     .cover-visual img {
+      display: block;
       width: 100%;
       height: 100%;
-      display: block;
       object-fit: cover;
       object-position: left top;
-      opacity: 0.86;
+      opacity: 0.9;
     }
 
     .eyebrow {
       margin: 0;
-      color: var(--brand-3);
+      color: var(--brand);
       font-size: 12px;
       font-weight: 800;
-      line-height: 1;
       letter-spacing: 0.16em;
+      line-height: 1;
       text-transform: uppercase;
     }
 
-    .cover .eyebrow {
+    .cover .eyebrow,
+    .section-break .eyebrow {
       color: #ffb59b;
     }
 
@@ -118,52 +121,106 @@
     }
 
     h1 {
-      max-width: 760px;
-      font-size: clamp(54px, 5.2vw, 82px);
-      line-height: 0.98;
-      letter-spacing: 0;
+      max-width: 820px;
+      font-size: clamp(52px, 5vw, 80px);
       font-weight: 780;
+      letter-spacing: 0;
+      line-height: 0.98;
     }
 
     h2 {
-      font-size: clamp(32px, 2.7vw, 44px);
-      line-height: 1.02;
-      letter-spacing: 0;
+      max-width: 780px;
+      font-size: clamp(34px, 3vw, 50px);
       font-weight: 760;
-    }
-
-    h3 {
-      font-size: 26px;
-      line-height: 1.15;
-      font-weight: 740;
+      letter-spacing: 0;
+      line-height: 1.03;
     }
 
     p {
-      color: var(--soft-ink);
+      color: var(--muted);
       font-size: 18px;
       line-height: 1.55;
     }
 
-    .cover p {
+    .cover p,
+    .section-break p {
+      max-width: 680px;
       color: rgba(255, 248, 245, 0.78);
-      max-width: 660px;
     }
 
     .overview {
+      display: grid;
+      grid-template-columns: 0.72fr 1.28fr;
+      gap: 44px;
+      align-items: center;
       min-height: 100%;
       padding: 58px;
-      display: grid;
-      grid-template-columns: 0.74fr 1.26fr;
-      gap: 46px;
-      align-items: center;
       background:
-        linear-gradient(90deg, rgba(128, 53, 23, 0.08), transparent 40%),
+        linear-gradient(90deg, rgba(143, 63, 32, 0.08), transparent 42%),
         var(--paper);
     }
 
     .overview-copy {
       display: grid;
       gap: 20px;
+    }
+
+    .persona-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .persona {
+      min-height: 165px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      background: #fff8f3;
+    }
+
+    .persona strong {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--ink);
+      font-size: 24px;
+      line-height: 1.1;
+    }
+
+    .persona span {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.45;
+    }
+
+    .section-break {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      min-height: 100%;
+      padding: 64px 58px;
+      background: var(--charcoal);
+      color: #fff8f5;
+    }
+
+    .section-stat {
+      display: grid;
+      gap: 14px;
+      padding-left: 30px;
+      border-left: 2px solid #ffb59b;
+    }
+
+    .section-stat strong {
+      display: block;
+      color: #fff8f5;
+      font-size: clamp(50px, 5vw, 82px);
+      line-height: 0.95;
+    }
+
+    .section-stat span {
+      color: rgba(255, 248, 245, 0.74);
+      font-size: 18px;
+      line-height: 1.45;
     }
 
     .journey-line {
@@ -174,73 +231,73 @@
 
     .journey-step {
       display: grid;
-      grid-template-columns: 56px 1fr;
-      gap: 18px;
+      grid-template-columns: 52px 1fr;
+      gap: 16px;
       align-items: start;
-      padding: 18px 0;
+      padding: 14px 0;
       border-bottom: 1px solid var(--line);
     }
 
     .journey-step::before {
       counter-increment: step;
       content: counter(step);
-      width: 44px;
-      height: 44px;
       display: grid;
       place-items: center;
+      width: 42px;
+      height: 42px;
       background: var(--brand);
       color: #fff8f5;
+      font-size: 17px;
       font-weight: 800;
-      font-size: 18px;
     }
 
     .journey-step strong {
       display: block;
       margin-bottom: 4px;
-      font-size: 22px;
       color: var(--ink);
+      font-size: 21px;
     }
 
     .journey-step span {
-      color: var(--soft-ink);
-      font-size: 16px;
+      color: var(--muted);
+      font-size: 15px;
       line-height: 1.45;
     }
 
     .screen-slide {
-      min-height: 100%;
       display: grid;
-      grid-template-columns: 350px minmax(0, 1fr);
-      gap: 0;
+      grid-template-columns: 360px minmax(0, 1fr);
+      min-height: 100%;
       background: var(--paper);
     }
 
     .screen-copy {
-      padding: 40px 30px 30px;
       display: grid;
       grid-template-rows: auto auto 1fr auto;
       gap: 22px;
+      padding: 38px 30px 30px;
       border-right: 1px solid var(--line);
       background:
-        linear-gradient(180deg, rgba(226, 214, 200, 0.32), transparent 42%),
+        linear-gradient(180deg, rgba(226, 214, 200, 0.34), transparent 42%),
         #fffaf6;
     }
 
     .screen-copy p {
+      max-width: 304px;
       font-size: 16px;
-      max-width: 295px;
     }
 
-    .screen-proof {
+    .proof {
       align-self: start;
-      margin-top: 10px;
-      padding-top: 20px;
-      border-top: 1px solid var(--line);
       display: grid;
       gap: 10px;
+      margin-top: 6px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
     }
 
-    .proof-label {
+    .proof-label,
+    .source-label {
       color: var(--brand);
       font-size: 12px;
       font-weight: 800;
@@ -249,23 +306,25 @@
       text-transform: uppercase;
     }
 
-    .proof-text {
-      color: var(--soft-ink);
-      font-size: 16px;
+    .proof-text,
+    .screen-footer {
+      color: var(--muted);
+      font-size: 15px;
       line-height: 1.45;
     }
 
     .screen-footer {
+      display: grid;
+      gap: 6px;
       color: #8a7b72;
       font-size: 13px;
-      line-height: 1.35;
     }
 
     .screen-stage {
-      min-width: 0;
-      padding: 26px;
       display: grid;
       place-items: center;
+      min-width: 0;
+      padding: 26px;
       background:
         linear-gradient(180deg, #f2e9e1, #fbf8f4 58%),
         var(--page);
@@ -273,124 +332,82 @@
 
     .screen-frame {
       display: block;
-      width: min(100%, 1080px);
-      max-height: 710px;
-      border: 1px solid #cfbeb2;
-      background: #ffffff;
-      box-shadow: 0 22px 46px rgba(45, 31, 24, 0.18);
+      width: min(100%, 1100px);
+      max-height: 720px;
       overflow: hidden;
+      background: #ffffff;
+      border: 1px solid #cfbeb2;
+      box-shadow: 0 22px 46px rgba(45, 31, 24, 0.18);
       text-decoration: none;
     }
 
     .screen-frame img {
+      display: block;
       width: 100%;
       height: 100%;
-      max-height: 710px;
+      max-height: 720px;
       object-fit: contain;
       object-position: top left;
-      display: block;
       background: #ffffff;
     }
 
     .screen-frame.mobile {
       width: min(390px, 100%);
-      height: min(690px, calc(100vh - 180px));
+      height: min(690px, calc(100vh - 178px));
+      background: #211c19;
       border: 9px solid #211c19;
       border-radius: 30px;
-      background: #211c19;
       box-shadow: 0 24px 50px rgba(45, 31, 24, 0.22);
     }
 
     .screen-frame.mobile img {
-      height: 100%;
       max-height: none;
-      object-fit: cover;
+      object-fit: contain;
       object-position: top center;
       border-radius: 19px;
     }
 
-    .section-break {
-      min-height: 100%;
-      padding: 64px 58px;
+    .support {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 0.78fr 1.22fr;
       gap: 42px;
       align-items: center;
-      background: #201a17;
-      color: #fff8f5;
-    }
-
-    .section-break p {
-      color: rgba(255, 248, 245, 0.76);
-      font-size: 20px;
-      max-width: 650px;
-    }
-
-    .section-break .eyebrow {
-      color: #ffb59b;
-    }
-
-    .section-stat {
-      border-left: 2px solid #ffb59b;
-      padding-left: 28px;
-      display: grid;
-      gap: 12px;
-    }
-
-    .section-stat strong {
-      display: block;
-      color: #fff8f5;
-      font-size: clamp(48px, 5vw, 76px);
-      line-height: 0.95;
-    }
-
-    .section-stat span {
-      color: rgba(255, 248, 245, 0.72);
-      font-size: 18px;
-      line-height: 1.45;
-    }
-
-    .notes {
       min-height: 100%;
       padding: 62px;
-      display: grid;
-      grid-template-columns: 0.72fr 1.28fr;
-      gap: 42px;
-      align-items: center;
       background: var(--paper);
     }
 
-    .notes-list {
+    .support-list {
       display: grid;
-      gap: 20px;
+      gap: 18px;
     }
 
-    .note {
+    .support-item {
       padding-left: 24px;
       border-left: 3px solid var(--brand);
     }
 
-    .note strong {
+    .support-item strong {
       display: block;
       margin-bottom: 6px;
-      font-size: 24px;
       color: var(--ink);
+      font-size: 24px;
     }
 
-    .note span {
+    .support-item span {
       display: block;
-      color: var(--soft-ink);
+      color: var(--muted);
       font-size: 17px;
       line-height: 1.48;
     }
 
     .controls {
       display: grid;
-      grid-template-columns: auto 1fr auto;
-      align-items: center;
+      grid-template-columns: auto 1fr;
       gap: 18px;
+      align-items: center;
       padding: 12px 24px;
-      background: rgba(255, 253, 251, 0.92);
+      background: rgba(255, 253, 251, 0.94);
       border-top: 1px solid var(--line);
     }
 
@@ -400,6 +417,8 @@
     }
 
     button {
+      display: grid;
+      place-items: center;
       width: 42px;
       height: 42px;
       border: 0;
@@ -407,7 +426,7 @@
       color: #fff8f5;
       cursor: pointer;
       font: inherit;
-      font-size: 21px;
+      font-size: 20px;
       line-height: 1;
     }
 
@@ -425,28 +444,22 @@
       display: flex;
       justify-content: space-between;
       gap: 16px;
-      color: var(--soft-ink);
+      color: var(--muted);
       font-size: 13px;
       font-weight: 700;
     }
 
     .progress {
       height: 7px;
-      background: #ded2c6;
       overflow: hidden;
+      background: #ded2c6;
     }
 
     .progress-fill {
       width: 0;
       height: 100%;
-      background: linear-gradient(90deg, var(--brand), var(--brand-2));
+      background: linear-gradient(90deg, var(--brand), var(--teal));
       transition: width 160ms ease;
-    }
-
-    .keyboard {
-      color: var(--soft-ink);
-      font-size: 12px;
-      white-space: nowrap;
     }
 
     @media (max-width: 1100px) {
@@ -455,12 +468,12 @@
       }
 
       .deck {
-        grid-template-rows: auto 76px;
+        grid-template-rows: auto 74px;
       }
 
       .slide {
-        min-height: calc(100vh - 76px);
-        padding: 16px 12px 10px;
+        min-height: calc(100vh - 74px);
+        padding: 14px 12px 10px;
       }
 
       .canvas {
@@ -470,16 +483,17 @@
 
       .cover,
       .overview,
-      .screen-slide,
       .section-break,
-      .notes {
+      .screen-slide,
+      .support {
         grid-template-columns: 1fr;
       }
 
       .cover-copy,
       .overview,
       .section-break,
-      .notes {
+      .support,
+      .summary {
         padding: 28px;
       }
 
@@ -487,6 +501,10 @@
         min-height: 300px;
         border-left: 0;
         border-top: 1px solid rgba(255, 248, 245, 0.16);
+      }
+
+      .persona-grid {
+        grid-template-columns: 1fr;
       }
 
       .screen-copy {
@@ -516,15 +534,7 @@
       }
 
       h2 {
-        font-size: clamp(32px, 9vw, 46px);
-      }
-
-      .controls {
-        grid-template-columns: auto 1fr;
-      }
-
-      .keyboard {
-        display: none;
+        font-size: clamp(31px, 9vw, 44px);
       }
     }
   </style>
@@ -534,120 +544,84 @@
     <section class="slide active" data-title="Opening">
       <div class="canvas cover">
         <div class="cover-copy">
-          <p class="eyebrow">Customer and Admin Journey</p>
+          <p class="eyebrow">Client Walkthrough</p>
           <h1>PISA Leadership Assessment Portal</h1>
-          <p>A client-facing walkthrough of the current assessment experience, from the first purchase decision through completion, results, and administrative oversight.</p>
+          <p>A guided customer and admin journey using the actual exported Stitch HTML screens, from first Landing Page through registration, payment, assessment completion, results, and operational oversight.</p>
         </div>
         <div class="cover-visual">
-          <img src="assets/captures/16-16-product-page-pisa-lean-leadership-assessment-viewport.png" alt="PISA assessment product page">
+          <img src="assets/captures/16-16-product-page-pisa-lean-leadership-assessment-viewport.png" alt="Landing Page for the PISA assessment">
         </div>
       </div>
     </section>
 
-    <section class="slide" data-title="Journey Overview">
+    <section class="slide" data-title="Journey Map">
       <div class="canvas overview">
         <div class="overview-copy">
-          <p class="eyebrow">Experience Shape</p>
-          <h2>A complete path from purchase to outcome.</h2>
-          <p>The experience is strongest when each screen makes the next step obvious: decide, register, pay, confirm, complete, resume if interrupted, and retrieve the outcome report.</p>
+          <p class="eyebrow">Four Journeys</p>
+          <h2>The walkthrough separates each person's path.</h2>
+          <p>The same product supports different moments: a new client buying for the first time, a returning client continuing work, a new admin being onboarded, and a returning admin managing the program.</p>
         </div>
-        <div class="journey-line">
-          <div class="journey-step"><div><strong>Decide and choose</strong><span>The product and assessment-selection screens explain what is being bought and where to begin.</span></div></div>
-          <div class="journey-step"><div><strong>Create the account</strong><span>Registration and account creation collect the essentials before payment.</span></div></div>
-          <div class="journey-step"><div><strong>Pay and confirm</strong><span>Order review, Payfast handoff, payment confirmation, and email confirmation close the purchase loop.</span></div></div>
-          <div class="journey-step"><div><strong>Complete or resume</strong><span>The assessment screens show progress, saved state, and clear continuation points.</span></div></div>
-          <div class="journey-step"><div><strong>Review the outcome</strong><span>The final screen provides the completed result and a direct report download action.</span></div></div>
-          <div class="journey-step"><div><strong>Operate the portal</strong><span>Admin screens cover performance, users, assessment setup, and analytics.</span></div></div>
+        <div class="persona-grid">
+          <div class="persona"><strong>New client</strong><span>Lands, registers, confirms email, chooses PISA, pays, completes or pauses, then receives results and download access.</span></div>
+          <div class="persona"><strong>Returning client</strong><span>Signs in, uses the Client Dashboard, resumes saved work, avoids duplicate purchase, and retrieves the report later.</span></div>
+          <div class="persona"><strong>New admin</strong><span>Receives an invite, sets credentials, signs in through the admin route, and lands on the Admin Dashboard.</span></div>
+          <div class="persona"><strong>Returning admin</strong><span>Monitors the dashboard, manages users and assessments, checks analytics, and follows up on payment/report activity.</span></div>
         </div>
       </div>
     </section>
 
-    <section class="slide" data-title="Customer Journey">
+    <section class="slide" data-title="New Client Journey">
       <div class="canvas section-break">
         <div>
-          <p class="eyebrow">Customer Experience</p>
-          <h2>Confidence first. Commitment next. Completion last.</h2>
+          <p class="eyebrow">New Client</p>
+          <h2>A first-time customer always has a next step.</h2>
+          <p>The flow keeps the customer oriented from the first buying decision to the moment they can download the completed result.</p>
         </div>
-        <div class="section-stat">
-          <strong>22</strong>
-          <span>customer-facing screens are represented in the walkthrough, including desktop and mobile variants where they exist.</span>
+        <div class="journey-line">
+          <div class="journey-step"><div><strong>Land</strong><span>Understand the PISA offer, price, duration, and reason to begin.</span></div></div>
+          <div class="journey-step"><div><strong>Register</strong><span>Create an account and provide profile context for reporting.</span></div></div>
+          <div class="journey-step"><div><strong>Confirm</strong><span>Verify the email address and receive account/payment confirmations.</span></div></div>
+          <div class="journey-step"><div><strong>Choose and pay</strong><span>Select the assessment, review the order, and confirm Payfast payment.</span></div></div>
+          <div class="journey-step"><div><strong>Complete or resume</strong><span>Answer the assessment, save progress if interrupted, and continue later.</span></div></div>
+          <div class="journey-step"><div><strong>Download</strong><span>Reach the final result and download the report.</span></div></div>
         </div>
       </div>
     </section>
 
-    <section class="slide" data-title="Product Page">
+    <section class="slide" data-title="Landing Page">
       <div class="canvas screen-slide">
         <div class="screen-copy">
-          <p class="eyebrow">Entry</p>
-          <h2>A clear starting point for purchase.</h2>
-          <p>The screen explains the promise, price, length, and self-paced format before asking the user to buy.</p>
-          <div class="screen-proof"><span class="proof-label">Screen highlight</span><span class="proof-text">PISA Lean Leadership Assessment, 96 statements, about 20 to 25 minutes, R1 450,00, and a primary purchase button.</span></div>
-          <div class="screen-footer">Current design screen.</div>
+          <p class="eyebrow">Landing Page</p>
+          <h2>The Landing Page establishes the offer.</h2>
+          <p>This is the first decision screen for a new client. It explains the assessment value, price, duration, and purchase path.</p>
+          <div class="proof"><span class="proof-label">Visible on screen</span><span class="proof-text">PISA Lean Leadership Assessment, 96 statements, 20 to 25 minutes, R1 450,00, and Buy this assessment.</span></div>
+          <div class="screen-footer"><span class="source-label">Actual Stitch HTML</span><span>Click the screen to open the exported Landing Page source.</span></div>
         </div>
-        <div class="screen-stage"><a class="screen-frame" href="assets/screens/16-product-page-pisa-lean-leadership-assessment.html" target="_blank" rel="noopener"><img src="assets/captures/16-16-product-page-pisa-lean-leadership-assessment-viewport.png" alt="Product page desktop screen"></a></div>
+        <div class="screen-stage"><a class="screen-frame" href="assets/screens/16-product-page-pisa-lean-leadership-assessment.html" target="_blank" rel="noopener"><img src="assets/captures/16-16-product-page-pisa-lean-leadership-assessment-viewport.png" alt="Landing Page desktop screen"></a></div>
       </div>
     </section>
 
-    <section class="slide" data-title="Mobile Product Page">
+    <section class="slide" data-title="Mobile Landing Page">
       <div class="canvas screen-slide">
         <div class="screen-copy">
-          <p class="eyebrow">Mobile Entry</p>
-          <h2>The mobile entry path stays simple.</h2>
-          <p>On a phone, the purchase action remains prominent while the assessment description stacks into a simpler reading flow.</p>
-          <div class="screen-proof"><span class="proof-label">Screen highlight</span><span class="proof-text">A compact product story with the same "Buy this assessment" action.</span></div>
-          <div class="screen-footer">Current design screen.</div>
+          <p class="eyebrow">Landing Page Mobile</p>
+          <h2>The mobile Landing Page keeps purchase close.</h2>
+          <p>On a phone, the product story stacks cleanly while the purchase action remains easy to find.</p>
+          <div class="proof"><span class="proof-label">Visible on screen</span><span class="proof-text">Compact product detail, price context, and the same Buy this assessment action.</span></div>
+          <div class="screen-footer"><span class="source-label">Actual Stitch HTML</span><span>Click the screen to open the exported mobile Landing Page source.</span></div>
         </div>
-        <div class="screen-stage"><a class="screen-frame mobile" href="assets/screens/01-product-page-mobile-pisa-lean-leadership-assessment.html" target="_blank" rel="noopener"><img src="assets/captures/01-01-product-page-mobile-pisa-lean-leadership-assessment-viewport.png" alt="Product page mobile screen"></a></div>
-      </div>
-    </section>
-
-    <section class="slide" data-title="Assessment Selection">
-      <div class="canvas screen-slide">
-        <div class="screen-copy">
-          <p class="eyebrow">Choose</p>
-          <h2>Assessment selection makes the next step obvious.</h2>
-          <p>Users can compare available assessment options and begin from the catalog without losing the consulting context.</p>
-          <div class="screen-proof"><span class="proof-label">Screen highlight</span><span class="proof-text">Assessment cards, "Begin Assessment" actions, profile access, and a consultant contact path.</span></div>
-          <div class="screen-footer">Current design screen.</div>
-        </div>
-        <div class="screen-stage"><a class="screen-frame" href="assets/screens/03-assessments-heritage-leadership.html" target="_blank" rel="noopener"><img src="assets/captures/03-03-assessments-heritage-leadership-viewport.png" alt="Assessment selection screen"></a></div>
-      </div>
-    </section>
-
-    <section class="slide" data-title="Already Owned">
-      <div class="canvas screen-slide">
-        <div class="screen-copy">
-          <p class="eyebrow">Return State</p>
-          <h2>Owned assessments become continuation paths.</h2>
-          <p>The already-owned state removes confusion and turns a potential dead end into a continuation point.</p>
-          <div class="screen-proof"><span class="proof-label">Screen highlight</span><span class="proof-text">"You already have this assessment," with options to continue or go to the assessments area.</span></div>
-          <div class="screen-footer">Current design screen.</div>
-        </div>
-        <div class="screen-stage"><a class="screen-frame" href="assets/screens/04-already-owned-heritage-leadership.html" target="_blank" rel="noopener"><img src="assets/captures/04-04-already-owned-heritage-leadership-viewport.png" alt="Already owned desktop screen"></a></div>
-      </div>
-    </section>
-
-    <section class="slide" data-title="Already Owned Mobile">
-      <div class="canvas screen-slide">
-        <div class="screen-copy">
-          <p class="eyebrow">Mobile Return State</p>
-          <h2>Mobile users can return without friction.</h2>
-          <p>Mobile users can resume the owned assessment without navigating through the purchase flow again.</p>
-          <div class="screen-proof"><span class="proof-label">Screen highlight</span><span class="proof-text">A focused confirmation that the assessment is already available, with continuation options.</span></div>
-          <div class="screen-footer">Current design screen.</div>
-        </div>
-        <div class="screen-stage"><a class="screen-frame mobile" href="assets/screens/08-already-owned-mobile-heritage-leadership.html" target="_blank" rel="noopener"><img src="assets/captures/08-08-already-owned-mobile-heritage-leadership-viewport.png" alt="Already owned mobile screen"></a></div>
+        <div class="screen-stage"><a class="screen-frame mobile" href="assets/screens/01-product-page-mobile-pisa-lean-leadership-assessment.html" target="_blank" rel="noopener"><img src="assets/captures/01-01-product-page-mobile-pisa-lean-leadership-assessment-viewport.png" alt="Landing Page mobile screen"></a></div>
       </div>
     </section>
 
     <section class="slide" data-title="Registration">
       <div class="canvas screen-slide">
         <div class="screen-copy">
-          <p class="eyebrow">Register</p>
-          <h2>Registration turns interest into access.</h2>
-          <p>The screen collects the customer information needed to create an assessment profile before continuing the journey.</p>
-          <div class="screen-proof"><span class="proof-label">Screen highlight</span><span class="proof-text">A registration form with a clear "Complete Registration" action.</span></div>
-          <div class="screen-footer">Current design screen.</div>
+          <p class="eyebrow">Registration</p>
+          <h2>Registration creates the assessment profile.</h2>
+          <p>The customer provides the profile context needed for assessment records, reporting, and future admin visibility.</p>
+          <div class="proof"><span class="proof-label">Visible on screen</span><span class="proof-text">Registration form fields and the Complete Registration action.</span></div>
+          <div class="screen-footer"><span class="source-label">Actual Stitch HTML</span><span>Click the screen to open the exported registration source.</span></div>
         </div>
         <div class="screen-stage"><a class="screen-frame" href="assets/screens/13-registration-heritage-leadership.html" target="_blank" rel="noopener"><img src="assets/captures/13-13-registration-heritage-leadership-viewport.png" alt="Registration desktop screen"></a></div>
       </div>
@@ -656,11 +630,11 @@
     <section class="slide" data-title="Account Creation">
       <div class="canvas screen-slide">
         <div class="screen-copy">
-          <p class="eyebrow">Create Account</p>
-          <h2>Account creation prepares the checkout.</h2>
-          <p>The user creates their login, confirms the account terms, and moves directly into checkout.</p>
-          <div class="screen-proof"><span class="proof-label">Screen highlight</span><span class="proof-text">Account fields, password visibility control, and "Continue to payment."</span></div>
-          <div class="screen-footer">Current design screen.</div>
+          <p class="eyebrow">Account Setup</p>
+          <h2>Account creation prepares checkout and return access.</h2>
+          <p>The login is created before payment so the user can return later, recover access, and resume a saved assessment.</p>
+          <div class="proof"><span class="proof-label">Visible on screen</span><span class="proof-text">Full name, email address, password, password visibility, terms acceptance, and Continue to payment.</span></div>
+          <div class="screen-footer"><span class="source-label">Actual Stitch HTML</span><span>Click the screen to open the exported account creation source.</span></div>
         </div>
         <div class="screen-stage"><a class="screen-frame" href="assets/screens/15-account-creation-pisa-lean-leadership-assessment.html" target="_blank" rel="noopener"><img src="assets/captures/15-15-account-creation-pisa-lean-leadership-assessment-viewport.png" alt="Account creation desktop screen"></a></div>
       </div>
@@ -669,24 +643,78 @@
     <section class="slide" data-title="Mobile Account Creation">
       <div class="canvas screen-slide">
         <div class="screen-copy">
-          <p class="eyebrow">Mobile Account</p>
+          <p class="eyebrow">Account Setup Mobile</p>
           <h2>The mobile account form stays focused.</h2>
-          <p>The mobile variant narrows the form to the essential account information and keeps the payment continuation clear.</p>
-          <div class="screen-proof"><span class="proof-label">Screen highlight</span><span class="proof-text">A mobile account form ending with "Continue to payment."</span></div>
-          <div class="screen-footer">Current design screen.</div>
+          <p>The mobile variant keeps the sign-up step short and clear before the user moves into payment.</p>
+          <div class="proof"><span class="proof-label">Visible on screen</span><span class="proof-text">A mobile account form ending with Continue to payment.</span></div>
+          <div class="screen-footer"><span class="source-label">Actual Stitch HTML</span><span>Click the screen to open the exported mobile account source.</span></div>
         </div>
         <div class="screen-stage"><a class="screen-frame mobile" href="assets/screens/23-account-creation-mobile-pisa-lean-leadership-assessment.html" target="_blank" rel="noopener"><img src="assets/captures/23-23-account-creation-mobile-pisa-lean-leadership-assessment-viewport.png" alt="Account creation mobile screen"></a></div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Email And Recovery">
+      <div class="canvas support">
+        <div>
+          <p class="eyebrow">Support Flow</p>
+          <h2>Email and recovery flows protect access.</h2>
+          <p>These moments are part of the customer journey even when they are not all represented as full exported Stitch screens in the current bundle.</p>
+        </div>
+        <div class="support-list">
+          <div class="support-item"><strong>Registration confirmation email</strong><span>Sent when the account is created so the client can verify the email address and continue with confidence.</span></div>
+          <div class="support-item"><strong>Forgot password flow</strong><span>Supports returning clients who cannot sign in, then brings them back to the login/dashboard path after reset.</span></div>
+          <div class="support-item"><strong>Payment and result emails</strong><span>Payment receipts and assessment completion notices reinforce that the purchase, access, and report actions were successful.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Email Confirmation">
+      <div class="canvas screen-slide">
+        <div class="screen-copy">
+          <p class="eyebrow">Email Confirmation</p>
+          <h2>Email confirmation gives the account a clean handoff.</h2>
+          <p>After verification, the customer is sent back into the product journey instead of being left at a dead end.</p>
+          <div class="proof"><span class="proof-label">Visible on screen</span><span class="proof-text">Email address confirmed and Go to my assessments.</span></div>
+          <div class="screen-footer"><span class="source-label">Actual Stitch HTML</span><span>Click the screen to open the exported email confirmation source.</span></div>
+        </div>
+        <div class="screen-stage"><a class="screen-frame" href="assets/screens/20-email-confirmation-heritage-leadership.html" target="_blank" rel="noopener"><img src="assets/captures/20-20-email-confirmation-heritage-leadership-viewport.png" alt="Email confirmation desktop screen"></a></div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Mobile Email Confirmation">
+      <div class="canvas screen-slide">
+        <div class="screen-copy">
+          <p class="eyebrow">Email Confirmation Mobile</p>
+          <h2>The mobile confirmation screen offers useful next steps.</h2>
+          <p>The client can go straight to assessments or return to the dashboard after confirming their address.</p>
+          <div class="proof"><span class="proof-label">Visible on screen</span><span class="proof-text">Email Confirmed, Go to my assessments, and Return to Dashboard.</span></div>
+          <div class="screen-footer"><span class="source-label">Actual Stitch HTML</span><span>Click the screen to open the exported mobile confirmation source.</span></div>
+        </div>
+        <div class="screen-stage"><a class="screen-frame mobile" href="assets/screens/09-email-confirmation-mobile-heritage-leadership.html" target="_blank" rel="noopener"><img src="assets/captures/09-09-email-confirmation-mobile-heritage-leadership-viewport.png" alt="Email confirmation mobile screen"></a></div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Choose Assessment">
+      <div class="canvas screen-slide">
+        <div class="screen-copy">
+          <p class="eyebrow">Choose Assessment</p>
+          <h2>The client chooses the assessment before starting.</h2>
+          <p>The catalog makes the PISA assessment visible as the current product while keeping the wider portal context intact.</p>
+          <div class="proof"><span class="proof-label">Visible on screen</span><span class="proof-text">Assessment cards, Begin Assessment actions, profile access, and consultant contact.</span></div>
+          <div class="screen-footer"><span class="source-label">Actual Stitch HTML</span><span>Click the screen to open the exported assessment-selection source.</span></div>
+        </div>
+        <div class="screen-stage"><a class="screen-frame" href="assets/screens/03-assessments-heritage-leadership.html" target="_blank" rel="noopener"><img src="assets/captures/03-03-assessments-heritage-leadership-viewport.png" alt="Choose Assessment screen"></a></div>
       </div>
     </section>
 
     <section class="slide" data-title="Order Review">
       <div class="canvas screen-slide">
         <div class="screen-copy">
-          <p class="eyebrow">Pay</p>
-          <h2>Order review confirms the purchase.</h2>
-          <p>The user sees what they are buying, the cost, and the Payfast action in one place.</p>
-          <div class="screen-proof"><span class="proof-label">Screen highlight</span><span class="proof-text">Order summary, price, and "Pay R1 450,00 with Payfast."</span></div>
-          <div class="screen-footer">Current design screen.</div>
+          <p class="eyebrow">Payment</p>
+          <h2>Order review confirms what the client is buying.</h2>
+          <p>The client sees the assessment, the price, and the Payfast payment action before the transaction is submitted.</p>
+          <div class="proof"><span class="proof-label">Visible on screen</span><span class="proof-text">Order summary, R1 450,00, and Pay R1 450,00 with Payfast.</span></div>
+          <div class="screen-footer"><span class="source-label">Actual Stitch HTML</span><span>Click the screen to open the exported order-review source.</span></div>
         </div>
         <div class="screen-stage"><a class="screen-frame" href="assets/screens/18-order-review-heritage-leadership.html" target="_blank" rel="noopener"><img src="assets/captures/18-18-order-review-heritage-leadership-viewport.png" alt="Order review desktop screen"></a></div>
       </div>
@@ -695,11 +723,11 @@
     <section class="slide" data-title="Mobile Order Review">
       <div class="canvas screen-slide">
         <div class="screen-copy">
-          <p class="eyebrow">Mobile Payment</p>
-          <h2>Mobile checkout keeps the decision close.</h2>
-          <p>The mobile layout keeps the order details and payment action close together to reduce hesitation.</p>
-          <div class="screen-proof"><span class="proof-label">Screen highlight</span><span class="proof-text">A mobile order summary with a back action and Payfast checkout.</span></div>
-          <div class="screen-footer">Current design screen.</div>
+          <p class="eyebrow">Payment Mobile</p>
+          <h2>Mobile checkout keeps order and payment together.</h2>
+          <p>The mobile order review keeps the decision context and the Payfast action in the same focused view.</p>
+          <div class="proof"><span class="proof-label">Visible on screen</span><span class="proof-text">Mobile order summary, back action, and Payfast checkout.</span></div>
+          <div class="screen-footer"><span class="source-label">Actual Stitch HTML</span><span>Click the screen to open the exported mobile order-review source.</span></div>
         </div>
         <div class="screen-stage"><a class="screen-frame mobile" href="assets/screens/06-order-review-mobile-heritage-leadership.html" target="_blank" rel="noopener"><img src="assets/captures/06-06-order-review-mobile-heritage-leadership-viewport.png" alt="Order review mobile screen"></a></div>
       </div>
@@ -709,167 +737,215 @@
       <div class="canvas screen-slide">
         <div class="screen-copy">
           <p class="eyebrow">Payment Confirmation</p>
-          <h2>Payment confirmation closes the checkout.</h2>
-          <p>The confirmation step makes the payment state explicit before the customer proceeds into access and assessment activity.</p>
-          <div class="screen-proof"><span class="proof-label">Screen highlight</span><span class="proof-text">A dedicated payment confirmation screen with cancel and confirm actions.</span></div>
-          <div class="screen-footer">Current design screen.</div>
+          <h2>Payment confirmation closes the purchase loop.</h2>
+          <p>The confirmation screen makes the payment state explicit before assessment access continues.</p>
+          <div class="proof"><span class="proof-label">Visible on screen</span><span class="proof-text">Dedicated payment confirmation with cancel and confirm actions.</span></div>
+          <div class="screen-footer"><span class="source-label">Actual Stitch HTML</span><span>Click the screen to open the exported payment-confirmation source.</span></div>
         </div>
         <div class="screen-stage"><a class="screen-frame" href="assets/screens/24-payment-confirmation-heritage-leadership.html" target="_blank" rel="noopener"><img src="assets/captures/24-24-payment-confirmation-heritage-leadership-viewport.png" alt="Payment confirmation screen"></a></div>
       </div>
     </section>
 
-    <section class="slide" data-title="Email Confirmation">
-      <div class="canvas screen-slide">
-        <div class="screen-copy">
-          <p class="eyebrow">Email Confirmation</p>
-          <h2>Email confirmation gives the account a clean handoff.</h2>
-          <p>After confirmation, the next action takes the customer back to their assessments instead of leaving them at a dead end.</p>
-          <div class="screen-proof"><span class="proof-label">Screen highlight</span><span class="proof-text">"Email address confirmed" and a direct route to "Go to my assessments."</span></div>
-          <div class="screen-footer">Current design screen.</div>
-        </div>
-        <div class="screen-stage"><a class="screen-frame" href="assets/screens/20-email-confirmation-heritage-leadership.html" target="_blank" rel="noopener"><img src="assets/captures/20-20-email-confirmation-heritage-leadership-viewport.png" alt="Email confirmation desktop screen"></a></div>
-      </div>
-    </section>
-
-    <section class="slide" data-title="Mobile Email Confirmation">
-      <div class="canvas screen-slide">
-        <div class="screen-copy">
-          <p class="eyebrow">Mobile Confirmation</p>
-          <h2>Mobile confirmation offers useful next steps.</h2>
-          <p>Users can go straight to their assessments or return to the dashboard after confirming their email.</p>
-          <div class="screen-proof"><span class="proof-label">Screen highlight</span><span class="proof-text">"Email Confirmed," "Go to my assessments," and "Return to Dashboard."</span></div>
-          <div class="screen-footer">Current design screen.</div>
-        </div>
-        <div class="screen-stage"><a class="screen-frame mobile" href="assets/screens/09-email-confirmation-mobile-heritage-leadership.html" target="_blank" rel="noopener"><img src="assets/captures/09-09-email-confirmation-mobile-heritage-leadership-viewport.png" alt="Email confirmation mobile screen"></a></div>
-      </div>
-    </section>
-
-    <section class="slide" data-title="Client Dashboard">
-      <div class="canvas screen-slide">
-        <div class="screen-copy">
-          <p class="eyebrow">Client Portal</p>
-          <h2>The dashboard turns access into action.</h2>
-          <p>Assessment status, reports, and next steps are collected in one place so the user can continue with confidence.</p>
-          <div class="screen-proof"><span class="proof-label">Screen highlight</span><span class="proof-text">Client Dashboard, report export, Start Now, and View Full Report actions.</span></div>
-          <div class="screen-footer">Current design screen.</div>
-        </div>
-        <div class="screen-stage"><a class="screen-frame" href="assets/screens/05-client-dashboard-heritage-leadership.html" target="_blank" rel="noopener"><img src="assets/captures/05-05-client-dashboard-heritage-leadership-viewport.png" alt="Client dashboard screen"></a></div>
-      </div>
-    </section>
-
-    <section class="slide" data-title="Assessment Step">
-      <div class="canvas screen-slide">
-        <div class="screen-copy">
+    <section class="slide" data-title="Assessment Experience">
+      <div class="canvas section-break">
+        <div>
           <p class="eyebrow">Assessment</p>
-          <h2>Progress is visible throughout the assessment.</h2>
-          <p>The user can see how far they are through the assessment and respond to each statement with a consistent scale.</p>
-          <div class="screen-proof"><span class="proof-label">Screen highlight</span><span class="proof-text">Leadership Behaviours, progress count, saved state, answer options, Back, and Next.</span></div>
-          <div class="screen-footer">Current design screen.</div>
+          <h2>The assessment supports completion without forcing one sitting.</h2>
+          <p>Progress, save state, mobile controls, resume screens, and final reporting all work together so the client can complete the assessment naturally.</p>
         </div>
-        <div class="screen-stage"><a class="screen-frame" href="assets/screens/02-assessment-step-2-pisa-lean-leadership-assessment.html" target="_blank" rel="noopener"><img src="assets/captures/02-02-assessment-step-2-pisa-lean-leadership-assessment-viewport.png" alt="Assessment step desktop screen"></a></div>
+        <div class="section-stat">
+          <strong>96</strong>
+          <span>statements are presented with progress context, saved responses, return paths, and a final report outcome.</span>
+        </div>
       </div>
     </section>
 
-    <section class="slide" data-title="Mobile Assessment Step">
+    <section class="slide" data-title="Assessment Start">
       <div class="canvas screen-slide">
         <div class="screen-copy">
-          <p class="eyebrow">Mobile Assessment</p>
-          <h2>The response scale stays usable on mobile.</h2>
-          <p>The mobile layout preserves the same progress and navigation pattern while prioritizing the current statements.</p>
-          <div class="screen-proof"><span class="proof-label">Screen highlight</span><span class="proof-text">Menu, Leadership Behaviours, statement responses, Back, and Next.</span></div>
-          <div class="screen-footer">Current design screen.</div>
+          <p class="eyebrow">Assessment Start</p>
+          <h2>The start screen frames the assessment before answering begins.</h2>
+          <p>The client sees the assessment purpose and navigation controls before entering the statement sequence.</p>
+          <div class="proof"><span class="proof-label">Visible on screen</span><span class="proof-text">PISA assessment tool, section navigation, and report-generation controls in the source design.</span></div>
+          <div class="screen-footer"><span class="source-label">Actual Stitch HTML</span><span>Click the screen to open the exported assessment tool source.</span></div>
         </div>
-        <div class="screen-stage"><a class="screen-frame mobile" href="assets/screens/14-assessment-step-2-mobile-pisa-lean-leadership-assessment.html" target="_blank" rel="noopener"><img src="assets/captures/14-14-assessment-step-2-mobile-pisa-lean-leadership-assessment-viewport.png" alt="Assessment step mobile screen"></a></div>
+        <div class="screen-stage"><a class="screen-frame" href="assets/screens/19-pisa-lean-leadership-assessment-tool-updated-latest-version-html.html" target="_blank" rel="noopener"><img src="assets/captures/19-19-pisa-lean-leadership-assessment-tool-updated-latest-version-html-viewport.png" alt="PISA assessment start screen"></a></div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Assessment Questions">
+      <div class="canvas screen-slide">
+        <div class="screen-copy">
+          <p class="eyebrow">Assessment Questions</p>
+          <h2>Progress remains visible throughout the assessment.</h2>
+          <p>The client can answer each statement with a consistent scale while seeing where they are in the process.</p>
+          <div class="proof"><span class="proof-label">Visible on screen</span><span class="proof-text">Leadership Behaviours, progress count, saved state, answer options, Back, and Next.</span></div>
+          <div class="screen-footer"><span class="source-label">Actual Stitch HTML</span><span>Click the screen to open the exported question-step source.</span></div>
+        </div>
+        <div class="screen-stage"><a class="screen-frame" href="assets/screens/02-assessment-step-2-pisa-lean-leadership-assessment.html" target="_blank" rel="noopener"><img src="assets/captures/02-02-assessment-step-2-pisa-lean-leadership-assessment-viewport.png" alt="Assessment question step desktop screen"></a></div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Mobile Assessment Questions">
+      <div class="canvas screen-slide">
+        <div class="screen-copy">
+          <p class="eyebrow">Assessment Mobile</p>
+          <h2>The response scale stays usable on mobile.</h2>
+          <p>The mobile layout keeps focus on the current statements while preserving progress and navigation.</p>
+          <div class="proof"><span class="proof-label">Visible on screen</span><span class="proof-text">Menu, Leadership Behaviours, statement responses, Back, and Next.</span></div>
+          <div class="screen-footer"><span class="source-label">Actual Stitch HTML</span><span>Click the screen to open the exported mobile question-step source.</span></div>
+        </div>
+        <div class="screen-stage"><a class="screen-frame mobile" href="assets/screens/14-assessment-step-2-mobile-pisa-lean-leadership-assessment.html" target="_blank" rel="noopener"><img src="assets/captures/14-14-assessment-step-2-mobile-pisa-lean-leadership-assessment-viewport.png" alt="Assessment question step mobile screen"></a></div>
       </div>
     </section>
 
     <section class="slide" data-title="Leadership Behaviours">
       <div class="canvas screen-slide">
         <div class="screen-copy">
-          <p class="eyebrow">Assessment Detail</p>
-          <h2>Leadership behaviours are easy to answer.</h2>
-          <p>The question design supports steady completion by showing a familiar response rhythm from one statement to the next.</p>
-          <div class="screen-proof"><span class="proof-label">Screen highlight</span><span class="proof-text">Part 2 of 4, 38 of 96 answered, saved state, and a five-point response scale.</span></div>
-          <div class="screen-footer">Current design screen.</div>
+          <p class="eyebrow">Leadership Behaviours</p>
+          <h2>The desktop question screen keeps the response pattern steady.</h2>
+          <p>This assessment screen shows the same answer rhythm deeper in the journey, with progress and saved state still visible.</p>
+          <div class="proof"><span class="proof-label">Visible on screen</span><span class="proof-text">Part 2 of 4, 38 of 96 answered, saved state, and a five-point response scale.</span></div>
+          <div class="screen-footer"><span class="source-label">Actual Stitch HTML</span><span>Click the screen to open the exported Leadership Behaviours source.</span></div>
         </div>
-        <div class="screen-stage"><a class="screen-frame" href="assets/screens/22-assessment-part-2-leadership-behaviours.html" target="_blank" rel="noopener"><img src="assets/captures/22-22-assessment-part-2-leadership-behaviours-viewport.png" alt="Leadership behaviours assessment screen"></a></div>
+        <div class="screen-stage"><a class="screen-frame" href="assets/screens/22-assessment-part-2-leadership-behaviours.html" target="_blank" rel="noopener"><img src="assets/captures/22-22-assessment-part-2-leadership-behaviours-viewport.png" alt="Leadership Behaviours assessment screen"></a></div>
       </div>
     </section>
 
-    <section class="slide" data-title="Mobile Save and Exit">
+    <section class="slide" data-title="Did Not Complete">
       <div class="canvas screen-slide">
         <div class="screen-copy">
-          <p class="eyebrow">Save and Exit</p>
-          <h2>Users can pause without losing progress.</h2>
-          <p>The save-and-exit action makes the assessment more forgiving for users who cannot finish in one sitting.</p>
-          <div class="screen-proof"><span class="proof-label">Screen highlight</span><span class="proof-text">Continue and Save & Exit actions on the mobile assessment screen.</span></div>
-          <div class="screen-footer">Current design screen.</div>
+          <p class="eyebrow">Did Not Complete</p>
+          <h2>If the client leaves, progress can be continued later.</h2>
+          <p>This state makes interruption acceptable: the client can save, exit, and return without losing the assessment work already completed.</p>
+          <div class="proof"><span class="proof-label">Visible on screen</span><span class="proof-text">Continue and Save &amp; Exit actions on the mobile assessment screen.</span></div>
+          <div class="screen-footer"><span class="source-label">Actual Stitch HTML</span><span>Click the screen to open the exported save-and-exit source.</span></div>
         </div>
-        <div class="screen-stage"><a class="screen-frame mobile" href="assets/screens/10-assessment-part-2-mobile.html" target="_blank" rel="noopener"><img src="assets/captures/10-10-assessment-part-2-mobile-viewport.png" alt="Assessment part two mobile screen"></a></div>
+        <div class="screen-stage"><a class="screen-frame mobile" href="assets/screens/10-assessment-part-2-mobile.html" target="_blank" rel="noopener"><img src="assets/captures/10-10-assessment-part-2-mobile-viewport.png" alt="Did not complete assessment mobile screen"></a></div>
       </div>
     </section>
 
     <section class="slide" data-title="Resume Assessment">
       <div class="canvas screen-slide">
         <div class="screen-copy">
-          <p class="eyebrow">Resume</p>
-          <h2>Unfinished assessments are easy to resume.</h2>
-          <p>Instead of forcing a restart, the return state tells the user exactly where they left off.</p>
-          <div class="screen-proof"><span class="proof-label">Screen highlight</span><span class="proof-text">Welcome back, progress context, and "Continue from statement 12."</span></div>
-          <div class="screen-footer">Current design screen.</div>
+          <p class="eyebrow">Resume Assessment</p>
+          <h2>Returning clients can continue from saved progress.</h2>
+          <p>The resume state confirms where the client left off and offers a clear continuation action.</p>
+          <div class="proof"><span class="proof-label">Visible on screen</span><span class="proof-text">Welcome back, progress context, and Continue from statement 12.</span></div>
+          <div class="screen-footer"><span class="source-label">Actual Stitch HTML</span><span>Click the screen to open the exported resume source.</span></div>
         </div>
-        <div class="screen-stage"><a class="screen-frame" href="assets/screens/07-welcome-back-heritage-leadership.html" target="_blank" rel="noopener"><img src="assets/captures/07-07-welcome-back-heritage-leadership-viewport.png" alt="Welcome back desktop screen"></a></div>
+        <div class="screen-stage"><a class="screen-frame" href="assets/screens/07-welcome-back-heritage-leadership.html" target="_blank" rel="noopener"><img src="assets/captures/07-07-welcome-back-heritage-leadership-viewport.png" alt="Resume assessment desktop screen"></a></div>
       </div>
     </section>
 
-    <section class="slide" data-title="Mobile Resume">
+    <section class="slide" data-title="Mobile Resume Assessment">
       <div class="canvas screen-slide">
         <div class="screen-copy">
-          <p class="eyebrow">Mobile Resume</p>
-          <h2>The mobile return path offers three choices.</h2>
-          <p>This gives the customer a simple way back into the journey after interruption.</p>
-          <div class="screen-proof"><span class="proof-label">Screen highlight</span><span class="proof-text">Continue, Start Over, and View Past Results.</span></div>
-          <div class="screen-footer">Current design screen.</div>
+          <p class="eyebrow">Resume Mobile</p>
+          <h2>The mobile return path gives the client choices.</h2>
+          <p>Mobile users can continue, start over, or view past results from the return screen.</p>
+          <div class="proof"><span class="proof-label">Visible on screen</span><span class="proof-text">Continue, Start Over, and View Past Results.</span></div>
+          <div class="screen-footer"><span class="source-label">Actual Stitch HTML</span><span>Click the screen to open the exported mobile resume source.</span></div>
         </div>
-        <div class="screen-stage"><a class="screen-frame mobile" href="assets/screens/21-welcome-back-mobile-heritage-leadership.html" target="_blank" rel="noopener"><img src="assets/captures/21-21-welcome-back-mobile-heritage-leadership-viewport.png" alt="Welcome back mobile screen"></a></div>
+        <div class="screen-stage"><a class="screen-frame mobile" href="assets/screens/21-welcome-back-mobile-heritage-leadership.html" target="_blank" rel="noopener"><img src="assets/captures/21-21-welcome-back-mobile-heritage-leadership-viewport.png" alt="Resume assessment mobile screen"></a></div>
       </div>
     </section>
 
-    <section class="slide" data-title="Assessment Tool">
+    <section class="slide" data-title="Results And Download">
       <div class="canvas screen-slide">
         <div class="screen-copy">
-          <p class="eyebrow">Report Generation</p>
-          <h2>The tool connects completion to reporting.</h2>
-          <p>The current HTML tool includes report generation, navigation, print/save, and email-summary actions.</p>
-          <div class="screen-proof"><span class="proof-label">Screen highlight</span><span class="proof-text">Generate Outcome Report, Print / Save as PDF, and Email Summary to PISA.</span></div>
-          <div class="screen-footer">Current design screen.</div>
+          <p class="eyebrow">Results And Download</p>
+          <h2>The final result gives the client something tangible.</h2>
+          <p>Completion leads to a results screen with report download access and a save-to-profile option for later retrieval.</p>
+          <div class="proof"><span class="proof-label">Visible on screen</span><span class="proof-text">Assessment Complete, Download PDF Report, and Save to Profile.</span></div>
+          <div class="screen-footer"><span class="source-label">Actual Stitch HTML</span><span>Click the screen to open the exported results source.</span></div>
         </div>
-        <div class="screen-stage"><a class="screen-frame" href="assets/screens/19-pisa-lean-leadership-assessment-tool-updated-latest-version-html.html" target="_blank" rel="noopener"><img src="assets/captures/19-19-pisa-lean-leadership-assessment-tool-updated-latest-version-html-viewport.png" alt="PISA assessment tool screen"></a></div>
+        <div class="screen-stage"><a class="screen-frame" href="assets/screens/11-results-heritage-leadership.html" target="_blank" rel="noopener"><img src="assets/captures/11-11-results-heritage-leadership-viewport.png" alt="Results and download screen"></a></div>
       </div>
     </section>
 
-    <section class="slide" data-title="Results">
-      <div class="canvas screen-slide">
-        <div class="screen-copy">
-          <p class="eyebrow">Results</p>
-          <h2>Results end with a tangible takeaway.</h2>
-          <p>Completion is rewarded with a clear report download and the option to save results to the profile.</p>
-          <div class="screen-proof"><span class="proof-label">Screen highlight</span><span class="proof-text">Assessment Complete, Download PDF Report, and Save to Profile.</span></div>
-          <div class="screen-footer">Current design screen.</div>
-        </div>
-        <div class="screen-stage"><a class="screen-frame" href="assets/screens/11-results-heritage-leadership.html" target="_blank" rel="noopener"><img src="assets/captures/11-11-results-heritage-leadership-viewport.png" alt="Results screen"></a></div>
-      </div>
-    </section>
-
-    <section class="slide" data-title="Admin Experience">
+    <section class="slide" data-title="Returning Client Journey">
       <div class="canvas section-break">
         <div>
-          <p class="eyebrow">Admin Experience</p>
-          <h2>Admin screens make the program manageable.</h2>
+          <p class="eyebrow">Returning Client</p>
+          <h2>The portal brings returning clients back to useful work.</h2>
+          <p>A returning client should not be pushed through purchase again. They sign in, orient from the Client Dashboard, resume or review what they already own, and retrieve results.</p>
         </div>
-        <div class="section-stat">
-          <strong>4</strong>
-          <span>admin screens cover dashboard monitoring, user management, assessment management, and analytics.</span>
+        <div class="journey-line">
+          <div class="journey-step"><div><strong>Sign in</strong><span>Use normal login or forgot password if access needs recovery.</span></div></div>
+          <div class="journey-step"><div><strong>Orient</strong><span>Land on the Client Dashboard and see available assessment actions.</span></div></div>
+          <div class="journey-step"><div><strong>Continue owned work</strong><span>Use already-owned and resume screens instead of duplicate payment.</span></div></div>
+          <div class="journey-step"><div><strong>Retrieve outcome</strong><span>Open saved results and download the report again when needed.</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Client Dashboard">
+      <div class="canvas screen-slide">
+        <div class="screen-copy">
+          <p class="eyebrow">Client Dashboard</p>
+          <h2>The Client Dashboard turns access into action.</h2>
+          <p>This is the private client anchor. It shows progress, report access, and the next available assessment action.</p>
+          <div class="proof"><span class="proof-label">Visible on screen</span><span class="proof-text">Client Dashboard, report export, Start Now, and View Full Report actions.</span></div>
+          <div class="screen-footer"><span class="source-label">Actual Stitch HTML</span><span>Click the screen to open the exported Client Dashboard source.</span></div>
+        </div>
+        <div class="screen-stage"><a class="screen-frame" href="assets/screens/05-client-dashboard-heritage-leadership.html" target="_blank" rel="noopener"><img src="assets/captures/05-05-client-dashboard-heritage-leadership-viewport.png" alt="Client Dashboard screen"></a></div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Already Owned">
+      <div class="canvas screen-slide">
+        <div class="screen-copy">
+          <p class="eyebrow">Already Owned</p>
+          <h2>Duplicate purchase becomes a continuation path.</h2>
+          <p>The already-owned state protects returning clients from paying again for an assessment they can already access.</p>
+          <div class="proof"><span class="proof-label">Visible on screen</span><span class="proof-text">You already have this assessment, continue options, and assessments navigation.</span></div>
+          <div class="screen-footer"><span class="source-label">Actual Stitch HTML</span><span>Click the screen to open the exported already-owned source.</span></div>
+        </div>
+        <div class="screen-stage"><a class="screen-frame" href="assets/screens/04-already-owned-heritage-leadership.html" target="_blank" rel="noopener"><img src="assets/captures/04-04-already-owned-heritage-leadership-viewport.png" alt="Already owned desktop screen"></a></div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Already Owned Mobile">
+      <div class="canvas screen-slide">
+        <div class="screen-copy">
+          <p class="eyebrow">Already Owned Mobile</p>
+          <h2>Mobile clients can return without friction.</h2>
+          <p>The mobile state keeps the message direct: the assessment is available and the next action is to continue.</p>
+          <div class="proof"><span class="proof-label">Visible on screen</span><span class="proof-text">A focused confirmation that the assessment is already available.</span></div>
+          <div class="screen-footer"><span class="source-label">Actual Stitch HTML</span><span>Click the screen to open the exported mobile already-owned source.</span></div>
+        </div>
+        <div class="screen-stage"><a class="screen-frame mobile" href="assets/screens/08-already-owned-mobile-heritage-leadership.html" target="_blank" rel="noopener"><img src="assets/captures/08-08-already-owned-mobile-heritage-leadership-viewport.png" alt="Already owned mobile screen"></a></div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="New Admin Journey">
+      <div class="canvas support">
+        <div>
+          <p class="eyebrow">New Admin</p>
+          <h2>Admin onboarding stays separate from client registration.</h2>
+          <p>A new admin is invited by an existing administrator, sets credentials through a secure invite, signs in through the admin login path, and lands on the Admin Dashboard.</p>
+        </div>
+        <div class="support-list">
+          <div class="support-item"><strong>Invite email</strong><span>The admin invitation is a controlled operations flow, not a public registration route.</span></div>
+          <div class="support-item"><strong>Password setup</strong><span>The invite acceptance step activates the admin account after credentials are set.</span></div>
+          <div class="support-item"><strong>Admin login</strong><span>After setup, the admin returns through the protected admin login and reaches the Admin Dashboard.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Returning Admin Journey">
+      <div class="canvas section-break">
+        <div>
+          <p class="eyebrow">Returning Admin</p>
+          <h2>Administrators manage the assessment program from four core screens.</h2>
+          <p>The admin side is an operations journey: monitor the program, manage users, manage assessments, and analyze activity.</p>
+        </div>
+        <div class="journey-line">
+          <div class="journey-step"><div><strong>Monitor</strong><span>Use the Admin Dashboard to see registrations, completions, and recent activity.</span></div></div>
+          <div class="journey-step"><div><strong>Manage users</strong><span>Review names, emails, roles, last activity, statuses, and account actions.</span></div></div>
+          <div class="journey-step"><div><strong>Manage assessments</strong><span>Keep PISA active while treating additional assessments as later scoped work.</span></div></div>
+          <div class="journey-step"><div><strong>Analyze</strong><span>Review engagement, completion, and assessment performance signals.</span></div></div>
         </div>
       </div>
     </section>
@@ -878,73 +954,73 @@
       <div class="canvas screen-slide">
         <div class="screen-copy">
           <p class="eyebrow">Admin Dashboard</p>
-          <h2>The dashboard shows movement and follow-up.</h2>
-          <p>Administrators can monitor registrations, completed assessments, completion rate, and recent user activity from a single view.</p>
-          <div class="screen-proof"><span class="proof-label">Admin view</span><span class="proof-text">Total Registered, Assessments Taken, Completion Rate, recent activity, search, filters, export, and email actions.</span></div>
-          <div class="screen-footer">Current design screen.</div>
+          <h2>The Admin Dashboard shows operational movement.</h2>
+          <p>This is the private admin anchor. It gives administrators a summary of activity, completion, and follow-up signals.</p>
+          <div class="proof"><span class="proof-label">Visible on screen</span><span class="proof-text">Total Registered, Assessments Taken, Completion Rate, recent user activity, search, filters, export, and email actions.</span></div>
+          <div class="screen-footer"><span class="source-label">Actual Stitch HTML</span><span>Click the screen to open the exported Admin Dashboard source.</span></div>
         </div>
-        <div class="screen-stage"><a class="screen-frame" href="assets/screens/17-admin-dashboard-heritage-leadership.html" target="_blank" rel="noopener"><img src="assets/captures/17-17-admin-dashboard-heritage-leadership-viewport.png" alt="Admin dashboard screen"></a></div>
+        <div class="screen-stage"><a class="screen-frame" href="assets/screens/17-admin-dashboard-heritage-leadership.html" target="_blank" rel="noopener"><img src="assets/captures/17-17-admin-dashboard-heritage-leadership-viewport.png" alt="Admin Dashboard screen"></a></div>
       </div>
     </section>
 
-    <section class="slide" data-title="User Management">
+    <section class="slide" data-title="Admin Users">
       <div class="canvas screen-slide">
         <div class="screen-copy">
-          <p class="eyebrow">Users</p>
-          <h2>User management gives account-level control.</h2>
-          <p>The screen supports adding users, checking status, and acting on individual records.</p>
-          <div class="screen-proof"><span class="proof-label">Admin view</span><span class="proof-text">User records, status indicators, Add New User, notifications, help, and row-level actions.</span></div>
-          <div class="screen-footer">Current design screen.</div>
+          <p class="eyebrow">Admin Users</p>
+          <h2>User management gives account-level visibility.</h2>
+          <p>Administrators can see who is registered, how to contact them, their role, their activity status, and the next available account action.</p>
+          <div class="proof"><span class="proof-label">Visible on screen</span><span class="proof-text">Name, email, role, last active, status, Add New User, notifications, help, and row-level actions.</span></div>
+          <div class="screen-footer"><span class="source-label">Actual Stitch HTML</span><span>Click the screen to open the exported Admin Users source.</span></div>
         </div>
-        <div class="screen-stage"><a class="screen-frame" href="assets/screens/12-user-management-heritage-leadership-admin-redo.html" target="_blank" rel="noopener"><img src="assets/captures/12-12-user-management-heritage-leadership-admin-redo-viewport.png" alt="User management admin screen"></a></div>
+        <div class="screen-stage"><a class="screen-frame" href="assets/screens/12-user-management-heritage-leadership-admin-redo.html" target="_blank" rel="noopener"><img src="assets/captures/12-12-user-management-heritage-leadership-admin-redo-viewport.png" alt="Admin Users screen"></a></div>
       </div>
     </section>
 
-    <section class="slide" data-title="Assessment Management">
+    <section class="slide" data-title="Admin Assessments">
       <div class="canvas screen-slide">
         <div class="screen-copy">
-          <p class="eyebrow">Assessments</p>
-          <h2>Assessment management keeps the catalog ready.</h2>
-          <p>The admin team can create assessments and review individual assessment details from the management area.</p>
-          <div class="screen-proof"><span class="proof-label">Admin view</span><span class="proof-text">New Assessment, Create Assessment, View Details, notifications, and help.</span></div>
-          <div class="screen-footer">Current design screen.</div>
+          <p class="eyebrow">Admin Assessments</p>
+          <h2>Assessment management keeps the signed product clear.</h2>
+          <p>PISA is the current signed assessment work. Additional assessments can be built later, but they should be treated as new scope until quoted and approved.</p>
+          <div class="proof"><span class="proof-label">Visible on screen</span><span class="proof-text">New Assessment, Create Assessment, View Details, notifications, and help.</span></div>
+          <div class="screen-footer"><span class="source-label">Actual Stitch HTML</span><span>Click the screen to open the exported Admin Assessments source.</span></div>
         </div>
-        <div class="screen-stage"><a class="screen-frame" href="assets/screens/25-assessments-heritage-leadership-admin.html" target="_blank" rel="noopener"><img src="assets/captures/25-25-assessments-heritage-leadership-admin-viewport.png" alt="Assessment management admin screen"></a></div>
+        <div class="screen-stage"><a class="screen-frame" href="assets/screens/25-assessments-heritage-leadership-admin.html" target="_blank" rel="noopener"><img src="assets/captures/25-25-assessments-heritage-leadership-admin-viewport.png" alt="Admin Assessments screen"></a></div>
       </div>
     </section>
 
-    <section class="slide" data-title="Analytics">
+    <section class="slide" data-title="Admin Analytics">
       <div class="canvas screen-slide">
         <div class="screen-copy">
-          <p class="eyebrow">Analytics</p>
+          <p class="eyebrow">Admin Analytics</p>
           <h2>Analytics turns activity into insight.</h2>
-          <p>The analytics area gives the team a dedicated place to review patterns, performance, and recent assessment outcomes.</p>
-          <div class="screen-proof"><span class="proof-label">Admin view</span><span class="proof-text">Analytics navigation, assessment activity, view-all action, notifications, and help.</span></div>
-          <div class="screen-footer">Current design screen.</div>
+          <p>The analytics screen gives the team a dedicated place to review patterns, performance, and recent assessment outcomes.</p>
+          <div class="proof"><span class="proof-label">Visible on screen</span><span class="proof-text">Analytics navigation, assessment activity, view-all action, notifications, and help.</span></div>
+          <div class="screen-footer"><span class="source-label">Actual Stitch HTML</span><span>Click the screen to open the exported Admin Analytics source.</span></div>
         </div>
-        <div class="screen-stage"><a class="screen-frame" href="assets/screens/26-analytics-heritage-leadership-admin.html" target="_blank" rel="noopener"><img src="assets/captures/26-26-analytics-heritage-leadership-admin-viewport.png" alt="Analytics admin screen"></a></div>
+        <div class="screen-stage"><a class="screen-frame" href="assets/screens/26-analytics-heritage-leadership-admin.html" target="_blank" rel="noopener"><img src="assets/captures/26-26-analytics-heritage-leadership-admin-viewport.png" alt="Admin Analytics screen"></a></div>
       </div>
     </section>
 
-    <section class="slide" data-title="Completion Notes">
-      <div class="canvas notes">
+    <section class="slide" data-title="Scope And Handoff">
+      <div class="canvas support">
         <div>
-          <p class="eyebrow">Before Build Sign-off</p>
-          <h2>Three supporting screens complete the handoff.</h2>
-          <p style="margin-top:20px;">The current screen set covers the core commercial, assessment, result, and admin paths. A few utility moments should be designed as their own screens before implementation handoff.</p>
+          <p class="eyebrow">Scope Clarity</p>
+          <h2>The current walkthrough stays focused on the signed PISA delivery.</h2>
+          <p>The portal structure supports a broader assessment catalog, but the current build priority is the site, registration infrastructure, PISA assessment logic, gated results, and payment integration after those pieces are tested.</p>
         </div>
-        <div class="notes-list">
-          <div class="note"><strong>Password reset</strong><span>Add forgot-password and reset-password screens so account recovery is part of the designed experience.</span></div>
-          <div class="note"><strong>Confirmation emails</strong><span>Add branded email templates for registration confirmation, payment receipt, and assessment completion.</span></div>
-          <div class="note"><strong>Payment return states</strong><span>Add explicit success, pending, cancelled, and failed payment return screens from Payfast.</span></div>
+        <div class="support-list">
+          <div class="support-item"><strong>Signed work</strong><span>Landing, registration, email confirmation/recovery, PISA checkout, assessment, resume, results/download, Client Dashboard, and admin operations.</span></div>
+          <div class="support-item"><strong>Next integration step</strong><span>Payfast should follow once registration, assessment logic, results, and gating are complete and tested.</span></div>
+          <div class="support-item"><strong>New work</strong><span>Additional assessments can be added after the signed PISA scope is complete and separately quoted.</span></div>
         </div>
       </div>
     </section>
 
     <footer class="controls">
       <div class="nav">
-        <button id="prev" type="button" aria-label="Previous slide">&#8592;</button>
-        <button id="next" type="button" aria-label="Next slide">&#8594;</button>
+        <button id="prev" type="button" aria-label="Previous slide">&larr;</button>
+        <button id="next" type="button" aria-label="Next slide">&rarr;</button>
       </div>
       <div class="progress-wrap">
         <div class="progress-meta">
@@ -953,7 +1029,6 @@
         </div>
         <div class="progress" aria-hidden="true"><div class="progress-fill" id="progress-fill"></div></div>
       </div>
-      <div class="keyboard">Arrow keys navigate</div>
     </footer>
   </main>
 
